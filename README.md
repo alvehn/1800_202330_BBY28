@@ -6,15 +6,10 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Alvin 
-* Sohail
-* Navjot
 
-## 3. Introductions
-List of team members intro's
-* Hi may name is Navjot and I love programming
-* Hi my name is Sohail and I like coding
-* Hi my name is Alvin and I like eating ramen
+* Alvin, I like eating ramen
+* Sohail, I like coding
+* Navjot, I like programming
 	
 ## 4. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
