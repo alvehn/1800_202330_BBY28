@@ -11,33 +11,33 @@ List team members and/or short bio's here...
 * Sohail, I like coding
 * Navjot, I like programming
 	
-## 4. Technologies and Resources Used
+## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
 * HTML, CSS, JavaScript
 * Bootstrap 5.0 (Frontend library)
 * Firebase 8.0 (BAAS - Backend as a Service)
 * VScode
 
-## 5. Complete setup/installion/usage
+## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
 Here are the steps ...
 * Git pull or git clone
 * edit edit edit
 * stage commit push (add commit push)
 
-## 6. Known Bugs and Limitations
+## 5. Known Bugs and Limitations
 Here are some known bugs:
 * N/A
 * N/A
 * N/A
 
-## 7. Features for Future
+## 6. Features for Future
 What we'd like to build in the future:
 * Facebook
 * F-35 interface
 * Trash app
 	
-## 8. Contents of Folder
+## 7. Contents of Folder
 Content of the project folder:
 
 ```
