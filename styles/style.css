@@ -1,1 +1,10 @@
 
+#eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#creationTitle {
+    text-align: center;
+}
+

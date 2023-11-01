@@ -23,7 +23,7 @@
     <!-- Other libraries go here -->
 
     <!-- Link to styles of your own -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css">
 
 </head>
 
@@ -36,21 +36,21 @@
 
     <div id="creationTitle"><h1>CREATE AN EVENT!</h1></div><br>
 
-    <div class="eventName">
+    <div id="eventName">
         <label for="eventCreationFrom" class="form-label">Event Name</label>
         <input type="name" class="form-control" id="eventCreationFrom" placeholder="name">
       </div><br>
-      <div class="eventDescription">
+      <div id="eventDescription">
         <label for="eventDescription" class="form-label">Description</label>
         <textarea class="form-control" id="eventDescription" placeholder="Description" rows="3"></textarea>
       </div><br>
 
-      <div class="eventImages">
+      <div id="eventImage">
         <label for="eventImages" class="form-label">Images for the event</label>
         <input class="form-control" type="file" id="eventImages" multiple>
       </div><br>
     
-    <div class="eventLocation">
+    <div id="eventLocation">
         <label for="location" class="form-label">location</label>
         <input class="form-control" list="locationOptions" id="eventLocation" placeholder="Type to search...">
         <datalist id="locationOptions">
@@ -62,7 +62,7 @@
         </datalist><br>
     </div>
 
-    <div class="eventType">
+    <div id="eventType">
         <label for="type" class="form-label">Type of event</label>
         <input class="form-control" list="typeOptions" id="eventType" placeholder="Type to search...">
         <datalist id="typeOptions">
