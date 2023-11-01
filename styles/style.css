@@ -1,1 +1,15 @@
 
+#eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#creationTitle, #eventName {
+    text-align: center;
+}
+
+.list-group-item{
+    background-color:#6a994e;
+    width:100%;
+    text-align: center;
+}
