@@ -33,32 +33,28 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./images/elmo.jpg" height="36">
-                What's Happening?</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+    
+    <nav class="navbar" style="background-color: #386641;">
+        <div class="container-fluid" >
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+            <form class="d-inline-flex mx-auto" style="width: 80%;">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"><img src="images\magnifier.png"></button>
+            </form>
+            <div class="collapse w-100 my-3" id="navbarToggleExternalContent">
+                <div class="list-group">
+                    <a href="main.html" class="list-group-item">Browse</a>
+                    <a href="main.html" class="list-group-item">Favourites</a>
+                    <a href="main.html" class="list-group-item">Profile</a>
+                </div>
             </div>
         </div>
     </nav>
 
 
-    <div id="eventCreationButton">
+    <div id="eventCreationButton mt-5 pt-5">
         <a href="newEvent.html"><button type="button" class="btn btn-outline-dark">Create a new event</button></a>
     </div>
 
