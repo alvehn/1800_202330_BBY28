@@ -13,6 +13,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <!-- Boostrap Library JS CDN  go here -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -39,8 +40,8 @@
     </div>
 
     <div id="eventName"><h2>event name</h2></div>
-    <div id="eventLocation"><h4>icon, location</h4></div>
-    <div id="eventTimeDate"><h4>event time and date</h4></div>
+    <div id="eventLocation"><h4><i class="bi bi-geo"></i> location</h4></div>
+    <div id="eventTimeDate"><h4><i class="bi bi-calendar"></i> event time and date</h4></div>
 
     <div id="eventRSVP">
     <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
@@ -50,14 +51,20 @@
     <label class="btn btn-outline-primary" for="btn-check-2-outlined">Going</label>
     
 
-    <button type="button" class="btn btn-danger">favourite</button>
+    <button type="button" class="btn btn-danger"><i class="bi bi-heart-fill"></i></button>
     </div>
 
 
-    <div id="eventHost"><h4>icon, event host</h4></div>
-    <div id="eventPeople"><h4>icon, number of people going/interested</h4></div>
+    <div id="eventHost"><h4><i class="bi bi-people-fill"></i> event host</h4></div>
+    <div id="eventPeople"><h4><i class="bi bi-person-heart"></i> number of people going/interested</h4></div>
 
-    <div id="eventDescription"><p>event Description</p></div>
+    <div id="eventDescription"><p>event Description</p></div><br><br><br>
+
+    <footer>
+        <div id="goBackButton">
+            <a href="main.html"><button type="button" class="btn btn-dark">Go Back</button></a>
+        </div>
+    </footer>
 
     
        
