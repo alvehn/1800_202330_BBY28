@@ -1,5 +1,5 @@
 
-#eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation {
+#eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation, #eventDate {
     padding-left: 5px;
     padding-right: 5px;
 }
