@@ -53,6 +53,7 @@
         </div>
     </nav>
 
+    <!-- filter button and dropdown items -->
     <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
         <h4>Filters</h4>
     </button>
@@ -63,6 +64,50 @@
         <button class="btn btn-dark" type="filterOption">Trending</button>
         <button class="btn btn-dark" type="filterOption">tags</button>
 
+    </div>
+    
+    <!-- cards go here -->
+
+    <div class="container"> 
+        <h1>Event list</h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="hikes-go-here" class="row row-cols-auto">
+            </div>
+        </div>
+    </div>
+
+    <!-- JS will access this, inject data, create new card, and add new card in above code -->
+    <template id="hikeCardTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem">
+            <img class="card-image card-img-top" src=" ..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-length">placeholder</p>
+                <br />
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-primary card-href">Read more ...</a>
+            </div>
+        </div>
+    </template>
+
+    <!-- demo card -->
+    <div id="hikeCardTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem">
+            <img class="card-image card-img-top" src=" ..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Event</h5>
+                <p class="card-length">main/necessary details</p>
+                <br />
+                <p class="card-text">
+                    Secondary/ extra details about event like location, type of event, and other necessary information.
+                </p>
+                <a class="btn btn-primary card-href">View</a>
+            </div>
+        </div>
     </div>
 
     <div id="eventCreationButton mt-5 pt-5">
