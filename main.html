@@ -22,6 +22,16 @@
 
     <!-- Other libraries go here -->
 
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>  
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> 
+
     <!-- Link to styles of your own -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
@@ -72,24 +82,26 @@
         <h1>Event list</h1>
         <!-- Here is the container for cards  -->
         <div class="container">
-            <div id="hikes-go-here" class="row row-cols-auto">
+            <div id="events-go-here" class="row row-cols-auto">
             </div>
         </div>
     </div>
 
     <!-- JS will access this, inject data, create new card, and add new card in above code -->
-    <template id="hikeCardTemplate">
-        <div class="card py-2 mx-2" style="width: 18rem">
-            <img class="card-image card-img-top" src=" ..." alt="..." />
+    <template id="eventCardTemplate">
+        <div class="card py-2 mx-2" style="width: 22rem">
+            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <p class="card-length">placeholder</p>
+                <p class="card-date">placeholder</p>
                 <br />
-                <p class="card-text">
+                <p class="card-location">location</p>
+                <p class="card-tags">tags</p>
+                <p class="card-description">
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.
                 </p>
-                <a class="btn btn-primary card-href">Read more ...</a>
+                <a class="btn btn-primary card-href" href="event.html">View</a>
             </div>
         </div>
     </template>
@@ -122,21 +134,6 @@
         </div>
       </div>
 
-    <div id="hikeCardTemplate">
-        <div class="card py-2 mx-2" style="width: 22rem">
-            <img class="card-image card-img-top" src=" ..." alt="..." />
-            <div class="card-body">
-                <h5 class="card-title">Event</h5>
-                <p class="card-length">main/necessary details</p>
-                <br />
-                <p class="card-text">
-                    Secondary/ extra details about event like location, type of event, and other necessary information.
-                </p>
-                <a class="btn btn-primary card-href" href="event.html">View</a>
-            </div>
-        </div>
-    </div>
-
     <div id="eventCreationButton mt-5 pt-5">
         <a href="newEvent.html"><button type="button" class="btn btn-outline-dark">Create a new event</button></a>
     </div>
@@ -160,6 +157,8 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
+    <script src="scripts/firebaseAPI_bby28.js"></script>
+    <script src="scripts/readEvents.js"></script>
 
 </body>
 
