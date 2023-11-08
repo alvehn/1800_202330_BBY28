@@ -80,12 +80,12 @@ function eventCards(collection) {
             allEvents.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;                // get value of the "name" 
                 var description = doc.data().description; //get value of the "description"
-                var date = doc.data().date;             //get value of "date"
+                var date = doc.data().date.toDate();             //get value of "date"
                 var location = doc.data().location;     //gets value of "location"
                 var tags = doc.data().tags;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
-                //var docID = doc.id;//grab the id for that specific doc
+                var docID = doc.id;//grab the id for that specific doc
 
 
                 //update title and text and image
@@ -94,6 +94,8 @@ function eventCards(collection) {
                 newcard.querySelector('.card-location').innerHTML = location;
                 newcard.querySelector('.card-description').innerHTML = description;
                 newcard.querySelector('.card-tags').innerHTML = tags;
+
+                newcard.querySelector('a').href = "event.html?docID="+docID;//button/read more
 
                 //newcard.querySelector('a').href = "event.html?docID="+docID;//button/read more
 
