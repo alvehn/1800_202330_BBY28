@@ -1,47 +1,69 @@
-function getNameFromAuth() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
-        if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(user.displayName);  //print the user name in the browser console
-            userName = user.displayName;
 
-            //method #1:  insert with JS
-            document.getElementById("name-goes-here").innerText = userName;    
 
-            //method #2:  insert using jquery
-            //$("#name-goes-here").text(userName); //using jquery
+function displayUser() {
+    let params = new URL(window.location.href); //get URL of search bar
+    console.log(params);
+    let ID = params.searchParams.get("docID"); //get value for key "id"
+    console.log(ID);
 
-            //method #3:  insert using querySelector
-            //document.querySelector("#name-goes-here").innerText = userName
+    db.collection("users")
+        .doc(ID)
+        .get()
+        .then(doc => {
+            var title = doc.data().name;                // get value of the "name" 
 
-        } else {
-            // No user is signed in.
-        }
-    });
+            // populates name, location, title, and description
+            document.getElementById("name-goes-here").innerHTML = title;
+
+            // let imgEvent = document.querySelector( ".hike-img" );
+            // imgEvent.src = "../images/" + hikeCode + ".jpg";
+        });
 }
+displayUser();
 
-getNameFromAuth(); //run the function
+//     firebase.auth().onAuthStateChanged(user => {
+//         // Check if a user is signed in:
+//         if (user) {
+//             // Do something for the currently logged-in user here: 
+//             console.log(user.uid); //print the uid in the browser console
+//             console.log(user.displayName);  //print the user name in the browser console
+//             userName = user.displayName;
 
-function editUserInfo() {
-    //Enable the form fields
-    document.getElementById('personalInfoFields').disabled = false;
- }
+//             //method #1:  insert with JS
+//             document.getElementById("name-goes-here").innerText = userName;    
 
- function saveUserInfo() {
-    //enter code here
+//             //method #2:  insert using jquery
+//             //$("#name-goes-here").text(userName); //using jquery
 
-    userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
+//             //method #3:  insert using querySelector
+//             //document.querySelector("#name-goes-here").innerText = userName
+
+//         } else {
+//             // No user is signed in.
+//         }
+//     });
+// }
+
+// getNameFromAuth(); //run the function
+
+// function editUserInfo() {
+//     //Enable the form fields
+//     document.getElementById('personalInfoFields').disabled = false;
+//  }
+
+//  function saveUserInfo() {
+//     //enter code here
+
+//     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
 
 
-    currentUser.update({
-        name: userName,
+//     currentUser.update({
+//         name: userName,
         
-    })
-    .then(() => {
-        console.log("Document successfully updated!");
-    })
+//     })
+//     .then(() => {
+//         console.log("Document successfully updated!");
+//     })
 
-    document.getElementById('personalInfoFields').disabled = true;
-}
+//     document.getElementById('personalInfoFields').disabled = true;
+// }
