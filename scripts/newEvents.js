@@ -1,11 +1,11 @@
 function createEvent() {
     console.log("inside event creation");
-    let eventNameCreation = document.getElementById("title").value;
-    let eventDate = document.getElementById("date").value;
-    let eventDescription = document.getElementById("description").value;
-    let eventImage = document.getElementById("image").value;
-    let eventLocation = document.querySelector("location").value;
-    let eventType = document.querySelector("tags").value;
+    let eventNameCreation = document.getElementById("eventNameCreation").value;
+    let eventDate = document.getElementById("eventDate").value;
+    let eventDescription = document.getElementById("eventDescription").value;
+    let eventImage = document.getElementById("eventImage").value;
+    let eventLocation = document.querySelector("eventLocation").value;
+    let flexCheckDefault = document.querySelector("flexCheckDefault").value;
 
     };
 
@@ -27,10 +27,12 @@ function createEvent() {
             location: eventLocation,
             type: eventType,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
-            window.location.href = "thanks.html"; // Redirect to the thanks page
+        // }).then(() => {
+        //     window.location.href = "thanks.html"; // Redirect to the thanks page
         });
     } else {
         console.log("No user is signed in");
-        window.location.href = 'review.html';
+        // window.location.href = 'review.html';
     }
+
+createEvent();
