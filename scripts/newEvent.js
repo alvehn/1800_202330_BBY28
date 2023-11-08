@@ -1,7 +1,7 @@
 
 function postEvent() {
-    var newEvent = db.collection("events").doc();
-    var eventName = document.getElementById("eventCreationFrom").value;
+    // var newEvent = db.collection("events").doc();
+    var eventName = document.getElementById("eventName").value;
     var description = document.getElementById("description").value;
     var date = document.getElementById("eventDate").value;
     var location = document.getElementById("eventLocation").value;
@@ -12,7 +12,7 @@ function postEvent() {
         name: eventName,
         description: description
     });
-    console.log(eventName, description);
+    
 
 }
 
