@@ -13,12 +13,16 @@ function displayFullEvent() {
             var description = doc.data().description; //get value of the "description"
             var date = doc.data().date.toDate();             //get value of "date"
             var location = doc.data().location;     //gets value of "location"
+            var image = doc.data().image;
 
             // populates name, location, title, and description
             document.getElementById("eventName").innerHTML = title;
             document.getElementById("eventLocation").innerHTML = location;
             document.getElementById("eventDescription").innerHTML = description;
             document.getElementById("eventDateTime").innerHTML = date;
+            // document.getElementById("eventImages").
+            let imgEvent = document.getElementById( "eventImages" );
+            imgEvent.src = "../images/" + image;
 
             // let imgEvent = document.querySelector( ".hike-img" );
             // imgEvent.src = "../images/" + hikeCode + ".jpg";
