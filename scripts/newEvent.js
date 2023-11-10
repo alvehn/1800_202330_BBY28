@@ -10,7 +10,10 @@ function postEvent() {
         var date = document.getElementById("eventYear").value + "-" 
             + document.getElementById("eventMonth").value + "-"
             + document.getElementById("eventDay").value;
-        
+        var imageBad = document.getElementById("eventImages").value;
+        var imageGood = imageBad.slice(12, imageBad.length);
+        console.log(imageGood);
+
         var location = document.getElementById("locationOptions").value;
 
         console.log(eventName, description, date);
@@ -19,7 +22,8 @@ function postEvent() {
             host: userID,
             name: eventName,
             description: description,
-            date: new Date(date)
+            date: new Date(date),
+            image: imageGood
         });
     } else {
         console.log("No user is signed in");
