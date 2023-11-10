@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Main Page</title>
+    <title>Favourites</title>
     <meta name="comp1800 template" content="My 1800 App">
     <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 
@@ -58,18 +58,73 @@
             <div class="collapse w-100 my-3" id="navbarToggleExternalContent">
                 <div class="list-group">
                     <a href="main.html" class="list-group-item">Browse</a>
-                    <a href="main.html" class="list-group-item">Favourites</a>
+                    <a href="favourites.html" class="list-group-item">Favourites</a>
                     <a href="profile.html" class="list-group-item">Profile</a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- filter button and dropdown items -->
+    <!-- <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
+        <h4>Filters</h4>
+    </button>
+
+    <div class="collapse p-3" id="filters">
+        <button class="btn btn-dark" type="filterOption">Date</button>
+        <button class="btn btn-dark" type="filterOption">Location</button>
+        <button class="btn btn-dark" type="filterOption">Trending</button>
+        <button class="btn btn-dark" type="filterOption">tags</button>
+
+    </div>
+     -->
+    <!-- cards go here -->
+
+    <div class="container"> 
+        <h1>Favourites list</h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="events-go-here" class="row row-cols-auto">
+            </div>
+        </div>
+    </div>
+
+    <!-- JS will access this, inject data, create new card, and add new card in above code -->
+    <template id="eventCardTemplate">
+        <div class="card py-2 mx-2" style="width: 22rem">
+            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-date">placeholder</p>
+                <br />
+                <p class="card-location">location</p>
+                <p class="card-tags">tags</p>
+                <p class="card-description">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-primary card-href" href="event.html" style="display: block;">View</a>
+            </div>
+        </div>
+    </template>
+
     
-    <h1>FAVOURITES PAGE</h1>
-    <p>temp document</p>
+
+    <div id="eventCreationButton mt-5 pt-5">
+        <a href="newEvent.html"><button type="button" class="btn btn-outline-dark">Create a new event</button></a>
+    </div>
+
     
-      
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2023 OCTOBER BCIT COMP1800 202330 BBY28</p>
+        <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap" />
+            </svg>
+        </a>
+    </footer>    
 
 
     <!---------------------------------------------->
@@ -80,7 +135,6 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="scripts/firebaseAPI_bby28.js"></script>
     <script src="scripts/readEvents.js"></script>
-    <script src="scripts/favourite.js"></script>
 
 </body>
 
