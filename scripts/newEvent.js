@@ -3,6 +3,7 @@ function postEvent() {
     var user = firebase.auth().currentUser;
     if (user) {
         var currentUser = db.collection("users").doc(user.uid);
+        var userName =  user.displayName;
         var userID = user.uid;
         // var newEvent = db.collection("events").doc();
         var eventName = document.getElementById("eventName").value;
@@ -12,18 +13,20 @@ function postEvent() {
             + document.getElementById("eventDay").value;
         var imageBad = document.getElementById("eventImages").value;
         var imageGood = imageBad.slice(12, imageBad.length);
-        console.log(imageGood);
+        // console.log(userName);
 
-        var location = document.getElementById("locationOptions").value;
+        var locationOfEvent = document.getElementById("eventLocation").value;
 
         console.log(eventName, description, date);
 
         db.collection("events").add({
             host: userID,
+            hostName: userName,
             name: eventName,
             description: description,
             date: new Date(date),
-            image: imageGood
+            image: imageGood,
+            location: locationOfEvent
         });
     } else {
         console.log("No user is signed in");
