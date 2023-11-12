@@ -149,12 +149,12 @@ function addFavouite() {
         // var currentUser = db.collection("favourites").doc(user.uid);
         // var userID = user.uid;
         var eventIsFavourited = document.querySelector('input[name="favourited"]:checked').value;
-        var newEvent = db.collection("events").doc();
+        var events = db.collection("events").doc();
         // console.log(favourited);
 
         db.collection("favourites").add({
             favourited: eventIsFavourited,
-            liked_events: newEvent,
+            liked_events: events,
         });
     } else {
         console.log("No user is signed in");
