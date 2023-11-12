@@ -65,14 +65,22 @@
         <img src= "images/profileImagePlaceholder.png" class="img-fluid" alt="...">
     </div>
 
-    <div id="userName">
+    <!-- <div id="userName">
         <h1><span id="name-goes-here"></span></h1>
-    </div>
+    </div> -->
+
+    <form>
+        <div class="form-group">
+            <label >Name</label>
+            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+        </div> <br>
+    </form>
 
     <div id="profileButton">
 
-        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
-                <span style="width: 10px"></span>
+        <!-- <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button> -->
+        
+        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
         
         <a href="newEvent.html"><button type="button" class="btn btn-dark">New Event</button></a>
         
