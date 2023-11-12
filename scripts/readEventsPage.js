@@ -29,3 +29,12 @@ function displayFullEvent() {
         });
 }
 displayFullEvent();
+
+
+function saveCheckboxState() {
+    var checkBox = document.getElementById("btn-check-3-outlined");
+    var isChecked = checkBox.checked;
+
+    // Save checkbox state to localStorage
+    localStorage.setItem("checkBoxState", isChecked);
+}

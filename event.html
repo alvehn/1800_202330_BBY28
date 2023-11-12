@@ -87,8 +87,11 @@
         <input type="checkbox" class="btn-check" id="btn-check-2-outlined" autocomplete="off">
         <label class="btn btn-outline-primary" for="btn-check-2-outlined">Going</label>
 
-        <input type="checkbox" class="btn-check" id="btn-check-3-outlined">
+        <input type="checkbox" class="btn-check" id="btn-check-3-outlined" name="favourited">
         <label class="btn btn-outline-danger" for="btn-check-3-outlined"><i class="bi bi-heart-fill"></i></label>
+        <button type="button" class="btn btn-danger" onclick="addFavouite()">submit</button>
+        
+        <!-- <button onclick="saveCheckboxState()">Save Checkbox State</button> -->
     </div>
 
 
@@ -121,6 +124,7 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="scripts/firebaseAPI_bby28.js"></script>
     <script src="scripts/readEventsPage.js"></script>
+    <script src="scripts/favourite.js"></script>
 
 </body>
 
