@@ -14,12 +14,14 @@ function displayFullEvent() {
             var date = doc.data().date.toDate();             //get value of "date"
             var location = doc.data().location;     //gets value of "location"
             var image = doc.data().image;
+            var eventCreator = doc.data().hostName;
 
             // populates name, location, title, and description
             document.getElementById("eventName").innerHTML = title;
             document.getElementById("eventLocation").innerHTML = location;
             document.getElementById("eventDescription").innerHTML = description;
             document.getElementById("eventDateTime").innerHTML = date;
+            document.getElementById("eventHost").innerHTML = eventCreator;
             // document.getElementById("eventImages").
             let imgEvent = document.getElementById( "eventImages" );
             imgEvent.src = "../images/" + image;
