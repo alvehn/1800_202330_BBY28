@@ -59,8 +59,8 @@
                     </button>
                     <ul class="dropdown-menu">
                         <!-- Dropdown menu links -->
-                        <p style="display: inline;">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="display: inline;">
+                        <p>
+                        <input class="form-control" id="searchField" onkeypress="eventCardsSearch()" type="search" placeholder="Search" aria-label="Search">
                         <!-- <button class="btn btn-outline-success float-right" type="submit"><img src="images\magnifier.png"></button> -->
                         </p>
                     </ul>
@@ -123,6 +123,8 @@
 
     <!-- demo card -->
 
+
+    <!-- click anywhere on card to show details. Need to figure out how to set default view as closed instead of open -->
     <!-- <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -149,6 +151,8 @@
         </div>
       </div> -->
 
+
+      <!-- click on button to expand  -->
     <!-- <div class="card py-2 mx-2" style="width: 22rem">
         <img class="card-image card-img-top" src=" ..." alt="..." />
         <div class="card-body">
@@ -183,8 +187,8 @@
         </div>
       </div> -->
 
-    <div id="eventCreationButton mt-5 pt-5">
-        <a href="newEvent.html"><button type="button" class="btn btn-outline-dark">Create a new event</button></a>
+    <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
+        <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
     </div>
 
 
@@ -208,6 +212,7 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="scripts/firebaseAPI_bby28.js"></script>
     <script src="scripts/readEvents.js"></script>
+    <script src="scripts/search.js"></script>
 
 </body>
 
