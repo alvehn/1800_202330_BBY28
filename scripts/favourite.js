@@ -147,14 +147,14 @@ function addFavouite() {
     var user = firebase.auth().currentUser;
     if (user) {
         // var currentUser = db.collection("favourites").doc(user.uid);
-        // var userID = user.uid;
+        var userID = user.uid;
         var eventIsFavourited = document.querySelector('input[name="favourited"]:checked').value;
-        var events = db.collection("events").doc();
-        // console.log(favourited);
-
-        db.collection("favourites").add({
-            favourited: eventIsFavourited,
-            liked_events: events,
+        let params = new URL(window.location.href); //get URL of search bar
+        let ID = params.searchParams.get("docID"); //get value for key "id"
+        console.log(ID);
+        
+        db.collection("users").doc(userID).collection('savedEvents').add({
+            eventID : ID
         });
     } else {
         console.log("No user is signed in");

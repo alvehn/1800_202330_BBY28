@@ -53,8 +53,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <form class="d-inline-flex mx-auto" style="width: 80%;">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"><img src="images\magnifier.png"></button>
+                <div class="btn-group dropend">
+                    <button type="button" class="btn btn-toolbar dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="images\magnifier.png">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <!-- Dropdown menu links -->
+                        <p>
+                        <input class="form-control" id="searchField" type="search" placeholder="Search" aria-label="Search">
+                        <!-- <button class="btn btn-outline-success float-right" type="submit"><img src="images\magnifier.png"></button> -->
+                        </p>
+                    </ul>
+                </div> 
             </form>
 
             <div class="collapse w-100 my-3" id="navbarToggleExternalContent">
@@ -113,7 +123,9 @@
 
     <!-- demo card -->
 
-    <div class="accordion-item">
+
+    <!-- click anywhere on card to show details. Need to figure out how to set default view as closed instead of open -->
+    <!-- <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                 aria-expanded="true" aria-controls="collapseOne">
@@ -140,10 +152,10 @@
                 </div>
             </div>
         </div>
-    </div>
+      </div>
 
-    <div id="eventCreationButton mt-5 pt-5">
-        <a href="newEvent.html"><button type="button" class="btn btn-outline-dark">Create a new event</button></a>
+    <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
+        <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
     </div>
 
 
@@ -167,6 +179,7 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="scripts/firebaseAPI_bby28.js"></script>
     <script src="scripts/readEvents.js"></script>
+    <script src="scripts/search.js"></script>
 
 </body>
 
