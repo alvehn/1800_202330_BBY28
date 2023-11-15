@@ -85,11 +85,18 @@
     <div class="collapse p-3" id="filters">
         <button class="btn btn-dark" type="filterOption">Date</button>
         <input type="date" class="form-control" name="date-field" id="startDate"/>
-        <button class="btn btn-dark" type="filterOption">Location</button>
+        <span>location</span><input class="btn btn-dark" list="locationOptions" id="filterLocation">
+        <datalist id="locationOptions">
+            <option value="East Vancouver">
+            <option value="North Vancouver">
+            <option value="West Vancouver">
+            <option value="Richmond">
+            <option value="Burnaby">
+        </datalist>
         <button class="btn btn-dark" type="filterOption">tags</button>
 
     </div>
-    <button class="btn btn-dark" type="filterOption" onclick="filterDate()">clear</button>
+    <button class="btn btn-dark" type="filterOption" onclick="filterLocation()">Apply</button>
     <!-- cards go here -->
 
     <div class="container">

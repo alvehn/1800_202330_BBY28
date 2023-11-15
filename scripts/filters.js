@@ -13,5 +13,13 @@ function filterDate() {
 }
 
 function filterLocation(){
-
+    const events = document.querySelectorAll('.eventCard');
+    var filterLocation = document.getElementById('filterLocation').value;
+    events.forEach(element => {     
+        var eventLocation = element.querySelector('.card-location').innerHTML;
+        console.log("Eloc: ", eventLocation, "fLoc", filterLocation);
+        if(eventLocation != filterLocation){
+            element.style.display = "none";
+        }
+    });
 }
