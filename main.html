@@ -31,10 +31,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-- Link to styles of your own -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css">
 
 </head>
 
@@ -85,12 +84,12 @@
 
     <div class="collapse p-3" id="filters">
         <button class="btn btn-dark" type="filterOption">Date</button>
+        <input type="date" class="form-control" name="date-field" id="startDate"/>
         <button class="btn btn-dark" type="filterOption">Location</button>
-        <button class="btn btn-dark" type="filterOption">Trending</button>
         <button class="btn btn-dark" type="filterOption">tags</button>
 
     </div>
-
+    <button class="btn btn-dark" type="filterOption" onclick="filterDate()">clear</button>
     <!-- cards go here -->
 
     <div class="container">
@@ -98,28 +97,30 @@
         <!-- Here is the container for cards  -->
         <div class="container">
             <div id="events-go-here" class="row row-cols-auto">
+                <!-- JS will access this, inject data, create new card, and add new card in above code -->
+                <template id="eventCardTemplate">
+                    <div class="eventCard">
+                        <div class="card py-2 mx-2" style="width: 22rem">
+                            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-date">placeholder</p>
+                                <br />
+                                <p class="card-location">location</p>
+                                <p class="card-tags">tags</p>
+                                <p class="card-description">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a class="btn btn-primary card-href" href="event.html" style="display: block;">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
     </div>
 
-    <!-- JS will access this, inject data, create new card, and add new card in above code -->
-    <template id="eventCardTemplate">
-        <div class="card py-2 mx-2" style="width: 22rem">
-            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-date">placeholder</p>
-                <br />
-                <p class="card-location">location</p>
-                <p class="card-tags">tags</p>
-                <p class="card-description">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
-                <a class="btn btn-primary card-href" href="event.html" style="display: block;">View</a>
-            </div>
-        </div>
-    </template>
 
     <!-- demo card -->
 
@@ -213,6 +214,7 @@
     <script src="scripts/firebaseAPI_bby28.js"></script>
     <script src="scripts/readEvents.js"></script>
     <script src="scripts/search.js"></script>
+    <script src="scripts/filters.js"></script>
 
 </body>
 
