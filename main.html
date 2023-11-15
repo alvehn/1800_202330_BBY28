@@ -77,15 +77,22 @@
     </nav>
 
     <!-- filter button and dropdown items -->
-    <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
-        data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
-        <h4>Filters</h4>
-    </button>
+    <div class="d-flex justify-content-end">
+        <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
+            <h4>Filters</h4>
+        </button>
+    </div>
 
     <div class="collapse p-3" id="filters">
-        <button class="btn btn-dark" type="filterOption">Date</button>
-        <input type="date" class="form-control" name="date-field" id="startDate"/>
-        <span>location</span><input class="btn btn-dark" list="locationOptions" id="filterLocation">
+        <h4 class="font-weight-bold">
+            Date
+            <input type="date" class="form-control w-50 " name="date-field" id="startDate"/>
+        </h4>
+        <h4 class="font-weight-bold ">
+            location
+        </h4>
+        <input class="form-control w-50 " list="locationOptions" id="filterLocation" placeholder="choose a location">
         <datalist id="locationOptions">
             <option value="East Vancouver">
             <option value="North Vancouver">
@@ -94,9 +101,14 @@
             <option value="Burnaby">
         </datalist>
         <button class="btn btn-dark" type="filterOption">tags</button>
+        
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button>
+            <!-- Currently you can only filter individually -->
+            <!-- <button class="btn btn-success" type="filterOption" onclick="filterDate()">Apply</button> -->
 
+        </div>
     </div>
-    <button class="btn btn-dark" type="filterOption" onclick="filterLocation()">Apply</button>
     <!-- cards go here -->
 
     <div class="container">
