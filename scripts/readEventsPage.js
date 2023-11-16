@@ -1,3 +1,4 @@
+
 function displayFullEvent() {
     let params = new URL(window.location.href); //get URL of search bar
     console.log(params);
@@ -5,6 +6,7 @@ function displayFullEvent() {
     console.log(ID);
 
     // doublecheck: is your collection called "Reviews" or "reviews"?
+    
     db.collection("events")
         .doc(ID)
         .get()
@@ -16,27 +18,56 @@ function displayFullEvent() {
             var image = doc.data().image;
             var eventCreator = doc.data().hostName;
 
+            var docID = doc.id;
+
             // populates name, location, title, and description
             document.getElementById("eventName").innerHTML = title;
             document.getElementById("eventLocation").innerHTML = location;
             document.getElementById("eventDescription").innerHTML = description;
             document.getElementById("eventDateTime").innerHTML = date;
             document.getElementById("eventHost").innerHTML = eventCreator;
+            // document.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
+            // document.querySelector('i').onclick = () => saveBookmark(eventID);
             // document.getElementById("eventImages").
-            let imgEvent = document.getElementById( "eventImages" );
+            let imgEvent = document.getElementById("eventImages");
             imgEvent.src = "../images/" + image;
 
-            // let imgEvent = document.querySelector( ".hike-img" );
-            // imgEvent.src = "../images/" + hikeCode + ".jpg";
-        });
+            // currentUser.get().then(userDoc => {
+            //     //get the user name
+            //     var bookmarks = userDoc.data().bookmarks;
+            //     if (bookmarks.includes(docID)) {
+            //         document.getElementById('save-' + docID).innerText = 'bookmark';
+            //     }
+            // })
+
+                // let imgEvent = document.querySelector( ".hike-img" );
+                // imgEvent.src = "../images/" + hikeCode + ".jpg";
+            });
 }
 displayFullEvent();
 
 
-function saveCheckboxState() {
-    var checkBox = document.getElementById("btn-check-3-outlined");
-    var isChecked = checkBox.checked;
+// function saveCheckboxState() {
+//     var checkBox = document.getElementById("btn-check-3-outlined");
+//     var isChecked = checkBox.checked;
 
-    // Save checkbox state to localStorage
-    localStorage.setItem("checkBoxState", isChecked);
-}
+//     // Save checkbox state to localStorage
+//     localStorage.setItem("checkBoxState", isChecked);
+// }
+
+// function saveBookmark(eventID) {
+//     // Manage the backend process to store the hikeDocID in the database, recording which hike was bookmarked by the user.
+//     currentUser.update({
+//         // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
+//         // This method ensures that the ID is added only if it's not already present, preventing duplicates.
+//         bookmarks: firebase.firestore.FieldValue.arrayUnion(eventID)
+//     })
+//         // Handle the front-end update to change the icon, providing visual feedback to the user that it has been clicked.
+//         .then(function () {
+//             console.log("bookmark has been saved for" + eventID);
+//             var iconID = 'save-' + eventID;
+//             //console.log(iconID);
+//             //this is to change the icon of the hike that was saved to "filled"
+//             document.getElementById(iconID).innerText = 'bookmark';
+//         });
+// }
