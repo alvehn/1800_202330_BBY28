@@ -28,12 +28,12 @@
     <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
     <!-------------------------------------------------------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> 
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-- Link to styles of your own -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -49,8 +49,10 @@
     <!-- Stuff for body goes here -->
 
     <nav class="navbar" style="background-color: #386641;">
-        <div class="container-fluid" >
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <form class="d-inline-flex mx-auto" style="width: 80%;">
@@ -67,17 +69,17 @@
         </div>
     </nav>
 
-    <div >
-        <img id="eventImages" class="mx-auto d-block" style="max-width: 100%;" alt="No image to display">
+    <div>
+        <img id="eventImages" class="mx-auto d-block" style="max-width: 100%;" src="..." alt="No image to display">
     </div>
 
-    <div >
+    <div>
         <h2 id="eventName">event name</h2>
     </div>
-    <div >
+    <div>
         <h4 id="eventLocation"><i class="bi bi-geo"></i> location</h4>
     </div>
-    <div >
+    <div>
         <!-- <input type="datetime-local" id="eventDateTime"> -->
         <h4 id="eventDateTime"><i class="bi bi-calendar"></i> event time and date</h4>
     </div>
@@ -93,9 +95,9 @@
         <label class="btn btn-outline-danger" for="btn-check-3-outlined"></label> -->
         <!-- <i class="bi bi-heart-fill"></i>
         <i class="material-icons">bookmark_border</i> -->
-        
+
         <!-- <button type="button" class="btn btn-danger" onclick="addFavouite()">submit</button> -->
-        
+
         <!-- <button onclick="saveCheckboxState()">Save Checkbox State</button> -->
     </div>
 
@@ -107,7 +109,7 @@
         <h4><i class="bi bi-person-heart"></i> number of people going/interested</h4>
     </div>
 
-    <div >
+    <div>
         <p id="eventDescription">event Description</p>
     </div><br><br><br>
 

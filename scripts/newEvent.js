@@ -1,16 +1,16 @@
 
 var ImageFile;
 function listenFileSelect() {
-      // listen for file selection
-      var fileInput = document.getElementById("eventImages"); // pointer #1
+    // listen for file selection
+    var fileInput = document.getElementById("eventImages"); // pointer #1
     //   const image = document.getElementById("mypic-goes-here"); // pointer #2
 
-			// When a change happens to the File Chooser Input
-      fileInput.addEventListener('change', function (e) {
-          ImageFile = e.target.files[0];   //Global variable
-          var blob = URL.createObjectURL(ImageFile);
+    // When a change happens to the File Chooser Input
+    fileInput.addEventListener('change', function (e) {
+        ImageFile = e.target.files[0];   //Global variable
+        var blob = URL.createObjectURL(ImageFile);
         //   image.src = blob; // Display this image
-      })
+    })
 }
 listenFileSelect();
 
@@ -42,7 +42,7 @@ function postEvent() {
             image: imageGood,
             location: locationOfEvent
         }).then(doc => {
-            console.log("1. Post document added!");
+            console.log("1. Event document added!");
             console.log(doc.id);
             uploadPic(doc.id);
         })
@@ -99,23 +99,24 @@ function uploadPic(eventDocID) {
         })
 }
 
+//From TechTip B01a COMP 1800
 //--------------------------------------------
 //saves the post ID for the user, in an array
 //--------------------------------------------
-function savePostIDforUser(postDocID) {
+function savePostIDforUser(eventDocID) {
     firebase.auth().onAuthStateChanged(user => {
-          console.log("user id is: " + user.uid);
-          console.log("postdoc id is: " + postDocID);
-          db.collection("users").doc(user.uid).update({
-                myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
-          })
-          .then(() =>{
+        console.log("user id is: " + user.uid);
+        console.log("postdoc id is: " + eventDocID);
+        db.collection("users").doc(user.uid).update({
+            myEvents: firebase.firestore.FieldValue.arrayUnion(eventDocID)
+        })
+            .then(() => {
                 console.log("5. Saved to user's document!");
-                                alert ("Post is complete!");
+                alert("Post is complete!");
                 //window.location.href = "showposts.html";
-           })
-           .catch((error) => {
+            })
+            .catch((error) => {
                 console.error("Error writing document: ", error);
-           });
+            });
     })
 }

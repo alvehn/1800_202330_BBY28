@@ -99,7 +99,7 @@ doAll();
 function eventCards(collection) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable.
     db.collection(collection).get()   //the collection called "hikes"
-        .then(allEvents=> {
+        .then(allEvents => {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allEvents.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;                // get value of the "name" 
@@ -120,7 +120,7 @@ function eventCards(collection) {
                 newcard.querySelector('.card-description').innerHTML = description;
                 newcard.querySelector('.card-tags').innerHTML = tags;
 
-                newcard.querySelector('a').href = "event.html?docID="+docID;//button/read more
+                newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
                 newcard.querySelector('i').id === 'save-' + docID;   //guaranteed to be unique
                 newcard.querySelector('i').onclick = () => saveBookmark(docID);
 
@@ -141,7 +141,7 @@ function eventCards(collection) {
 
                 //attach to gallery, Example: "hikes-go-here"
                 document.getElementById(collection + "-go-here").appendChild(newcard);
-                
+
                 //i++;   //Optional: iterate variable to serve as unique ID
             })
         })
