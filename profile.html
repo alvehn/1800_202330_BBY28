@@ -95,8 +95,37 @@
         <h3>Events Hosted</h3>
     </div>
 
-
-
+    <!-- events that current user has made -->
+    <div class="container">
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="events-go-here" class="row row-cols-auto">
+                <!-- JS will access this, inject data, create new card, and add new card in above code -->
+                <template id="eventCardTemplate">
+                    <div class="eventCard">
+                        <div class="card py-2 mx-2" style="width: 22rem">
+                            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-date">placeholder</p>
+                                <br />
+                                <p class="card-location">location</p>
+                                <p class="card-tags">tags</p>
+                                <p class="card-description">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a class="btn btn-primary card-href" href="event.html">View</a>
+                                <!-- <input type="checkbox" class="btn-check" id="card-favourited" name="favourited">
+                                <label class="btn btn-outline-danger" for="card-favourited"></label> -->
+                                <i class="bi bi-heart-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
 
 
     <!---------------------------------------------->

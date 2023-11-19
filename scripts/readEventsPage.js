@@ -18,8 +18,8 @@ function displayFullEvent() {
             var eventCreator = doc.data().hostName;
             var imageBad = doc.data().image;
             console.log(imageBad);
-            var image = URL.createObjectURL(imageBad);
-            console.log(image);
+            // var image = URL.createObjectURL(imageBad);
+            // console.log(image);
             var docID = doc.id;
 
 
@@ -33,7 +33,7 @@ function displayFullEvent() {
             // document.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
             // document.querySelector('i').onclick = () => saveBookmark(eventID);
             // document.getElementById("eventImages").
-            document.getElementById("eventImages").src = image;
+            document.getElementById("eventImages").src = imageBad;
 
             // currentUser.get().then(userDoc => {
             //     //get the user name
