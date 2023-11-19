@@ -124,7 +124,7 @@ function populateMyEvents() {
                         .doc(item)
                         .get()
                         .then(doc => {
-                            displayMyEventCards(doc);
+                            displayMyEventCards(doc, myEvents);
                         })
                 })
             })
@@ -132,7 +132,7 @@ function populateMyEvents() {
 }
 populateMyEvents();
 
-function displayMyEventCards(doc) {
+function displayMyEventCards(doc, docID) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "eventCardTemplate" and store it in the cardTemplate variable.
     var title = doc.data().name;                // get value of the "name" 
     var description = doc.data().description; //get value of the "description"
@@ -142,7 +142,8 @@ function displayMyEventCards(doc) {
     // var favourited = doc.data().favourited;
     let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
-    var docID = doc;//grab the id for that specific doc
+    // var docID = doc;//grab the id for that specific doc
+    // console.log(docID);
 
 
     //update title and text and image
