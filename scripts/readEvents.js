@@ -166,3 +166,4 @@ function saveBookmark(eventID) {
             document.getElementById(iconID).innerText = 'favourite';
         });
 }
+
