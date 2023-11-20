@@ -27,6 +27,12 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
 
     <!-- Other libraries go here -->
 
@@ -98,14 +104,16 @@
 
     <div>
         <label for="location" class="form-label">location</label>
-        <input class="form-control" list="locationOptions" id="eventLocation" placeholder="Type to search...">
+        <div id="geocoder"></div>
+        <div id="result"></div>
+        <!-- <input class="form-control" list="locationOptions" id="eventLocation" placeholder="Type to search...">
         <datalist id="locationOptions">
             <option value="East Vancouver">
             <option value="North Vancouver">
             <option value="West Vancouver">
             <option value="Richmond">
             <option value="Burnaby">
-        </datalist><br>
+        </datalist><br> -->
     </div>
 
     <div id="eventType">
@@ -160,6 +168,7 @@
 
     <script src="scripts/firebaseAPI_bby28.js"></script>
     <script src="./scripts/newEvent.js"></script>
+    <script src="scripts/map.js"></script>
 
 </body>
 

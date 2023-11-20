@@ -24,7 +24,23 @@ function filterLocation(){
     });
 }
 
+
 function filterLikes() {
     const events = document.querySelectorAll('.eventCard');
     var filterLikes
+}
+
+function applyFilters(){
+    const events = document.querySelectorAll('.eventCard');
+    var dateFilter = document.getElementById('startDate').value;
+    var locationFilter = localStorage.getItem("place_coord");
+    events.forEach(element => {
+        element.style.display = "block";
+    })
+    if(dateFilter != null || dateFilter != ""){
+        filterDate();
+    }
+    if(locationFilter != null || locationFilter != ""){
+        filterLocation();
+    }
 }
