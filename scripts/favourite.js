@@ -290,7 +290,7 @@ function getFavourites(user) {
       console.log(favourites);
 
       // Get pointer the new card template
-      let newCardTemplate = document.getElementById("eventCardTemplate");
+      let newCardTemplate = document.getElementById("savedEventTemplate");
 
       // Iterate through the ARRAY of bookmarked hikes (document ID's)
       favourites.forEach(thisEventID => {
@@ -305,7 +305,7 @@ function getFavourites(user) {
 
           //clone the new card
           // let newcard = neweventTemplate.content.cloneNode(true);
-          let newcard = newCardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+          let newcard = newcardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
           //update title and some pertinant information
           newcard.querySelector('.card-title').innerHTML = title;
           newcard.querySelector('.card-date').innerHTML = date;
