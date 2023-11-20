@@ -40,7 +40,8 @@ function postEvent() {
             description: description,
             date: new Date(date),
             image: imageGood,
-            location: locationOfEvent
+            location: locationOfEvent,
+            count: 0
         }).then(doc => {
             console.log("1. Event document added!");
             console.log(doc.id);
@@ -90,7 +91,7 @@ function uploadPic(eventDocID) {
                             // One last thing to do:
                             // save this postID into an array for the OWNER
                             // so we can show "my posts" in the future
-                            savePostIDforUser(eventDocID);
+                            saveEventIDforUser(eventDocID);
                         })
                 })
         })
@@ -103,7 +104,7 @@ function uploadPic(eventDocID) {
 //--------------------------------------------
 //saves the post ID for the user, in an array
 //--------------------------------------------
-function savePostIDforUser(eventDocID) {
+function saveEventIDforUser(eventDocID) {
     firebase.auth().onAuthStateChanged(user => {
         console.log("user id is: " + user.uid);
         console.log("postdoc id is: " + eventDocID);
