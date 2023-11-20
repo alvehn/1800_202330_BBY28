@@ -1,12 +1,12 @@
 
 function displayFullEvent() {
     let params = new URL(window.location.href); //get URL of search bar
-    console.log(params);
+    // console.log(params);
     let ID = params.searchParams.get("docID"); //get value for key "id"
-    console.log(ID);
+    // console.log(ID);
 
     // doublecheck: is your collection called "Reviews" or "reviews"?
-    
+
     db.collection("events")
         .doc(ID)
         .get()
@@ -15,10 +15,15 @@ function displayFullEvent() {
             var description = doc.data().description; //get value of the "description"
             var date = doc.data().date.toDate();             //get value of "date"
             var location = doc.data().location;     //gets value of "location"
-            var image = doc.data().image;
             var eventCreator = doc.data().hostName;
-
+            var imageBad = doc.data().image;
+            // console.log(imageBad);
+            // var image = URL.createObjectURL(imageBad);
+            // console.log(image);
             var docID = doc.id;
+            var count = doc.data().count;
+
+
 
             // populates name, location, title, and description
             document.getElementById("eventName").innerHTML = title;
@@ -29,8 +34,8 @@ function displayFullEvent() {
             // document.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
             // document.querySelector('i').onclick = () => saveBookmark(eventID);
             // document.getElementById("eventImages").
-            let imgEvent = document.getElementById("eventImages");
-            imgEvent.src = "../images/" + image;
+            document.getElementById("eventImages").src = imageBad;
+            document.getElementById("eventCount").innerHTML = count;
 
             // currentUser.get().then(userDoc => {
             //     //get the user name
@@ -40,9 +45,9 @@ function displayFullEvent() {
             //     }
             // })
 
-                // let imgEvent = document.querySelector( ".hike-img" );
-                // imgEvent.src = "../images/" + hikeCode + ".jpg";
-            });
+            // let imgEvent = document.querySelector( ".hike-img" );
+            // imgEvent.src = "../images/" + hikeCode + ".jpg";
+        });
 }
 displayFullEvent();
 

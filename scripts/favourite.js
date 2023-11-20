@@ -200,34 +200,112 @@
 // and retrieves the "saved" array (of bookmarks) 
 // and dynamically displays them in the gallery
 //----------------------------------------------------------
-function getBookmarks(user) {
+
+// function getBookmarks(user) {
+//   db.collection("users").doc(user.uid).get()
+//     .then(userDoc => {
+
+//       // Get the Array of bookmarks
+//       var bookmarks = userDoc.data().bookmarks;
+//       console.log(bookmarks);
+
+//       // Get pointer the new card template
+//       let newcardTemplate = document.getElementById("savedCardTemplate");
+
+//       // Iterate through the ARRAY of bookmarked hikes (document ID's)
+//       bookmarks.forEach(thisEventID => {
+//         console.log(thisEventID);
+//         db.collection("event").doc(thisEventID).get().then(doc => {
+//           var title = doc.data().name;                // get value of the "name" 
+//           var description = doc.data().description; //get value of the "description"
+//           var date = doc.data().date.toDate();             //get value of "date"
+//           var location = doc.data().location;     //gets value of "location"
+//           var tags = doc.data().tags;
+
+
+//           var docID = doc.id;//grab the id for that specific doc
+
+
+//           //clone the new card
+//           let newcard = newcardTemplate.content.cloneNode(true);
+
+//           //update title and some pertinant information
+//           newcard.querySelector('.card-title').innerHTML = title;
+//           newcard.querySelector('.card-date').innerHTML = date;
+//           newcard.querySelector('.card-location').innerHTML = location;
+//           newcard.querySelector('.card-description').innerHTML = description;
+//           newcard.querySelector('.card-tags').innerHTML = tags;
+
+//           newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
+
+//           //Finally, attach this new card to the gallery
+//           document.getElementById(collection + "-go-here").appendChild(newcard);
+//         })
+//       });
+//     })
+// }
+
+//----------------------------------------------------------
+// This function is the only function that's called.
+// This strategy gives us better control of the page.
+//----------------------------------------------------------
+function doAll() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      insertNameFromFirestore(user);
+      getFavourites(user)
+    } else {
+      console.log("No user is signed in");
+    }
+  });
+}
+doAll();
+
+//----------------------------------------------------------
+// Wouldn't it be nice to see the User's Name on this page?
+// Let's do it!  (Thinking ahead:  This function can be carved out, 
+// and put into script.js for other pages to use as well).
+//----------------------------------------------------------//----------------------------------------------------------
+function insertNameFromFirestore(user) {
+  db.collection("users").doc(user.uid).get().then(userDoc => {
+    console.log(userDoc.data().name)
+    userName = userDoc.data().name;
+    console.log(userName)
+    document.getElementById('name-goes-here').innerHTML = userName;
+  })
+
+}
+
+//----------------------------------------------------------
+// This function takes input param User's Firestore document pointer
+// and retrieves the "saved" array (of bookmarks) 
+// and dynamically displays them in the gallery
+//----------------------------------------------------------
+function getFavourites(user) {
   db.collection("users").doc(user.uid).get()
     .then(userDoc => {
 
       // Get the Array of bookmarks
-      var bookmarks = userDoc.data().bookmarks;
-      console.log(bookmarks);
+      var favourites = userDoc.data().favourites;
+      console.log(favourites);
 
       // Get pointer the new card template
-      let newcardTemplate = document.getElementById("savedCardTemplate");
+      let newCardTemplate = document.getElementById("eventCardTemplate");
 
       // Iterate through the ARRAY of bookmarked hikes (document ID's)
-      bookmarks.forEach(thisEventID => {
+      favourites.forEach(thisEventID => {
         console.log(thisEventID);
-        db.collection("event").doc(thisEventID).get().then(doc => {
-          var title = doc.data().name;                // get value of the "name" 
-          var description = doc.data().description; //get value of the "description"
+        db.collection("events").doc(thisEventID).get().then(doc => {
+          var title = doc.data().name; // get value of the "name" key
           var date = doc.data().date.toDate();             //get value of "date"
           var location = doc.data().location;     //gets value of "location"
           var tags = doc.data().tags;
-
-
-          var docID = doc.id;//grab the id for that specific doc
-
+          var description = doc.data().description; //gets the length field
+          var docID = doc.id;  //this is the autogenerated ID of the document
 
           //clone the new card
-          let newcard = newcardTemplate.content.cloneNode(true);
-
+          // let newcard = neweventTemplate.content.cloneNode(true);
+          let newcard = newCardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
           //update title and some pertinant information
           newcard.querySelector('.card-title').innerHTML = title;
           newcard.querySelector('.card-date').innerHTML = date;
@@ -237,9 +315,18 @@ function getBookmarks(user) {
 
           newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
 
+          // //NEW LINE: update to display length, duration, last updated
+          // newcard.querySelector('.card-length').innerHTML =
+          //   "Length: " + doc.data().length + " km <br>" +
+          //   "Duration: " + doc.data().hike_time + "min <br>" +
+          //   "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
+
           //Finally, attach this new card to the gallery
-          document.getElementById(collection + "-go-here").appendChild(newcard);
+
+          //fix
+          eventCard.appendChild(newcard);
         })
       });
     })
+
 }

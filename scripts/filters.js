@@ -23,3 +23,8 @@ function filterLocation(){
         }
     });
 }
+
+function filterLikes() {
+    const events = document.querySelectorAll('.eventCard');
+    var filterLikes
+}
