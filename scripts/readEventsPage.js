@@ -1,9 +1,9 @@
 
 function displayFullEvent() {
     let params = new URL(window.location.href); //get URL of search bar
-    console.log(params);
+    // console.log(params);
     let ID = params.searchParams.get("docID"); //get value for key "id"
-    console.log(ID);
+    // console.log(ID);
 
     // doublecheck: is your collection called "Reviews" or "reviews"?
 
@@ -17,10 +17,11 @@ function displayFullEvent() {
             var location = doc.data().location;     //gets value of "location"
             var eventCreator = doc.data().hostName;
             var imageBad = doc.data().image;
-            console.log(imageBad);
+            // console.log(imageBad);
             // var image = URL.createObjectURL(imageBad);
             // console.log(image);
             var docID = doc.id;
+            var count = doc.data().count;
 
 
 
@@ -34,6 +35,7 @@ function displayFullEvent() {
             // document.querySelector('i').onclick = () => saveBookmark(eventID);
             // document.getElementById("eventImages").
             document.getElementById("eventImages").src = imageBad;
+            document.getElementById("eventCount").innerHTML = count;
 
             // currentUser.get().then(userDoc => {
             //     //get the user name
