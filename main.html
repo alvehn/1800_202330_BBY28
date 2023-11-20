@@ -35,6 +35,12 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -96,14 +102,16 @@
         <h4 class="font-weight-bold ">
             location
         </h4>
-        <input class="form-control w-50 " list="locationOptions" id="filterLocation" placeholder="choose a location">
+        <div id="geocoder"></div>
+        <div id="result"></div>
+        <!-- <input class="form-control w-50 " list="locationOptions" id="filterLocation" placeholder="choose a location">
         <datalist id="locationOptions">
             <option value="East Vancouver">
             <option value="North Vancouver">
             <option value="West Vancouver">
             <option value="Richmond">
             <option value="Burnaby">
-        </datalist>
+        </datalist> -->
         <button class="btn btn-dark" type="filterOption">tags</button>
 
         <div class="d-flex justify-content-end">
@@ -210,6 +218,7 @@
     <script src="scripts/readEvents.js"></script>
     <script src="scripts/search.js"></script>
     <script src="scripts/filters.js"></script>
+    <script src="scripts/map.js"></script>
 
 </body>
 
