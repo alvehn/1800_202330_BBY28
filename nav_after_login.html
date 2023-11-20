@@ -1,0 +1,104 @@
+<nav>
+    <div class="navbar">
+
+        <div class="searchButton">
+            <form class="d-inline-flex mx-auto">
+                <div class="btn-group dropend">
+                    <button type="button" class="btn btn-toolbar dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="color: white;">
+                        <i class="bi bi-search" style="font-size: 30px;"></i>
+                        <!-- <img src="images\magnifier.png"> -->
+                    </button>
+                    <ul class="dropdown-menu">
+                        <!-- Dropdown menu links -->
+                        <input class="form-control" id="searchField" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <!-- <button class="btn btn-outline-success float-right" type="submit"><img src="images\magnifier.png"></button> -->
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="filterButton">
+            <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
+                data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
+                <h4>Filters</h4>
+            </button>
+        </div>
+
+        <div class="collapse p-3" id="filters">
+            <h4 class="font-weight-bold">
+                Date
+                <input type="date" class="form-control w-50 " name="date-field" id="startDate" />
+            </h4>
+            <h4 class="font-weight-bold ">
+                location
+            </h4>
+            <input class="form-control w-50 " list="locationOptions" id="filterLocation"
+                placeholder="choose a location">
+            <datalist id="locationOptions">
+                <option value="East Vancouver">
+                <option value="North Vancouver">
+                <option value="West Vancouver">
+                <option value="Richmond">
+                <option value="Burnaby">
+            </datalist>
+            <button class="btn btn-dark" type="filterOption">tags</button>
+
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+    <!-- cards go here -->
+
+    <div class="container">
+        <h1 style="font-size: 40px;">Event list</h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="events-go-here" class="row row-cols-auto">
+                <!-- JS will access this, inject data, create new card, and add new card in above code -->
+                <template id="eventCardTemplate">
+                    <div class="eventCard">
+                        <div class="card py-2 mx-2" style="width: 22rem">
+                            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-date">placeholder</p>
+                                <br />
+                                <p class="card-location">location</p>
+                                <p class="card-tags">tags</p>
+                                <p class="card-description">
+                                    Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.
+                                </p>
+                                <a class="btn btn-outline-dark card-href" href="event.html">View</a>
+                                <!-- <input type="checkbox" class="btn-check" id="card-favourited" name="favourited">
+                            <label class="btn btn-outline-danger" for="card-favourited"></label> -->
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+        </div>
+
+        <br><br><br />
+    </div>
+
+    <!-- <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
+    <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
+    </div> -->
+
+    <div class="navbarRework">
+        <a href="main.html" class="navBrowse"><i class="bi bi-house-fill"></i></a>
+        <a href="favourites.html" class="navFav"><i class="bi bi-heart-fill"></i></a>
+        <a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a>
+    </div>
+</nav>
