@@ -253,7 +253,7 @@ function doAll() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       insertNameFromFirestore(user);
-      getBookmarks(user)
+      getFavourites(user)
     } else {
       console.log("No user is signed in");
     }
@@ -271,7 +271,7 @@ function insertNameFromFirestore(user) {
     console.log(userDoc.data().name)
     userName = userDoc.data().name;
     console.log(userName)
-    document.getElementById("nameInput").innerHTML = userName;
+    document.getElementById('name-goes-here').innerHTML = userName;
   })
 
 }
@@ -281,7 +281,7 @@ function insertNameFromFirestore(user) {
 // and retrieves the "saved" array (of bookmarks) 
 // and dynamically displays them in the gallery
 //----------------------------------------------------------
-function getBookmarks(user) {
+function getFavourites(user) {
   db.collection("users").doc(user.uid).get()
     .then(userDoc => {
 
@@ -322,9 +322,11 @@ function getBookmarks(user) {
           //   "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
 
           //Finally, attach this new card to the gallery
-          // document.getElementById(collection + "-go-here").appendChild(newcard);
-          eventCardGroup.appendChild(newcard);
+
+          //fix
+          eventCard.appendChild(newcard);
         })
       });
     })
+
 }

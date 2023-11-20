@@ -163,7 +163,7 @@ function saveBookmark(eventDocID) {
             //console.log(iconID);
             //this is to change the icon of the hike that was saved to "filled"
             // console.log(document.getElementById(iconID));
-            document.getElementById(iconID).innerText = 'favourited';
+            document.getElementById(iconID).innerText = ' favourited';
         });
 }
 
