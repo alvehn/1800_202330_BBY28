@@ -295,7 +295,8 @@ function getFavourites(user) {
       // Iterate through the ARRAY of bookmarked hikes (document ID's)
       favourites.forEach(thisEventID => {
         console.log(thisEventID);
-        db.collection("events").doc(thisEventID).get().then(doc => {
+         db.collection("events").doc(thisEventID).get().then(doc => {
+          console.log(thisEventID);
           var title = doc.data().name; // get value of the "name" key
           var date = doc.data().date.toDate();             //get value of "date"
           var location = doc.data().location;     //gets value of "location"
@@ -324,6 +325,7 @@ function getFavourites(user) {
           //Finally, attach this new card to the gallery
 
           //fix
+          let eventCard = document.getElementById("events-go-here");
           eventCard.appendChild(newcard);
         })
       });

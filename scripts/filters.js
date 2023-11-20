@@ -27,7 +27,7 @@ function filterLocation(){
 
 function filterLikes() {
     const events = document.querySelectorAll('.eventCard');
-    var filterLikes
+    var filterLikes = document.getElementById('').value
 }
 
 function applyFilters(){
