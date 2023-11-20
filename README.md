@@ -20,6 +20,7 @@ Technologies:
 
 Resources: 
 * https://www.youtube.com/watch?v=ifi6dXOl3g4 
+* COMP 1800 demo's #7-10
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
@@ -29,14 +30,15 @@ Here are the steps ...
 * stage commit push (add commit push)
 
 ## 5. Known Bugs and Limitations
-Here are some known bugs:
-* N/A
-* N/A
-* N/A
+Here are the limitations of this app:
+* 
+* 
+* 
 
 ## 6. Features for Future
 What we'd like to build in the future:
 * Location/Google maps api built in to see where events are
+* built in RSVP functionality
 	
 ## 7. Contents of Folder
 Content of the project folder:
