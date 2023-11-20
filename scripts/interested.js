@@ -1,4 +1,4 @@
-//i think its doing things at the same time. need more .then() statements everywhere
+//need to fix for loop logic. maybe switch case?
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -19,7 +19,7 @@ function interestedEvent(userID) {
     //stores count for number of people interested 
     var count;
     var interestedEvents = [];
-    var check;
+    var check = true;
     document.getElementById("eventInterested").addEventListener("click", () => {
         //gets interested array
         db.collection("users")
