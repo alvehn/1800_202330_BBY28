@@ -124,7 +124,7 @@ function populateMyEvents() {
                         .doc(item)
                         .get()
                         .then(doc => {
-                            displayMyEventCards(doc, myEvents);
+                            displayMyEventCards(doc, item);
                         })
                 })
             })
