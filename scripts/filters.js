@@ -14,7 +14,7 @@ function filterDate() {
 
 function filterLocation(){
     const events = document.querySelectorAll('.eventCard');
-    var filterLocation = document.getElementById('filterLocation').value;
+    var filterLocation = document.getElementById('result').value;
     events.forEach(element => {     
         var eventLocation = element.querySelector('.card-location').innerHTML;
         console.log("Eloc: ", eventLocation, "fLoc", filterLocation);
@@ -40,7 +40,7 @@ function applyFilters(){
     if(dateFilter != null || dateFilter != ""){
         filterDate();
     }
-    if(locationFilter != null || locationFilter != ""){
+    else if(locationFilter != null || locationFilter != ""){
         filterLocation();
     }
 }

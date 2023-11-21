@@ -79,7 +79,7 @@
             <div class="filterButton">
                 <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
-                    <h4>Filters</h4>
+                    <i class="bi bi-filter"></i>
                 </button>
             </div>
     
@@ -91,20 +91,23 @@
                 <h4 class="font-weight-bold ">
                     location
                 </h4>
-                <input class="form-control w-50 " list="locationOptions" id="filterLocation"
-                    placeholder="choose a location">
+                <div id="geocoder"></div>
+                <div id="result"></div>
+                <!-- <input class="form-control w-50 " list="locationOptions" id="filterLocation" placeholder="choose a location">
                 <datalist id="locationOptions">
                     <option value="East Vancouver">
                     <option value="North Vancouver">
                     <option value="West Vancouver">
                     <option value="Richmond">
                     <option value="Burnaby">
-                </datalist>
-                <button class="btn btn-dark" type="filterOption">tags</button>
-    
+                </datalist> -->
+                <!-- <button class="btn btn-dark" type="filterOption">tags</button> -->
+        
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button>
-    
+                    <!-- <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button> -->
+                    <!-- Currently you can only filter individually -->
+                    <button class="btn btn-success mt-4" type="filterOption" onclick="applyFilters()">Apply</button>
+        
                 </div>
             </div>
     
@@ -123,33 +126,7 @@
     <!-- filter button and dropdown items -->
     
 
-    <div class="collapse p-3" id="filters">
-        <h4 class="font-weight-bold">
-            Date
-            <input type="date" class="form-control w-50 " name="date-field" id="startDate" />
-        </h4>
-        <h4 class="font-weight-bold ">
-            location
-        </h4>
-        <div id="geocoder"></div>
-        <div id="result"></div>
-        <!-- <input class="form-control w-50 " list="locationOptions" id="filterLocation" placeholder="choose a location">
-        <datalist id="locationOptions">
-            <option value="East Vancouver">
-            <option value="North Vancouver">
-            <option value="West Vancouver">
-            <option value="Richmond">
-            <option value="Burnaby">
-        </datalist> -->
-        <button class="btn btn-dark" type="filterOption">tags</button>
-
-        <div class="d-flex justify-content-end">
-            <!-- <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button> -->
-            <!-- Currently you can only filter individually -->
-            <button class="btn btn-success" type="filterOption" onclick="applyFilters()">Apply</button>
-
-        </div>
-    </div>
+    
     <!-- cards go here -->
 
     <div class="container">

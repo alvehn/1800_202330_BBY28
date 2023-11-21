@@ -30,8 +30,8 @@ function postEvent() {
         // imageGood = imageBad;
         // console.log(userName);
 
-        var locationOfEvent = document.getElementById("filterLocation").innerHTML;
-        console.log(eventName, description, date);
+        var locationOfEvent = localStorage.getItem("place_name");
+        console.log(eventName, description, date, locationOfEvent);
 
         db.collection("events").add({
             host: userID,
