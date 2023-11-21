@@ -19,7 +19,8 @@ function interestedEvent(userID) {
     //stores count for number of people interested 
     var count;
     var interestedEvents = [];
-    var check = true;
+    var check;
+    // var check = true;
     document.getElementById("eventInterested").addEventListener("click", () => {
         //gets interested array
         db.collection("users")
@@ -27,7 +28,6 @@ function interestedEvent(userID) {
             .get()
             .then(doc => {
                 interestedEvents = doc.data().interested;
-                console.log(interestedEvents.length);
             })
         var i = 0;
         //checks if user has already clicked button 
@@ -37,7 +37,7 @@ function interestedEvent(userID) {
                 check = false;
                 // let interestedEvents = interestedEvents.filter((element, index) => index !== ID);
                 break;
-            } if (interestedEvents[i] == ID && i == interestedEvents.length) {
+            } if (interestedEvents[i] !== ID && i === interestedEvents.length) {
                 check = true;
                 break;
             }
@@ -78,10 +78,10 @@ function interestedEvent(userID) {
 
             // console.log(params);
             document.getElementById("eventCount").innerHTML = count;
-            document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
+            document.getElementById("eventInterestedText").innerHTML = "I'm interested";
         })
 
-        } else if (!check) {
+        } if (!check) {
             //go into interested array, find this event using params, and delete that index, and do the reverse of what is above
             db.collection("events")
                 .doc(ID)
@@ -115,7 +115,7 @@ function interestedEvent(userID) {
 
                 // console.log(params);
                 document.getElementById("eventCount").innerHTML = count;
-                document.getElementById("eventInterestedText").innerHTML = "yabba dee yabba doo";
+                document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
             });
         }
     })

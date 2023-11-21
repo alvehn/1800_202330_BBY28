@@ -6,17 +6,26 @@ function displayFullEvent() {
     // console.log(ID);
 
     // doublecheck: is your collection called "Reviews" or "reviews"?
-
+    
     db.collection("events")
         .doc(ID)
         .get()
         .then(doc => {
+            console.log(doc.data().host);
+            var eventCreator;
+            db.collection("users")
+            .doc(doc.data().host)
+            .get()
+            .then ( userStuff => {
+                eventCreator = userStuff.data().name;
+            }).then( () => {
+
             var title = doc.data().name;                // get value of the "name" 
             var description = doc.data().description; //get value of the "description"
             var date = doc.data().date.toDate();             //get value of "date"
             var location = doc.data().location;     //gets value of "location"
-            var eventCreator = doc.data().hostName;
             var imageBad = doc.data().image;
+            console.log(imageBad);
             // console.log(imageBad);
             // var image = URL.createObjectURL(imageBad);
             // console.log(image);
@@ -47,7 +56,8 @@ function displayFullEvent() {
 
             // let imgEvent = document.querySelector( ".hike-img" );
             // imgEvent.src = "../images/" + hikeCode + ".jpg";
-        });
+        })
+    });
 }
 displayFullEvent();
 

@@ -60,7 +60,7 @@ function populateUserInfo() {
                     //get the data fields of the user
                     // var userName = userDoc.data().name;
                     console.log(user.displayName);  //print the user name in the browser console
-                    userName = user.displayName;
+                    userName = userDoc.data().name;
 
                     if (userName != null) {
                         document.getElementById("nameInput").value = userName;
@@ -124,7 +124,7 @@ function populateMyEvents() {
                         .doc(item)
                         .get()
                         .then(doc => {
-                            displayMyEventCards(doc, myEvents);
+                            displayMyEventCards(doc, item);
                         })
                 })
             })

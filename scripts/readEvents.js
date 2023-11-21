@@ -122,7 +122,7 @@ function eventCards(collection) {
 
                 newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
                 newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
-                newcard.querySelector('i').onclick = () => saveBookmark(docID);
+                newcard.querySelector('i').onclick = () => updateFavourites(docID);
 
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
@@ -130,12 +130,11 @@ function eventCards(collection) {
                 // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
                 currentUser.get().then(userDoc => {
-                    //get the user name
-                    var favourites = userDoc.data().favourites;
-                    // console.log(docID);
-                    // console.log(favourites);
+                    let favourites = userDoc.data().favourites;
                     if (favourites.includes(docID)) {
-                        document.getElementById('save-' + docID).innerText = ' favourited';
+                        document.getElementById('save-' + docID).innerText = ' added to favourites';
+                    } else {
+                        document.getElementById('save-' + docID).innerText = ' ';
                     }
                 })
 
@@ -149,21 +148,30 @@ function eventCards(collection) {
 
 eventCards("events");  //input param is the name of the collection
 
-function saveBookmark(eventDocID) {
-    // Manage the backend process to store the hikeDocID in the database, recording which hike was bookmarked by the user.
-    currentUser.update({
-        // Use 'arrayUnion' to add the new bookmark ID to the 'bookmarks' array.
-        // This method ensures that the ID is added only if it's not already present, preventing duplicates.
-        favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
-    })
-        // Handle the front-end update to change the icon, providing visual feedback to the user that it has been clicked.
-        .then(function () {
-            console.log(eventDocID + "has been favourited");
-            var iconID = 'save-' + eventDocID;
-            //console.log(iconID);
-            //this is to change the icon of the hike that was saved to "filled"
-            // console.log(document.getElementById(iconID));
-            document.getElementById(iconID).innerText = ' favourited';
-        });
+function updateFavourites(eventDocID) {
+    currentUser.get().then(userDoc => {
+        let favourites = userDoc.data().favourites;
+        let iconID = 'save-' + eventDocID;
+        let isFavourited = favourites.includes(eventDocID);
+
+        if (isFavourited) {
+            currentUser.update({
+                favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
+
+            }).then(() => {
+                console.log("favourites removed for " + eventDocID);
+                document.getElementById(iconID).innerText = ' save';
+            });
+        } else {
+            currentUser.update({
+                bookmarks: firebase.firestore.FieldValue.arrayUnion(eventDocID)
+            }).then(() => {
+                console.log("Bookmark added for " + eventDocID);
+                document.getElementById(iconID).innerText = ' added to favourites';
+            });
+        }
+    });
 }
+
+
 
