@@ -18,7 +18,6 @@ function postEvent() {
     var user = firebase.auth().currentUser;
     if (user) {
         var currentUser = db.collection("users").doc(user.uid);
-        var userName = user.displayName;
         var userID = user.uid;
         // var newEvent = db.collection("events").doc();
         var eventName = document.getElementById("eventName").value;
@@ -35,7 +34,6 @@ function postEvent() {
 
         db.collection("events").add({
             host: userID,
-            hostName: userName,
             name: eventName,
             description: description,
             date: new Date(date),
