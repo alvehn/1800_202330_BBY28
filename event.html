@@ -48,24 +48,73 @@
     <!------------------------------>
     <!-- Stuff for body goes here -->
 
-    <nav class="navbar" style="background-color: #386641;">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <form class="d-inline-flex mx-auto" style="width: 80%;">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"><img src="images\magnifier.png"></button>
-            </form>
-            <div class="collapse w-100 my-3" id="navbarToggleExternalContent">
-                <div class="list-group">
-                    <a href="main.html" class="list-group-item">Browse</a>
-                    <a href="favourites.html" class="list-group-item">Favourites</a>
-                    <a href="profile.html" class="list-group-item">Profile</a>
+    <nav>
+        <div class="navbar">
+    
+            <div class="searchButton">
+                <form class="d-inline-flex mx-auto">
+                    <div class="btn-group dropend">
+                        <button type="button" class="btn btn-toolbar dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="color: white;">
+                            <i class="bi bi-search" style="font-size: 30px;"></i>
+                            <!-- <img src="images\magnifier.png"> -->
+                        </button>
+                        <ul class="dropdown-menu">
+                            <!-- Dropdown menu links -->
+                            <input class="form-control" id="searchField" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <!-- <button class="btn btn-outline-success float-right" type="submit"><img src="images\magnifier.png"></button> -->
+                        </ul>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="filterButton">
+                <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
+                    <h4>Filters</h4>
+                </button>
+            </div>
+    
+            <div class="collapse p-3" id="filters">
+                <h4 class="font-weight-bold">
+                    Date
+                    <input type="date" class="form-control w-50 " name="date-field" id="startDate" />
+                </h4>
+                <h4 class="font-weight-bold ">
+                    location
+                </h4>
+                <input class="form-control w-50 " list="locationOptions" id="filterLocation"
+                    placeholder="choose a location">
+                <datalist id="locationOptions">
+                    <option value="East Vancouver">
+                    <option value="North Vancouver">
+                    <option value="West Vancouver">
+                    <option value="Richmond">
+                    <option value="Burnaby">
+                </datalist>
+                <button class="btn btn-dark" type="filterOption">tags</button>
+    
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button>
+    
                 </div>
             </div>
+    
+        </div>
+    
+        </div>
+        </div>
+        <!-- cards go here -->
+    
+        <!-- <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
+        <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
+        </div> -->
+    
+        <div class="navbarRework">
+            <div class="navBrowse"><a href="main.html" ><i class="bi bi-house-fill"></i></a></div>
+            <div class="navFav"><a href="favourites.html"><i class="bi bi-heart-fill"></i></a></div>
+            <div class="navProfile"><a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a></div>
         </div>
     </nav>
 

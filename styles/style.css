@@ -29,8 +29,8 @@ body {
 
 #eventCreationButton {
     
-    width: 100%;
-    padding: 10px;
+    position: fixed;
+    bottom: 3.75em;
 }
 
 .navbar {
@@ -80,27 +80,29 @@ body {
 }
 
 .navBrowse {
+    display: flex;
     /* display: flex;
     justify-content: left;
     align-items: left;
     float: left; */
-    margin-left: 11.5%;
+    margin-left: 5%;
+    float: left;
 }
 
 .navFav {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    margin-left: 20%;
-    /* float: none; */
+    
+    margin-left: 45%;
+    
 }
 
 .navProfile {
+    display: flex;
     /* display: flex;
     justify-content: right;
     align-items: right; */
     /* float: right; */
-    margin-left: 20%;
+    margin-right: 5%;
+    float: right;
 }
 
 .btn-outline-dark {
