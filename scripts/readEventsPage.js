@@ -25,6 +25,7 @@ function displayFullEvent() {
             var date = doc.data().date.toDate();             //get value of "date"
             var location = doc.data().location;     //gets value of "location"
             var imageBad = doc.data().image;
+            console.log(imageBad);
             // console.log(imageBad);
             // var image = URL.createObjectURL(imageBad);
             // console.log(image);

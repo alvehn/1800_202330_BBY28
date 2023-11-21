@@ -13,7 +13,7 @@ function listenFileSelect() {
     })
 }
 listenFileSelect();
-
+var imageBad;
 function postEvent() {
     var user = firebase.auth().currentUser;
     if (user) {
@@ -26,11 +26,11 @@ function postEvent() {
         var date = document.getElementById("eventYear").value + "-"
             + document.getElementById("eventMonth").value + "-"
             + document.getElementById("eventDay").value;
-        var imageBad = document.getElementById("eventImages").value;
-        imageGood = imageBad.slice(12, imageBad.length);
+        imageBad = document.getElementById("eventImages").value;
+        // imageGood = imageBad;
         // console.log(userName);
 
-        var locationOfEvent = document.getElementById("eventLocation").value;
+        var locationOfEvent = document.getElementById("filterLocation").innerHTML;
         console.log(eventName, description, date);
 
         db.collection("events").add({
@@ -39,7 +39,7 @@ function postEvent() {
             name: eventName,
             description: description,
             date: new Date(date),
-            image: imageGood,
+            image: imageBad,
             location: locationOfEvent,
             count: 0
         }).then(doc => {
@@ -68,7 +68,7 @@ function uploadPic(eventDocID) {
     var storageRef = storage.ref("images/" + eventDocID + ".jpg");
     console.log(storageRef);
 
-    storageRef.put(imageGood)   //global variable ImageFile
+    storageRef.put(ImageFile)   //global variable ImageFile
 
         // AFTER .put() is done
         .then(function () {
