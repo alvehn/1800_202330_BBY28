@@ -29,6 +29,7 @@ function postEvent() {
         // imageGood = imageBad;
         // console.log(userName);
 
+        var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
         console.log(eventName, description, date, locationOfEvent);
 
@@ -39,7 +40,7 @@ function postEvent() {
             date: new Date(date),
             image: imageBad,
             location: locationOfEvent,
-            count: 0
+            count: c
         }).then(doc => {
             console.log("1. Event document added!");
             console.log(doc.id);
