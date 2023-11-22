@@ -1,4 +1,7 @@
-//need to fix for loop logic. maybe switch case?
+//try adding array inside events that stores users id's and uses length of that for count
+
+
+
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -17,27 +20,35 @@ function interestedEvent(userID) {
     // console.log(ID);
 
     //stores count for number of people interested 
-    var count;
+    var count = [];
+    db.collection("events")
+            .doc(ID)
+            .get()
+            .then(doc => {
+                count = doc.data().count;
+                document.getElementById("eventCount").innerHTML = count.length;
+            });
     var interestedEvents = [];
     var check;
     // var check = true;
     document.getElementById("eventInterested").addEventListener("click", () => {
         //gets interested array
-        db.collection("users")
-            .doc(userID)
+        console.log(userID);
+        db.collection("events")
+            .doc(ID)
             .get()
             .then(doc => {
-                interestedEvents = doc.data().interested;
-            })
+                count = doc.data().count;
+                document.getElementById("eventCount").innerHTML = count.length;
+            }).then ( () => {
         var i = 0;
         //checks if user has already clicked button 
-        console.log(interestedEvents.length + " " + i);
-        for (i = 0; i <= interestedEvents.length; i++) {
-            if (interestedEvents[i] === ID) {
+        //console.log("Array: " + interestedEvents +  " Current: " + ID);
+        for (i = 0; i <= count.length; i++) {
+            if (count[i] === userID) {
                 check = false;
-                // let interestedEvents = interestedEvents.filter((element, index) => index !== ID);
                 break;
-            } if (interestedEvents[i] !== ID && i === interestedEvents.length) {
+            } else if (count[i] !== userID && i === count.length) {
                 check = true;
                 break;
             }
@@ -45,79 +56,79 @@ function interestedEvent(userID) {
 
         if (check) {
             //gets current count
+            count.push(userID);
             db.collection("events")
-                .doc(ID)
-                .get()
-                .then(doc => {
-                    count = doc.data().count;
-                }).then( () => {
-
-            count = count + 1;
-            db.collection("events")
-                .doc(ID)
-                .update({
-                    count: count
-                });
-            }).then( () => {
-
-            db.collection("events")
-                .doc(ID)
-                .get()
-                .then(doc => {
-                    count = doc.data().count;
-                });
-            interestedEvents.push(ID);
-
-            }).then ( () => {
-            db.collection("users")
-            .doc(userID)
+            .doc(ID)
             .update({
-                interested: interestedEvents
+                count: count
             })
-        }).then( () => {
+        //     db.collection("events")
+        //         .doc(ID)
+        //         .get()
+        //         .then(doc => {
+        //             count = doc.data().count;
+        //         }).then( () => {
 
-            // console.log(params);
-            document.getElementById("eventCount").innerHTML = count;
+        //     count = count + 1;
+        //     db.collection("events")
+        //         .doc(ID)
+        //         .update({
+        //             count: count
+        //         });
+        //     }).then( () => {
+
+        //     interestedEvents.push(ID);
+        //     }).then ( () => {
+        //     db.collection("users")
+        //     .doc(userID)
+        //     .update({
+        //         interested: interestedEvents
+        //     })
+        // }).then( () => {
+
+        //     // console.log(params);
+        //    
+        // })
+            document.getElementById("eventCount").innerHTML = count.length;
             document.getElementById("eventInterestedText").innerHTML = "I'm interested";
-        })
-
         } if (!check) {
-            //go into interested array, find this event using params, and delete that index, and do the reverse of what is above
+            count = count.splice(i, i);
             db.collection("events")
-                .doc(ID)
-                .get()
-                .then(doc => {
-                    count = doc.data().count;
-                }).then ( () => {
+            .doc(ID)
+            .update({
+                count: count
+            })
+            //go into interested array, find this event using params, and delete that index, and do the reverse of what is above
+            // db.collection("events")
+            //     .doc(interestedEvents[i])
+            //     .get()
+            //     .then(doc => {
+            //         count = doc.data().count;
+            //     }).then ( () => {
                 
-                    count--;
-                db.collection("events")
-                    .doc(ID)
-                    .update({
-                        count: count
-                    });
-                }).then( () => {
+            //         count--;
+            //     db.collection("events")
+            //         .doc(interestedEvents[i])
+            //         .update({
+            //             count: count
+            //         });
+            //     }).then( () => {
                 
-                db.collection("events")
-                    .doc(ID)
-                    .get()
-                    .then(doc => {
-                        count = doc.data().count;
-                    });
-                }).then( () => {
-                interestedEvents = interestedEvents.splice(i, i);
-                db.collection("users")
-                .doc(userID)
-                .update({
-                    interested: interestedEvents
-                })
-            }).then( () => {
+            //     interestedEvents = interestedEvents.splice(i, i);
+            //     db.collection("users")
+            //     .doc(userID)
+            //     .update({
+            //         interested: interestedEvents
+            //     })
+            // }).then( () => {
 
-                // console.log(params);
-                document.getElementById("eventCount").innerHTML = count;
-                document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
-            });
+            //     // console.log(params);
+            //     
+            // });
+            document.getElementById("eventCount").innerHTML = count.length;
+            document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
         }
+    })
     })
 
 }
