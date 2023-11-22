@@ -30,7 +30,7 @@ function displayFullEvent() {
             // var image = URL.createObjectURL(imageBad);
             // console.log(image);
             var docID = doc.id;
-            var count = doc.data().count;
+            // var count = doc.data().count;
 
 
 
@@ -44,7 +44,7 @@ function displayFullEvent() {
             // document.querySelector('i').onclick = () => saveBookmark(eventID);
             // document.getElementById("eventImages").
             document.getElementById("eventImages").src = imageBad;
-            document.getElementById("eventCount").innerHTML = count;
+            // document.getElementById("eventCount").innerHTML = count;
 
             // currentUser.get().then(userDoc => {
             //     //get the user name

@@ -21,12 +21,16 @@ function interestedEvent(userID) {
 
     //stores count for number of people interested 
     var count = [];
+    var counter = 0;
     db.collection("events")
             .doc(ID)
             .get()
             .then(doc => {
                 count = doc.data().count;
-                document.getElementById("eventCount").innerHTML = count.length;
+                counter = count.length;
+                console.log(counter);
+                document.getElementById("eventCount").innerHTML = counter;
+                console.log(document.getElementById("eventCount").innerHTML);
             });
     var interestedEvents = [];
     var check;
@@ -39,7 +43,8 @@ function interestedEvent(userID) {
             .get()
             .then(doc => {
                 count = doc.data().count;
-                document.getElementById("eventCount").innerHTML = count.length;
+                counter = count.length;
+                document.getElementById("eventCount").innerHTML = counter;
             }).then ( () => {
         var i = 0;
         //checks if user has already clicked button 
@@ -89,7 +94,8 @@ function interestedEvent(userID) {
         //     // console.log(params);
         //    
         // })
-            document.getElementById("eventCount").innerHTML = count.length;
+            counter = count.length;
+            document.getElementById("eventCount").innerHTML = counter;
             document.getElementById("eventInterestedText").innerHTML = "I'm interested";
         } if (!check) {
             count = count.splice(i, i);
@@ -125,7 +131,8 @@ function interestedEvent(userID) {
             //     // console.log(params);
             //     
             // });
-            document.getElementById("eventCount").innerHTML = count.length;
+            counter = count.length;
+            document.getElementById("eventCount").innerHTML = counter;
             document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
         }
     })
