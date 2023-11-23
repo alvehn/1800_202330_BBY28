@@ -25,10 +25,16 @@ function filterLocation(){
 }
 
 
-function filterLikes() {
-    const events = document.querySelectorAll('.eventCard');
-    var filterLikes
-}
+// function filterLikes() {
+//     const events = document.querySelectorAll('.eventCard');
+//     var filterLikes = document.getElementById('favourites').value;
+//     events.forEach(element => {
+//         var eventIsFavourited = element.querySelector('i").innerHTML;
+//         if(eventIsFourited != filterLikes) {
+//             element.style.display = "none";
+//         }
+//     })
+// }
 
 function applyFilters(){
     const events = document.querySelectorAll('.eventCard');
