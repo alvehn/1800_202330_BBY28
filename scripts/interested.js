@@ -1,5 +1,7 @@
 //try adding array inside events that stores users id's and uses length of that for count
-
+//this works for only one user, if multiple users are interesteed, and one of the unlicks it
+//it clears all of their names except for the user that unclicked. look into how splice works
+//and study your for loop
 
 
 function doAll() {
