@@ -21,10 +21,7 @@ function placeGeocoder() {
         console.log (data);
         var place_name = data["place_name"];
         var place_coord = data["geometry"]["coordinates"];
-        results.innerText = place_name + " " + place_coord;  //show it on dom, debug
-        
-        //You can save this into local storage for now.  
-        //When it is time to Submit the Post you can get the data from Local Storage
+        results.innerText = place_name + " " + place_coord;  
         localStorage.setItem("place_name", place_name);
         localStorage.setItem("place_coord", place_coord);
     });
