@@ -160,13 +160,13 @@ function updateFavourites(eventDocID) {
 
             }).then(() => {
                 console.log("favourites removed for " + eventDocID);
-                document.getElementById(iconID).innerText = ' save';
+                document.getElementById(iconID).innerText = ' unsaved';
             });
         } else {
             currentUser.update({
-                bookmarks: firebase.firestore.FieldValue.arrayUnion(eventDocID)
+                favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
             }).then(() => {
-                console.log("Bookmark added for " + eventDocID);
+                console.log(eventDocID + " added to favourites");
                 document.getElementById(iconID).innerText = ' added to favourites';
             });
         }
