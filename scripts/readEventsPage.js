@@ -1,4 +1,5 @@
 var currentUserID;
+$("#deleteEvent").hide();
 function displayFullEvent() {
     let params = new URL(window.location.href); //get URL of search bar
     // console.log(params);
@@ -42,8 +43,9 @@ function displayFullEvent() {
                     console.log(doc.data().host);
                     if (currentUserID === doc.data().host) {
                         document.getElementById("deleteEvent").onclick = () => deletePost(doc.id);
+                        $("#deleteEvent").show();
                     } else {
-                        $("#deleteEvent").hide();
+                        
                     }
 
                 })
