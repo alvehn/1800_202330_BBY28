@@ -15,6 +15,8 @@ function listenFileSelect() {
 listenFileSelect();
 var imageBad;
 function postEvent() {
+    document.getElementById("postButtonText").innerHTML = "Loading...";
+    document.getElementById("postButtonText").disabled = true;
     var user = firebase.auth().currentUser;
     if (user) {
         var currentUser = db.collection("users").doc(user.uid);
@@ -112,7 +114,8 @@ function saveEventIDforUser(eventDocID) {
         })
             .then(() => {
                 console.log("5. Saved to user's document!");
-                alert("Post is complete!");
+                document.getElementById("postButtonText").innerHTML = "Done";
+                
                 //window.location.href = "showposts.html";
             })
             .catch((error) => {
