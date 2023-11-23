@@ -21,6 +21,8 @@ Technologies:
 Resources: 
 * https://www.youtube.com/watch?v=ifi6dXOl3g4 
 * COMP 1800 demo's #7-10
+* Tech Tips B01a, B01b, B01c,
+* https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
