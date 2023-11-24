@@ -1,17 +1,30 @@
+//stores current users document id
 var currentUserID;
 $("#deleteEvent").hide();
+
+//gets user id that will be compared to user id stored in event doc
+function getCurrentUser() {
+    firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+            currentUserID = user.uid;
+        } else {
+            // No user is signed in.
+            console.log("No user is signed in");
+        }
+    });
+}
+getCurrentUser();
+
 function displayFullEvent() {
     let params = new URL(window.location.href); //get URL of search bar
-    // console.log(params);
     let ID = params.searchParams.get("docID"); //get value for key "id"
-    // console.log(ID);
-
-    // doublecheck: is your collection called "Reviews" or "reviews"?
 
     db.collection("events")
         .doc(ID)
         .get()
         .then(doc => {
+            //gets event creators latest name instead of outdated displayName
             console.log(doc.data().host);
             var eventCreator;
             db.collection("users")
@@ -39,10 +52,10 @@ function displayFullEvent() {
 
                     document.getElementById("eventImages").src = imageBad;
 
-                    console.log(currentUserID);
-                    console.log(doc.data().host);
+                    //checks if current user has made event; if true, it displays delete button for them, 
+                    //else it hides the button to prevent deletion from user that has not made that event 
                     if (currentUserID === doc.data().host) {
-                        document.getElementById("deleteEvent").onclick = () => deletePost(doc.id);
+                        document.getElementById("deleteEvent").onclick = () => deleteEvent(doc.id);
                         $("#deleteEvent").show();
                     } else {
                         
@@ -53,62 +66,51 @@ function displayFullEvent() {
 
 
 }
-function getCurrentUser() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
-        if (user) {
-            currentUserID = user.uid;
-            // console.log(currentUserID);
-        } else {
-            // No user is signed in.
-            console.log("No user is signed in");
-        }
-    });
-}
-getCurrentUser();
 
 displayFullEvent();
 
-function deletePost(postid) {
+//confirms if user wants to delete event or not
+function deleteEvent(eventid) {
     var result = confirm("Want to delete?");
     if (result) {
         //Logic to delete the item
-        db.collection("posts").doc(postid)
+        document.getElementById("deleteEvent").innerHTML = "Deleting...";
+        db.collection("events").doc(eventid)
             .delete()
             .then(() => {
                 console.log("1. Document deleted from Posts collection");
-                deleteFromMyPosts(postid);
+                deleteFromMyEvents(eventid);
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
     }
 }
 
-
-function deleteFromMyPosts(postid) {
+//goes into users myEvents array and deletes the specified event using the event doc id
+function deleteFromMyEvents(eventid) {
     firebase.auth().onAuthStateChanged(user => {
         db.collection("users").doc(user.uid).update({
-            myposts: firebase.firestore.FieldValue.arrayRemove(postid)
+            myEvents: firebase.firestore.FieldValue.arrayRemove(eventid)
         })
             .then(() => {
                 console.log("2. post deleted from user doc");
-                deleteFromStorage(postid);
+                deleteFromStorage(eventid);
             })
     })
 }
 
-
-function deleteFromStorage(postid) {
+//deletes the image from firestore cloud using event doc id to find image
+function deleteFromStorage(eventid) {
     // Create a reference to the file to delete
-    var imageRef = storageRef.child('images/' + postid + '.jpg');
+    var imageRef = storage.ref('images/' + eventid + '.jpg');
 
     // Delete the file
     imageRef.delete().then(() => {
         // File deleted successfully
         console.log("3. image deleted from storage");
         alert("DELETE is completed!");
-        location.reload();
+        window.location.href = "http://127.0.0.1:5501/main.html";
     }).catch((error) => {
-        // Uh-oh, an error occurred!
+        console.log("Uh-Oh, " + error);
     });
 }

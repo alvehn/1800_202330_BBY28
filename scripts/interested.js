@@ -2,6 +2,7 @@
 //this works for only one user, if multiple users are interesteed, and one of the unlicks it
 //it clears all of their names except for the user that unclicked. look into how splice works
 //and study your for loop
+//look at delete event, it may have solution to bug
 
 
 function doAll() {
@@ -100,6 +101,9 @@ function interestedEvent(userID) {
             document.getElementById("eventCount").innerHTML = counter;
             document.getElementById("eventInterestedText").innerHTML = "I'm interested";
         } if (!check) {
+            //use something like this 
+            // count = firebase.firestore.FieldValue.arrayRemove(userID.uid);
+            // console.log(count);
             count = count.splice(i, i);
             db.collection("events")
             .doc(ID)
