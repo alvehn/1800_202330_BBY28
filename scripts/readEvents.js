@@ -133,6 +133,7 @@ function eventCards(collection) {
                     let favourites = userDoc.data().favourites;
                     if (favourites.includes(docID)) {
                         document.getElementById('save-' + docID).innerText = ' added to favourites';
+                        // document.querySelector('.bi-heart').classList.
                     } else {
                         document.getElementById('save-' + docID).innerText = ' ';
                     }
