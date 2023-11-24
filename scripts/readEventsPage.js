@@ -1,6 +1,6 @@
 //stores current users document id
 var currentUserID;
-$("#deleteEvent").hide();
+$("#deleteButton").hide();
 
 //gets user id that will be compared to user id stored in event doc
 function getCurrentUser() {
@@ -56,10 +56,8 @@ function displayFullEvent() {
                     //else it hides the button to prevent deletion from user that has not made that event 
                     if (currentUserID === doc.data().host) {
                         document.getElementById("deleteEvent").onclick = () => deleteEvent(doc.id);
-                        $("#deleteEvent").show();
-                    } else {
-                        
-                    }
+                        $("#deleteButton").show();
+                    } 
 
                 })
         });
