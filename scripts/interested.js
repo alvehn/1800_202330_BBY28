@@ -33,6 +33,15 @@ function interestedEvent(userID) {
                 counter = count.length;
                 console.log(counter);
                 document.getElementById("eventCount").innerHTML = counter;
+                for (let j = 0; j <= count.length; j++) {
+                    if (count[j] === userID) {
+                        document.getElementById("eventInterestedText").innerHTML = "I'm Interested";
+                        break;
+                    } else if (count[j] !== userID && j === count.length) {
+                        document.getElementById("eventInterestedText").innerHTML = "I'm not Interested";
+                        break;
+                    }
+                }
                 console.log(document.getElementById("eventCount").innerHTML);
             });
     var interestedEvents = [];
@@ -62,6 +71,7 @@ function interestedEvent(userID) {
             }
         }
 
+        //this if statement adds user doc id to count array
         if (check) {
             //gets current count
             count.push(userID);
@@ -100,11 +110,13 @@ function interestedEvent(userID) {
             counter = count.length;
             document.getElementById("eventCount").innerHTML = counter;
             document.getElementById("eventInterestedText").innerHTML = "I'm interested";
+
+        //this if statement removes user doc id from count array    
         } if (!check) {
             //use something like this 
             // count = firebase.firestore.FieldValue.arrayRemove(userID.uid);
             // console.log(count);
-            count = count.splice(i, i);
+            count.splice(i, 1);
             db.collection("events")
             .doc(ID)
             .update({
