@@ -71,8 +71,8 @@ displayFullEvent();
 
 //confirms if user wants to delete event or not
 function deleteEvent(eventid) {
-    var result = confirm("Want to delete?");
-    if (result) {
+
+    //if (result) {
         //Logic to delete the item
         document.getElementById("deleteEvent").innerHTML = "Deleting...";
         db.collection("events").doc(eventid)
@@ -83,7 +83,7 @@ function deleteEvent(eventid) {
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
-    }
+    //}
 }
 
 //goes into users myEvents array and deletes the specified event using the event doc id

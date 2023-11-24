@@ -56,7 +56,8 @@
                     <div class="btn-group dropend">
 
                         <div id="goBackButton">
-                            <a href="main.html"><button type="button" class="btn btn-dark"><i class="bi bi-arrow-left"></i></button></a>
+                            <a href="main.html"><button type="button" class="btn btn-dark"><i
+                                        class="bi bi-arrow-left"></i></button></a>
                         </div>
                     </div>
                 </form>
@@ -113,10 +114,24 @@
         <p><small>Lets the event host know you're interested in attending this event</small></p>
     </div>
 
-    <div>
+    <!-- <div>
         <button type="button" class="btn btn-danger" id="deleteEvent">Delete</button>
+    </div> -->
+
+    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+        aria-controls="offcanvasTop">Delete</button>
+
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel">Are you sure you want to delete this event?</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <button type="button" class="btn btn-danger" id="deleteEvent">Yes, delete</button>
+            <button type="button" class="btn btn-light" data-bs-toggle="offcanvas" >No</button>
+        </div>
     </div>
-        <br><br><br><br><br>
+    <br><br><br><br><br>
 
     <div class="navbarRework">
         <div class="navBrowse"><a href="main.html"><i class="bi bi-house-fill"></i></a></div>
