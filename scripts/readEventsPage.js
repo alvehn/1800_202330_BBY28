@@ -57,7 +57,7 @@ function displayFullEvent() {
                     if (currentUserID === doc.data().host) {
                         document.getElementById("deleteEvent").onclick = () => deleteEvent(doc.id);
                         $("#deleteButton").show();
-                    } 
+                    }
 
                 })
         });
@@ -70,18 +70,15 @@ displayFullEvent();
 //confirms if user wants to delete event or not
 function deleteEvent(eventid) {
 
-    //if (result) {
-        //Logic to delete the item
-        document.getElementById("deleteEvent").innerHTML = "Deleting...";
-        db.collection("events").doc(eventid)
-            .delete()
-            .then(() => {
-                console.log("1. Document deleted from Posts collection");
-                deleteFromMyEvents(eventid);
-            }).catch((error) => {
-                console.error("Error removing document: ", error);
-            });
-    //}
+    document.getElementById("deleteEvent").innerHTML = "Deleting...";
+    db.collection("events").doc(eventid)
+        .delete()
+        .then(() => {
+            console.log("1. Document deleted from Posts collection");
+            deleteFromMyEvents(eventid);
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
 }
 
 //goes into users myEvents array and deletes the specified event using the event doc id
@@ -106,9 +103,14 @@ function deleteFromStorage(eventid) {
     imageRef.delete().then(() => {
         // File deleted successfully
         console.log("3. image deleted from storage");
-        alert("DELETE is completed!");
-        window.location.href = "http://127.0.0.1:5501/main.html";
+        document.getElementById("deleteEvent").innerHTML = "Event Deleted";
+        sleep(1200).then(() => { window.location.href = "main.html"; });
     }).catch((error) => {
         console.log("Uh-Oh, " + error);
     });
+}
+
+//makes function wait when called
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

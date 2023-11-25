@@ -33,6 +33,26 @@ function postEvent() {
 
         var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
+        var tags = [];
+
+        var sports = document.getElementById("sports");
+        var food = document.getElementById("food");
+        var festival = document.getElementById("festival");
+        var picnic = document.getElementById("picnic");
+
+        if (sports.checked) {
+            tags.push(" Sports");
+        }
+        if (food.checked) {
+            tags.push(" Food");
+        }
+        if (festival.checked) {
+            tags.push(" Festival");
+        }
+        if (picnic.checked) {
+            tags.push(" Picnic");
+        }
+
         console.log(eventName, description, date, locationOfEvent);
 
         db.collection("events").add({
@@ -42,7 +62,8 @@ function postEvent() {
             date: new Date(date),
             image: imageBad,
             location: locationOfEvent,
-            count: c
+            count: c,
+            tags: tags
         }).then(doc => {
             console.log("1. Event document added!");
             console.log(doc.id);
@@ -114,12 +135,15 @@ function saveEventIDforUser(eventDocID) {
         })
             .then(() => {
                 console.log("5. Saved to user's document!");
-                document.getElementById("postButtonText").innerHTML = "Done";
-                
-                //window.location.href = "showposts.html";
+                document.getElementById("postButtonText").innerHTML = "Event posted";
+                sleep(1200).then(() => { window.location.href = "main.html";; });
             })
             .catch((error) => {
                 console.error("Error writing document: ", error);
             });
     })
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

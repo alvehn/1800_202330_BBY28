@@ -23,6 +23,10 @@ Resources:
 * COMP 1800 demo's #7-10
 * Tech Tips B01a, B01b, B01c,
 * https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
+* https://www.sitepoint.com/delay-sleep-pause-wait/
+* Images: 
+*   https://www.youtube.com/watch?v=6b5Sd_S4aUo
+*   https://www.shutterstock.com/search/indian-food?image_type=photo 
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?

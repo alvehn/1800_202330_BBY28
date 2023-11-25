@@ -26,24 +26,24 @@ function interestedEvent(userID) {
     var count = [];
     var counter = 0;
     db.collection("events")
-            .doc(ID)
-            .get()
-            .then(doc => {
-                count = doc.data().count;
-                counter = count.length;
-                console.log(counter);
-                document.getElementById("eventCount").innerHTML = counter;
-                for (let j = 0; j <= count.length; j++) {
-                    if (count[j] === userID) {
-                        document.getElementById("eventInterestedText").innerHTML = "I'm Interested";
-                        break;
-                    } else if (count[j] !== userID && j === count.length) {
-                        document.getElementById("eventInterestedText").innerHTML = "I'm not Interested";
-                        break;
-                    }
+        .doc(ID)
+        .get()
+        .then(doc => {
+            count = doc.data().count;
+            counter = count.length;
+            console.log(counter);
+            document.getElementById("eventCount").innerHTML = counter;
+            for (let j = 0; j <= count.length; j++) {
+                if (count[j] === userID) {
+                    document.getElementById("eventInterestedText").innerHTML = "I'm Interested";
+                    break;
+                } else if (count[j] !== userID && j === count.length) {
+                    document.getElementById("eventInterestedText").innerHTML = "I'm not Interested";
+                    break;
                 }
-                console.log(document.getElementById("eventCount").innerHTML);
-            });
+            }
+            console.log(document.getElementById("eventCount").innerHTML);
+        });
     var interestedEvents = [];
     var check;
     // var check = true;
@@ -57,103 +57,103 @@ function interestedEvent(userID) {
                 count = doc.data().count;
                 counter = count.length;
                 document.getElementById("eventCount").innerHTML = counter;
-            }).then ( () => {
-        var i = 0;
-        //checks if user has already clicked button 
-        //console.log("Array: " + interestedEvents +  " Current: " + ID);
-        for (i = 0; i <= count.length; i++) {
-            if (count[i] === userID) {
-                check = false;
-                break;
-            } else if (count[i] !== userID && i === count.length) {
-                check = true;
-                break;
-            }
-        }
+            }).then(() => {
+                var i = 0;
+                //checks if user has already clicked button 
+                //console.log("Array: " + interestedEvents +  " Current: " + ID);
+                for (i = 0; i <= count.length; i++) {
+                    if (count[i] === userID) {
+                        check = false;
+                        break;
+                    } else if (count[i] !== userID && i === count.length) {
+                        check = true;
+                        break;
+                    }
+                }
 
-        //this if statement adds user doc id to count array
-        if (check) {
-            //gets current count
-            count.push(userID);
-            db.collection("events")
-            .doc(ID)
-            .update({
-                count: count
+                //this if statement adds user doc id to count array
+                if (check) {
+                    //gets current count
+                    count.push(userID);
+                    db.collection("events")
+                        .doc(ID)
+                        .update({
+                            count: count
+                        })
+                    //     db.collection("events")
+                    //         .doc(ID)
+                    //         .get()
+                    //         .then(doc => {
+                    //             count = doc.data().count;
+                    //         }).then( () => {
+
+                    //     count = count + 1;
+                    //     db.collection("events")
+                    //         .doc(ID)
+                    //         .update({
+                    //             count: count
+                    //         });
+                    //     }).then( () => {
+
+                    //     interestedEvents.push(ID);
+                    //     }).then ( () => {
+                    //     db.collection("users")
+                    //     .doc(userID)
+                    //     .update({
+                    //         interested: interestedEvents
+                    //     })
+                    // }).then( () => {
+
+                    //     // console.log(params);
+                    //    
+                    // })
+                    counter = count.length;
+                    document.getElementById("eventCount").innerHTML = counter;
+                    document.getElementById("eventInterestedText").innerHTML = "I'm interested";
+
+                    //this if statement removes user doc id from count array    
+                } if (!check) {
+                    //use something like this 
+                    // count = firebase.firestore.FieldValue.arrayRemove(userID.uid);
+                    // console.log(count);
+                    count.splice(i, 1);
+                    db.collection("events")
+                        .doc(ID)
+                        .update({
+                            count: count
+                        })
+                    //go into interested array, find this event using params, and delete that index, and do the reverse of what is above
+                    // db.collection("events")
+                    //     .doc(interestedEvents[i])
+                    //     .get()
+                    //     .then(doc => {
+                    //         count = doc.data().count;
+                    //     }).then ( () => {
+
+                    //         count--;
+                    //     db.collection("events")
+                    //         .doc(interestedEvents[i])
+                    //         .update({
+                    //             count: count
+                    //         });
+                    //     }).then( () => {
+
+                    //     interestedEvents = interestedEvents.splice(i, i);
+                    //     db.collection("users")
+                    //     .doc(userID)
+                    //     .update({
+                    //         interested: interestedEvents
+                    //     })
+                    // }).then( () => {
+
+                    //     // console.log(params);
+                    //     
+                    // });
+                    counter = count.length;
+                    document.getElementById("eventCount").innerHTML = counter;
+                    document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
+                }
             })
-        //     db.collection("events")
-        //         .doc(ID)
-        //         .get()
-        //         .then(doc => {
-        //             count = doc.data().count;
-        //         }).then( () => {
-
-        //     count = count + 1;
-        //     db.collection("events")
-        //         .doc(ID)
-        //         .update({
-        //             count: count
-        //         });
-        //     }).then( () => {
-
-        //     interestedEvents.push(ID);
-        //     }).then ( () => {
-        //     db.collection("users")
-        //     .doc(userID)
-        //     .update({
-        //         interested: interestedEvents
-        //     })
-        // }).then( () => {
-
-        //     // console.log(params);
-        //    
-        // })
-            counter = count.length;
-            document.getElementById("eventCount").innerHTML = counter;
-            document.getElementById("eventInterestedText").innerHTML = "I'm interested";
-
-        //this if statement removes user doc id from count array    
-        } if (!check) {
-            //use something like this 
-            // count = firebase.firestore.FieldValue.arrayRemove(userID.uid);
-            // console.log(count);
-            count.splice(i, 1);
-            db.collection("events")
-            .doc(ID)
-            .update({
-                count: count
-            })
-            //go into interested array, find this event using params, and delete that index, and do the reverse of what is above
-            // db.collection("events")
-            //     .doc(interestedEvents[i])
-            //     .get()
-            //     .then(doc => {
-            //         count = doc.data().count;
-            //     }).then ( () => {
-                
-            //         count--;
-            //     db.collection("events")
-            //         .doc(interestedEvents[i])
-            //         .update({
-            //             count: count
-            //         });
-            //     }).then( () => {
-                
-            //     interestedEvents = interestedEvents.splice(i, i);
-            //     db.collection("users")
-            //     .doc(userID)
-            //     .update({
-            //         interested: interestedEvents
-            //     })
-            // }).then( () => {
-
-            //     // console.log(params);
-            //     
-            // });
-            counter = count.length;
-            document.getElementById("eventCount").innerHTML = counter;
-            document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
-        }
-    })
     })
 
 }
