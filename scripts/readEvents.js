@@ -47,15 +47,17 @@ function eventCards(collection) {
 
 
                 //update title and text and image
-                newcard.querySelector('.card-title').innerHTML = title;
-                newcard.querySelector('.card-date').innerHTML = date;
-                newcard.querySelector('.card-location').innerHTML = location;
-                newcard.querySelector('.card-description').innerHTML = description;
-                newcard.querySelector('.card-tags').innerHTML = tags;
+                if (date >= new Date()) {
+                    newcard.querySelector('.card-title').innerHTML = title;
+                    newcard.querySelector('.card-date').innerHTML = date;
+                    newcard.querySelector('.card-location').innerHTML = location;
+                    newcard.querySelector('.card-description').innerHTML = description;
+                    newcard.querySelector('.card-tags').innerHTML = tags;
 
-                newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
-                newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
-                newcard.querySelector('i').onclick = () => updateFavourites(docID);
+                    newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
+                    newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
+                    newcard.querySelector('i').onclick = () => updateFavourites(docID);
+                
 
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
@@ -74,6 +76,7 @@ function eventCards(collection) {
 
                 //attach to gallery, Example: "hikes-go-here"s
                 document.getElementById(collection + "-go-here").appendChild(newcard);
+            }
 
                 //i++;   //Optional: iterate variable to serve as unique ID
             })
