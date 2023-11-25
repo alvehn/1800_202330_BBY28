@@ -35,10 +35,10 @@ function interestedEvent(userID) {
             document.getElementById("eventCount").innerHTML = counter;
             for (let j = 0; j <= count.length; j++) {
                 if (count[j] === userID) {
-                    document.getElementById("eventInterestedText").innerHTML = "I'm Interested";
+                    document.getElementById("eventInterestedText").innerHTML = "Attending";
                     break;
                 } else if (count[j] !== userID && j === count.length) {
-                    document.getElementById("eventInterestedText").innerHTML = "I'm not Interested";
+                    document.getElementById("eventInterestedText").innerHTML = "Attend";
                     break;
                 }
             }
@@ -109,7 +109,7 @@ function interestedEvent(userID) {
                     // })
                     counter = count.length;
                     document.getElementById("eventCount").innerHTML = counter;
-                    document.getElementById("eventInterestedText").innerHTML = "I'm interested";
+                    document.getElementById("eventInterestedText").innerHTML = "Attending";
 
                     //this if statement removes user doc id from count array    
                 } if (!check) {
@@ -151,7 +151,7 @@ function interestedEvent(userID) {
                     // });
                     counter = count.length;
                     document.getElementById("eventCount").innerHTML = counter;
-                    document.getElementById("eventInterestedText").innerHTML = "I'm not interested";
+                    document.getElementById("eventInterestedText").innerHTML = "Atttend";
                 }
             })
     })
