@@ -24,6 +24,7 @@ Resources:
 * Tech Tips B01a, B01b, B01c,
 * https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
 * https://www.sitepoint.com/delay-sleep-pause-wait/
+* https://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file
 * Images: 
 *   https://www.youtube.com/watch?v=6b5Sd_S4aUo
 *   https://www.shutterstock.com/search/indian-food?image_type=photo 

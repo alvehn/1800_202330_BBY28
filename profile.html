@@ -45,27 +45,16 @@
 
     <nav>
         <div class="navbar">
-    
+
             <div class="searchButton">
                 <form class="d-inline-flex mx-auto">
                     <div class="btn-group dropend">
-                        <button type="button" class="btn btn-toolbar dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="color: white;">
-                            <i class="bi bi-search" style="font-size: 30px;"></i>
-                            <!-- <img src="images\magnifier.png"> -->
-                        </button>
-                        <ul class="dropdown-menu">
-                            <!-- Dropdown menu links -->
-                            <input class="form-control" id="searchField" type="search" placeholder="Search"
-                                aria-label="Search">
-                            <!-- <button class="btn btn-outline-success float-right" type="submit"><img src="images\magnifier.png"></button> -->
-                        </ul>
                     </div>
                 </form>
             </div>
 
             <a class="btn btn-outline-dark card-href" href="index.html">Logout</a>
-    
+
             <!-- <div class="filterButton">
                 <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
@@ -97,17 +86,17 @@
     
                 </div>
             </div> -->
-    
+
         </div>
-    
+
         </div>
         </div>
         <!-- cards go here -->
-    
+
         <!-- <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
         <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
         </div> -->
-    
+
         <!-- <div class="navbarRework">
             <div class="navBrowse"><a href="main.html" ><i class="bi bi-house-fill"></i></a></div>
             <div class="navFav"><a href="favourites.html"><i class="bi bi-heart-fill"></i></a></div>
@@ -115,9 +104,12 @@
         </div> -->
     </nav>
 
-    <div id="profileImages">
-        <img src="images/profileImagePlaceholder.png" class="img-fluid" alt="...">
+    <!-- <div id="profileImages"> -->
+    <img src="" class="img-fluid" style="max-width: 100%;" alt="Choose profile image" id="profileImageSelected">
+    <div id="profileBannerButton">
+        <input type="file" id="profileImage">
     </div>
+    <!-- </div> -->
 
     <!-- <div id="userName">
         <h1><span id="name-goes-here"></span></h1>
@@ -135,8 +127,6 @@
         <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
 
         <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
-
-        <a href="newEvent.html"><button type="button" class="btn btn-dark">New Event</button></a>
 
     </div>
 
@@ -179,7 +169,7 @@
     <br><br><br><br>
 
     <div class="navbarRework">
-        <div class="navBrowse"><a href="main.html" ><i class="bi bi-house-fill"></i></a></div>
+        <div class="navBrowse"><a href="main.html"><i class="bi bi-house-fill"></i></a></div>
         <div class="navFav"><a href="favourites.html"><i class="bi bi-heart-fill"></i></a></div>
         <div class="navProfile"><a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a></div>
     </div>

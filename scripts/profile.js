@@ -1,51 +1,4 @@
-
-
-// function displayUser() {
-//     let params = new URL(window.location.href); //get URL of search bar
-//     console.log(params);
-//     let ID = params.searchParams.get("docID"); //get value for key "id"
-//     console.log(ID);
-
-//     db.collection("users")
-//         .doc(ID)
-//         .get()
-//         .then(doc => {
-//             var userName = doc.data().name;                // get value of the "name" 
-
-//             // populates name
-//             document.getElementById("name-goes-here").innerText = userName;  
-
-//             // let imgEvent = document.querySelector( ".hike-img" );
-//             // imgEvent.src = "../images/" + hikeCode + ".jpg";
-//         });
-// }
-// displayUser();
-
-// function getNameFromAuth() {
-//     firebase.auth().onAuthStateChanged(user => {
-//         // Check if a user is signed in:
-//         if (user) {
-//             // Do something for the currently logged-in user here: 
-//             console.log(user.uid); //print the uid in the browser console
-//             console.log(user.displayName);  //print the user name in the browser console
-//             userName = user.displayName;
-
-//             //method #1:  insert with JS
-//             document.getElementById("name-goes-here").innerText = userName;    
-
-//             //method #2:  insert using jquery
-//             //$("#name-goes-here").text(userName); //using jquery
-
-//             //method #3:  insert using querySelector
-//             //document.querySelector("#name-goes-here").innerText = userName
-
-//         } else {
-//             // No user is signed in.
-//         }
-//     });
-// }
-//getNameFromAuth();
-
+$("#profileBannerButton").hide();
 var currentUser;               //points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
@@ -61,9 +14,11 @@ function populateUserInfo() {
                     // var userName = userDoc.data().name;
                     console.log(user.displayName);  //print the user name in the browser console
                     userName = userDoc.data().name;
+                    userImage = userDoc.data().profilePic;
 
                     if (userName != null) {
                         document.getElementById("nameInput").value = userName;
+                        document.getElementById("profileImageSelected").src = userImage;
                     }
 
                     // document.getElementById("name-goes-here").innerText = userName;
@@ -85,13 +40,15 @@ populateUserInfo();
 function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
+    $("#profileBannerButton").show();
 }
 
 function saveUserInfo() {
     //enter code here
+    $("#profileBannerButton").hide();
 
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-
+    uploadPic(currentUser.id);
 
     currentUser.update({
         name: userName,
@@ -163,4 +120,64 @@ function displayMyEventCards(doc, docID) {
     //i++;   //Optional: iterate variable to serve as unique ID
 
 
+}
+var ImageFile;
+function listenFileSelect() {
+    // listen for file selection
+    var fileInput = document.getElementById("profileImage"); // pointer #1
+    //   const image = document.getElementById("mypic-goes-here"); // pointer #2
+
+    // When a change happens to the File Chooser Input
+    fileInput.addEventListener('change', function (e) {
+        ImageFile = e.target.files[0];   //Global variable
+        var blob = URL.createObjectURL(ImageFile);
+        console.log(blob);
+        //   image.src = blob; // Display this image
+    })
+}
+listenFileSelect();
+
+
+
+//From TechTip B01a COMP 1800
+//------------------------------------------------
+// So, a new post document has just been added
+// and it contains a bunch of fields.
+// We want to store the image associated with this post,
+// such that the image name is the postid (guaranteed unique).
+// 
+// This function is called AFTER the post has been created, 
+// and we know the post's document id.
+//------------------------------------------------
+function uploadPic(profilePicID) {
+    console.log("inside uploadPic " + profilePicID);
+    var storageRef = storage.ref("profile/" + profilePicID + ".jpg");
+    console.log(storageRef);
+
+    storageRef.put(ImageFile)   //global variable ImageFile
+
+        // AFTER .put() is done
+        .then(function () {
+            console.log('2. Uploaded to Cloud Storage.');
+            storageRef.getDownloadURL()
+
+                // AFTER .getDownloadURL is done
+                .then(function (url) { // Get URL of the uploaded file
+                    console.log("3. Got the download URL.");
+
+                    // Now that the image is on Storage, we can go back to the
+                    // post document, and update it with an "image" field
+                    // that contains the url of where the picture is stored.
+                    db.collection("users").doc(profilePicID).update({
+                        profilePic: url // Save the URL into users collection
+                    })
+                        // AFTER .update is done
+                        .then(function () {
+                            console.log('4. Added pic URL to Firestore.');
+                        })
+                })
+        })
+        .catch((error) => {
+            console.log("error uploading to cloud storage");
+        })
 }
