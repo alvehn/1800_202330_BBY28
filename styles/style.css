@@ -6,9 +6,13 @@ body {
     background-color: #f4fff8;
     /* background-color: #8baaad; */
 }
-#eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation, #eventDate, #userInfo, #userName, #profileButton, #userInfo {
+.bi, #personalInfoFields, #eventInterested, #numberAttending, #eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation, #eventDate, #userInfo, #userName, #profileButton, #userInfo {
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.card-title {
+    font-size: 30px;
 }
 
 #creationTitle, #eventName {
@@ -91,7 +95,7 @@ body {
 
 .navFav {
     
-    margin-left: 45%;
+    margin-left: 43%;
     
 }
 

@@ -103,7 +103,7 @@
             <div class="navProfile"><a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a></div>
         </div> -->
     </nav>
-
+    <h1 style="font-size: 30pt; padding-left: 5px;">Profile</h1>
     <!-- <div id="profileImages"> -->
     <img src="" class="img-fluid" style="max-width: 100%;" alt="Choose profile image" id="profileImageSelected">
     <div id="profileBannerButton">
@@ -118,25 +118,26 @@
     <fieldset class="mb-3" id="personalInfoFields" disabled>
         <div class="form-group">
             <label>Name</label>
-            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name" style="font-size: 25px;">
         </div>
     </fieldset>
 
     <div id="profileButton">
 
-        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+        <button type="button" class="btn btn-outline-dark" onclick="editUserInfo()">Edit</button>
 
-        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+        <button type="button" class="btn btn-outline-dark" onclick="saveUserInfo()">Save</button>
 
-    </div>
+    </div><br>
 
-    <div id="userInfo">
-        <h3>tags</h3>
-        <h3>Events Hosted</h3>
-    </div>
+    <!-- <div id="userInfo">
+        <h3>Tags</h3>
+        
+    </div> -->
 
     <!-- events that current user has made -->
     <div class="container">
+        <h3 style="font-size: 25px;">Events Hosted</h3>
         <!-- Here is the container for cards  -->
         <div class="container">
             <div id="events-go-here" class="row row-cols-auto">

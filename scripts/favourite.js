@@ -15,6 +15,32 @@ function doAll() {
 }
 doAll();
 
+// var currentUser;
+
+// function doAll() {
+//   firebase.auth().onAuthStateChanged(user => {
+//       if (user) {
+//           currentUser = db.collection("users").doc(user.uid); //global
+//           console.log(currentUser);
+
+//           // figure out what day of the week it is today
+//           // const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+//           // const d = new Date();
+//           // let day = weekday[d.getDay()];
+
+//           // the following functions are always called when someone is logged in
+//           // readQuote(day);
+//           // insertNameFromFirestore();
+//           // displayCardsDynamically("hikes");
+//       } else {
+//           // No user is signed in.
+//           console.log("No user is signed in");
+//           window.location.href = "login.html";
+//       }
+//   });
+// }
+// doAll();
+
 //----------------------------------------------------------
 // Wouldn't it be nice to see the User's Name on this page?
 // Let's do it!  (Thinking ahead:  This function can be carved out, 
@@ -69,8 +95,8 @@ function getFavourites(user) {
           newcard.querySelector('.card-tags').innerHTML = tags;
 
           newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
-          // newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
-          // newcard.querySelector('i').onclick = () => updateFavourites(docID);
+          newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
+          newcard.querySelector('i').onclick = () => updateFavourites(docID);
 
           // //NEW LINE: update to display length, duration, last updated
           // newcard.querySelector('.card-length').innerHTML =
@@ -78,14 +104,14 @@ function getFavourites(user) {
           //   "Duration: " + doc.data().hike_time + "min <br>" +
           //   "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
 
-          // currentUser.get().then(userDoc => {
-          //   let favourites = userDoc.data().favourites;
-          //   if (favourites.includes(docID)) {
-          //     document.getElementById('save-' + docID).innerText = ' added to favourites';
-          //   } else {
-          //     document.getElementById('save-' + docID).innerText = ' ';
-          //   }
-          // })
+          currentUser.get().then(userDoc => {
+            let favourites = userDoc.data().favourites;
+            if (favourites.includes(docID)) {
+              document.getElementById('save-' + docID).innerText = ' added to favourites';
+            } else {
+              document.getElementById('save-' + docID).innerText = ' ';
+            }
+          })
           //Finally, attach this new card to the gallery
 
           //fix
@@ -97,27 +123,27 @@ function getFavourites(user) {
 
 }
 
-// function updateFavourites(eventDocID) {
-//   currentUser.get().then(userDoc => {
-//     let favourites = userDoc.data().favourites;
-//     let iconID = 'save-' + eventDocID;
-//     let isFavourited = favourites.includes(eventDocID);
+function updateFavourites(eventDocID) {
+  currentUser.get().then(userDoc => {
+    let favourites = userDoc.data().favourites;
+    let iconID = 'save-' + eventDocID;
+    let isFavourited = favourites.includes(eventDocID);
 
-//     if (isFavourited) {
-//       currentUser.update({
-//         favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
+    if (isFavourited) {
+      currentUser.update({
+        favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
 
-//       }).then(() => {
-//         console.log("favourites removed for " + eventDocID);
-//         document.getElementById(iconID).innerText = ' unsaved';
-//       });
-//     } else {
-//       currentUser.update({
-//         favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
-//       }).then(() => {
-//         console.log(eventDocID + " added to favourites");
-//         document.getElementById(iconID).innerText = ' added to favourites';
-//       });
-//     }
-//   });
-// }
+      }).then(() => {
+        console.log("favourites removed for " + eventDocID);
+        document.getElementById(iconID).innerText = ' unsaved';
+      });
+    } else {
+      currentUser.update({
+        favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
+      }).then(() => {
+        console.log(eventDocID + " added to favourites");
+        document.getElementById(iconID).innerText = ' added to favourites';
+      });
+    }
+  });
+}
