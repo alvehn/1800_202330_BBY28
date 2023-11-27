@@ -11,6 +11,10 @@ body {
     padding-right: 5px;
 }
 
+#searchField {
+    width: auto;
+}
+
 .card-title {
     font-size: 30px;
 }
