@@ -1,8 +1,5 @@
 
 function placeGeocoder() {
-    // TO MAKE THE MAP APPEAR YOU MUST
-    // ADD YOUR ACCESS TOKEN FROM
-    // https://account.mapbox.com
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2dyZXdhbDExOCIsImEiOiJjbHA3NHB5aHMwMjJzMmt1amVibjdocnAyIn0.dcxSGmJgXjT_jmI9gUX7cA';
     const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
@@ -32,3 +29,5 @@ function placeGeocoder() {
     });
 }
 placeGeocoder();
+
+

@@ -35,12 +35,13 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <!-- <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
-        type="text/css">
+        type="text/css"> -->
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -57,7 +58,7 @@
     <!-- <nav id="navbarPlaceholder"></nav> -->
     <nav>
         <div class="navbar">
-    
+
             <div class="searchButton">
                 <form class="d-inline-flex mx-auto">
                     <div class="btn-group dropend">
@@ -75,58 +76,51 @@
                     </div>
                 </form>
             </div>
-    
-            <div class="filterButton">
-                <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
-                    <i class="bi bi-filter"></i>
-                </button>
-            </div>
-    
-            <div class="collapse p-3" id="filters">
-                <h4 class="font-weight-bold">
-                    Date
-                    <input type="date" class="form-control w-50 " name="date-field" id="startDate" />
-                </h4>
-                <h4 class="font-weight-bold ">
-                    location
-                </h4>
-                <div id="geocoder"></div>
-                <div id="result"></div>
-                <!-- <input class="form-control w-50 " list="locationOptions" id="filterLocation" placeholder="choose a location">
-                <datalist id="locationOptions">
-                    <option value="East Vancouver">
-                    <option value="North Vancouver">
-                    <option value="West Vancouver">
-                    <option value="Richmond">
-                    <option value="Burnaby">
-                </datalist> -->
-                <!-- <button class="btn btn-dark" type="filterOption">tags</button> -->
-        
+
+            <button class="filters-toggler btn btn-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
+                <i class="bi bi-filter"></i>
+            </button>
+
+            <div class="dflex w-100 collapse" id="filters">
+                <h4 class="font-weight-bold">Date</h4>
+                <input type="date" class="form-control w-75" name="date-field" id="startDate" />
+                <h4 class="font-weight-bold">Distance (km)</h4>
+                <input type="range" class="form-range" min="0" max="25" step="5" id="rangeValue">
+                <div class="d-flex flex-row justify-content-between" id="rangeNums">
+                    <div class="rangeNum">0</div>
+                    <div class="rangeNum">5</div>
+                    <div class="rangeNum">10</div>
+                    <div class="rangeNum">15</div>
+                    <div class="rangeNum">20</div>
+                    <div class="rangeNum">25+</div>
+                  </div>
+
                 <div class="d-flex justify-content-end">
                     <!-- <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button> -->
                     <!-- Currently you can only filter individually -->
                     <button class="btn btn-success mt-4" type="filterOption" onclick="applyFilters()">Apply</button>
-        
+
                 </div>
             </div>
-    
         </div>
-    
+
+        </div>
+
         </div>
         </div>
-    
+
         <!-- <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
         <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
         </div>
      -->
-        
+
     </nav>
 
     <!-- filter button and dropdown items -->
-    
 
-    
+
+
     <!-- cards go here -->
 
     <div class="container">
@@ -144,6 +138,7 @@
                                 <p class="card-date">placeholder</p>
                                 <br />
                                 <p class="card-location">location</p>
+                                <p class="card-coordinates"></p>
                                 <p class="card-tags">tags</p>
                                 <p class="card-description">
                                     Some quick example text to build on the card title and make up the
@@ -166,7 +161,7 @@
     </div>
 
     <div class="navbarRework">
-        <div class="navBrowse"><a href="main.html" ><i class="bi bi-house-fill"></i></a></div>
+        <div class="navBrowse"><a href="main.html"><i class="bi bi-house-fill"></i></a></div>
         <div class="navFav"><a href="favourites.html"><i class="bi bi-heart-fill"></i></a></div>
         <div class="navProfile"><a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a></div>
     </div>
@@ -232,7 +227,7 @@
     <script src="scripts/readEvents.js"></script>
     <script src="scripts/search.js"></script>
     <script src="scripts/filters.js"></script>
-    <script src="scripts/map.js"></script>
+    <!-- <script src="scripts/map.js"></script> -->
 
 </body>
 

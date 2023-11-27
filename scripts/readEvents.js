@@ -39,6 +39,7 @@ function eventCards(collection) {
                 var description = doc.data().description; //get value of the "description"
                 var date = doc.data().date.toDate();             //get value of "date"
                 var location = doc.data().location;     //gets value of "location"
+                var coordinates = doc.data().coordinates
                 var tags = doc.data().tags;
                 // var favourited = doc.data().favourited;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
@@ -51,6 +52,7 @@ function eventCards(collection) {
                     newcard.querySelector('.card-title').innerHTML = title;
                     newcard.querySelector('.card-date').innerHTML = date;
                     newcard.querySelector('.card-location').innerHTML = location;
+                    newcard.querySelector('.card-coordinates').innerHTML = coordinates;
                     newcard.querySelector('.card-description').innerHTML = description;
                     newcard.querySelector('.card-tags').innerHTML = tags;
 

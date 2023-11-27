@@ -22,17 +22,16 @@ function postEvent() {
         var currentUser = db.collection("users").doc(user.uid);
         var userID = user.uid;
         // var newEvent = db.collection("events").doc();
-        var eventName = document.getElementById("eventName").value;
+        var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
-        var date = document.getElementById("eventYear").value + "-"
-            + document.getElementById("eventMonth").value + "-"
-            + document.getElementById("eventDay").value;
+        var date = document.getElementById("dateValue").value;
         imageBad = document.getElementById("eventImages").value;
         // imageGood = imageBad;
         // console.log(userName);
 
         var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
+        var eventCoordinates = localStorage.getItem("place_coord");
         var tags = [];
 
         var sports = document.getElementById("sports");
@@ -62,6 +61,7 @@ function postEvent() {
             date: new Date(date),
             image: imageBad,
             location: locationOfEvent,
+            coordinates: eventCoordinates,
             count: c,
             tags: tags
         }).then(doc => {

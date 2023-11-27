@@ -30,6 +30,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+.card-coordinates{
+    display: none;
+}
 
 #eventCreationButton {
     
@@ -111,4 +114,12 @@ body {
 
 .btn-outline-dark {
     background-color: #d8f5e3;
+}
+
+#result {
+    display: none;
+}
+
+#rangeNums div{
+    width: 10vw;
 }
