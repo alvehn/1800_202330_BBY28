@@ -6,7 +6,7 @@ body {
     background-color: #f4fff8;
     /* background-color: #8baaad; */
 }
-.bi, #personalInfoFields, #eventInterested, #numberAttending, #eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation, #eventDate, #userInfo, #userName, #profileButton, #userInfo {
+.bi, #personalInfoFields, #eventLocation, #eventInterested, #numberAttending, #eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation, #eventDate, #userInfo, #userName, #profileButton, #userInfo {
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -29,6 +29,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10px;
 }
 .card-coordinates{
     display: none;
