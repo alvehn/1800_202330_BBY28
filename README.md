@@ -25,9 +25,12 @@ Resources:
 * https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
 * https://www.sitepoint.com/delay-sleep-pause-wait/
 * https://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file
-* Images: 
-*   https://www.youtube.com/watch?v=6b5Sd_S4aUo
-*   https://www.shutterstock.com/search/indian-food?image_type=photo 
+* https://chat.openai.com/c/9b8fc48a-2c73-437e-9323-86883b187830
+* https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
+
+Images: 
+* https://www.youtube.com/watch?v=6b5Sd_S4aUo
+* https://www.shutterstock.com/search/indian-food?image_type=photo 
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
@@ -44,8 +47,8 @@ Here are the limitations of this app:
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* Location/Google maps api built in to see where events are
-* built in RSVP functionality
+* Google maps api built in to find exact location of events
+* viewing other peoples profiles and chatting with others in app
 	
 ## 7. Contents of Folder
 Content of the project folder:

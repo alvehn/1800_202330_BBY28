@@ -36,18 +36,20 @@ function displayFullEvent() {
 
                     var title = doc.data().name;                // get value of the "name" 
                     var description = doc.data().description; //get value of the "description"
-                    var date = doc.data().date.toDate();             //get value of "date"
+                    var date = doc.data().date;             //get value of "date"
                     var location = doc.data().location;     //gets value of "location"
+                    // var location = doc.data().locationRaw; //get full value of "location" possibly for event page
                     var imageBad = doc.data().image;
-                    console.log(imageBad);
-
+                    var time = doc.data().time;
+                    
                     var docID = doc.id;
 
+                    
                     // populates name, location, title, and description
                     document.getElementById("eventName").innerHTML = title;
                     document.getElementById("eventLocation").innerHTML = location;
                     document.getElementById("eventDescription").innerHTML = description;
-                    document.getElementById("eventDateTime").innerHTML = date;
+                    document.getElementById("eventDateTime").innerHTML = date + " " + time;
                     document.getElementById("eventHost").innerHTML = eventCreator;
 
                     document.getElementById("eventImages").src = imageBad;
@@ -104,7 +106,7 @@ function deleteFromStorage(eventid) {
         // File deleted successfully
         console.log("3. image deleted from storage");
         document.getElementById("deleteEvent").innerHTML = "Event Deleted";
-        sleep(1200).then(() => { window.location.href = "main.html"; });
+        sleep(1200).then(() => { window.location.href = "profile.html"; });
     }).catch((error) => {
         console.log("Uh-Oh, " + error);
     });
