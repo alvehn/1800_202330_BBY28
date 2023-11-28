@@ -1,7 +1,20 @@
 
 function filterDate() {
     const events = document.querySelectorAll('.eventCard');
-    const startDate = new Date(document.getElementById('startDate').valueAsDate);
+
+    var dateB = document.getElementById('startDate').value;
+    var dater = "" + dateB;
+    var year = parseInt(dater.substring(0, 4));
+    var month = parseInt(dater.substring(5, 7)) - 1;
+    var day = parseInt(dater.substring(8, 10));
+
+    var dateBad = new Date(year, month, day);
+
+    //formats date
+    dateBad = "" + dateBad;
+    var date = dateBad.substring(0, 15);
+
+    const startDate = new Date(date);
     events.forEach(element => {
         var eventDate = new Date(element.querySelector('.card-date').innerHTML);
         console.log("eventdate", eventDate, " startDate  ", startDate);

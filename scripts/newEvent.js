@@ -22,19 +22,21 @@ function postEvent() {
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
         var dateB = document.getElementById("dateValue").value;
+        
+        //reads and formats date
         var dater = "" + dateB;
         var year = parseInt(dater.substring(0, 4));
-        var month = parseInt(dater.substring(5, 7)) - 1;
+        var month = parseInt(dater.substring(5, 7)) - 1; //fixes glitch where it shows selected date plus a month
         var day = parseInt(dater.substring(8, 10));
-
         var dateBad = new Date(year, month, day);
-        imageBad = document.getElementById("eventImages").value;
-        var timeBad = document.getElementById("timeValue").value
-        var time = formatAMPM(timeBad);
-
-        //formats date
         dateBad = "" + dateBad;
-        var date = dateBad.substring(0, 15);
+        var date = dateBad.substring(0, 15); //grabs only date details and leaves out time and timezone details
+       
+        imageBad = document.getElementById("eventImages").value; //image of event
+
+        //reads and formats time
+        var timeBad = document.getElementById("timeValue").value //24 hour time
+        var time = formatAMPM(timeBad); //24 hour time converted to 12 hour time
 
         var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
