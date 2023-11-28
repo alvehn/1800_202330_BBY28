@@ -39,15 +39,35 @@ function displayFullEvent() {
                     var date = doc.data().date.toDate();             //get value of "date"
                     var location = doc.data().location;     //gets value of "location"
                     var imageBad = doc.data().image;
-                    console.log(imageBad);
+                    var time = doc.data().time;
+                    var timeGood = formatAMPM("" + time);
 
                     var docID = doc.id;
 
+                    //formats date
+                    let dateBad = "" + date;
+                    var dateGood = dateBad.substring(0, 15);
+
+                    //formats location
+                    let locate = "" + location + ",";
+                    let s = "";
+                    let stringArray = [];
+                    for (const char of locate) {
+                        if (char === ',') {
+                            stringArray.push(s);
+                            s = "";
+                        } else {
+                            s += char;
+                        }
+                    }
+                    console.log(stringArray[0]);
+
+
                     // populates name, location, title, and description
                     document.getElementById("eventName").innerHTML = title;
-                    document.getElementById("eventLocation").innerHTML = location;
+                    document.getElementById("eventLocation").innerHTML = stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
                     document.getElementById("eventDescription").innerHTML = description;
-                    document.getElementById("eventDateTime").innerHTML = date;
+                    document.getElementById("eventDateTime").innerHTML = dateGood + " " + timeGood;
                     document.getElementById("eventHost").innerHTML = eventCreator;
 
                     document.getElementById("eventImages").src = imageBad;
@@ -66,6 +86,18 @@ function displayFullEvent() {
 }
 
 displayFullEvent();
+
+//formats the 24 time to 12 hour am/pm 
+function formatAMPM(date) {
+    var hours = parseInt(date.substring(0, 2)); //gets hour
+    var minutes = parseInt(date.substring(3, 5)); //gets minute
+    var ampm = hours >= 12 ? 'pm' : 'am'; 
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
 
 //confirms if user wants to delete event or not
 function deleteEvent(eventid) {
@@ -104,7 +136,7 @@ function deleteFromStorage(eventid) {
         // File deleted successfully
         console.log("3. image deleted from storage");
         document.getElementById("deleteEvent").innerHTML = "Event Deleted";
-        sleep(1200).then(() => { window.location.href = "main.html"; });
+        sleep(1200).then(() => { window.location.href = "profile.html"; });
     }).catch((error) => {
         console.log("Uh-Oh, " + error);
     });

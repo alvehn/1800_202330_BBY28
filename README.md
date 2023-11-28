@@ -25,6 +25,8 @@ Resources:
 * https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
 * https://www.sitepoint.com/delay-sleep-pause-wait/
 * https://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file
+* https://chat.openai.com/c/9b8fc48a-2c73-437e-9323-86883b187830
+* https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
 * Images: 
 *   https://www.youtube.com/watch?v=6b5Sd_S4aUo
 *   https://www.shutterstock.com/search/indian-food?image_type=photo 

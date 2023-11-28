@@ -3,13 +3,10 @@ var ImageFile;
 function listenFileSelect() {
     // listen for file selection
     var fileInput = document.getElementById("eventImages"); // pointer #1
-    //   const image = document.getElementById("mypic-goes-here"); // pointer #2
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
         ImageFile = e.target.files[0];   //Global variable
-        var blob = URL.createObjectURL(ImageFile);
-        //   image.src = blob; // Display this image
     })
 }
 listenFileSelect();
@@ -26,8 +23,7 @@ function postEvent() {
         var description = document.getElementById("description").value;
         var date = document.getElementById("dateValue").value;
         imageBad = document.getElementById("eventImages").value;
-        // imageGood = imageBad;
-        // console.log(userName);
+        var time = document.getElementById("timeValue").value
 
         var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
@@ -63,7 +59,8 @@ function postEvent() {
             location: locationOfEvent,
             coordinates: eventCoordinates,
             count: c,
-            tags: tags
+            tags: tags,
+            time: time
         }).then(doc => {
             console.log("1. Event document added!");
             console.log(doc.id);

@@ -71,7 +71,7 @@
 
     <div id="creationTitle">
         <h1 style="font-size: 35px;">Create an Event!</h1>
-    </div><br>
+    </div>
 
     <div id="eventNameCreation">
         <label for="eventCreationFrom" class="form-label" style="font-size: 25px;">Event Name</label>
@@ -82,8 +82,13 @@
     <div class="d-flex mx-auto" id="eventDate">
         <input type="date" class="form-control w-50 " name="date-field" id="dateValue" />
     </div>
-    <br><br>
+    <br>
 
+    <label for="eventTime" class="form-label" style="font-size: 25px;" id="eventTime">Time</label>
+    <div class="d-flex mx-auto" id="eventTime">
+        <input type="time" class="form-control w-50 " id="timeValue" />
+    </div>
+    <br>
 
     <div id="eventDescription">
         <label for="eventDescription" class="form-label" style="font-size: 25px;">Description</label>
@@ -99,7 +104,7 @@
         <label for="location" class="form-label" style="font-size: 25px;">Location</label>
         <div id="geocoder" required="required"></div>
         <div id="result" required="required"></div>
-    </div> <br><br>
+    </div> <br>
 
     <div id="eventType">
         <label for="type" class="form-label" style="font-size: 25px;">Type of event</label>

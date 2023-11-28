@@ -31,9 +31,8 @@ doAll();
 
 function eventCards(collection) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable.
-    db.collection(collection).get()   //the collection called "hikes"
+    db.collection(collection).get()   //the collection called "events"
         .then(allEvents => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allEvents.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;                // get value of the "name" 
                 var description = doc.data().description; //get value of the "description"
@@ -41,17 +40,36 @@ function eventCards(collection) {
                 var location = doc.data().location;     //gets value of "location"
                 var coordinates = doc.data().coordinates
                 var tags = doc.data().tags;
+                var time = doc.data().time;
+                var timeGood = formatAMPM("" + time);
                 // var favourited = doc.data().favourited;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                 var docID = doc.id;//grab the id for that specific doc
 
+                //formats date
+                let dateBad = "" + date;
+                var dateGood = dateBad.substring(0, 15);
+
+                //formats location
+                let locate = "" + location + ",";
+                let s = "";
+                let stringArray = [];
+                for (const char of locate) {
+                    if (char === ',') {
+                        stringArray.push(s);
+                        s = "";
+                    } else {
+                        s += char;
+                    }
+                }
+                console.log(stringArray[0]);
 
                 //update title and text and image
                 if (date >= new Date()) {
                     newcard.querySelector('.card-title').innerHTML = title;
-                    newcard.querySelector('.card-date').innerHTML = date;
-                    newcard.querySelector('.card-location').innerHTML = location;
+                    newcard.querySelector('.card-date').innerHTML = dateGood + " " + timeGood;
+                    newcard.querySelector('.card-location').innerHTML = stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
                     newcard.querySelector('.card-coordinates').innerHTML = coordinates;
                     newcard.querySelector('.card-description').innerHTML = description;
                     newcard.querySelector('.card-tags').innerHTML = tags;
@@ -59,33 +77,38 @@ function eventCards(collection) {
                     newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
                     newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
                     newcard.querySelector('i').onclick = () => updateFavourites(docID);
-                
 
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+                    currentUser.get().then(userDoc => {
+                        let favourites = userDoc.data().favourites;
+                        if (favourites.includes(docID)) {
+                            document.getElementById('save-' + docID).innerText = ' added to favourites';
+                            // document.querySelector('.bi-heart').classList.
+                        } else {
+                            document.getElementById('save-' + docID).innerText = ' ';
+                        }
+                    })
 
-                currentUser.get().then(userDoc => {
-                    let favourites = userDoc.data().favourites;
-                    if (favourites.includes(docID)) {
-                        document.getElementById('save-' + docID).innerText = ' added to favourites';
-                        // document.querySelector('.bi-heart').classList.
-                    } else {
-                        document.getElementById('save-' + docID).innerText = ' ';
-                    }
-                })
+                    //attach to gallery
+                    document.getElementById(collection + "-go-here").appendChild(newcard);
+                }
 
-                //attach to gallery, Example: "hikes-go-here"s
-                document.getElementById(collection + "-go-here").appendChild(newcard);
-            }
-
-                //i++;   //Optional: iterate variable to serve as unique ID
             })
         })
 }
 
 eventCards("events");  //input param is the name of the collection
+
+//formats the 24 time to 12 hour am/pm 
+function formatAMPM(date) {
+    var hours = parseInt(date.substring(0, 2)); //gets hour
+    var minutes = parseInt(date.substring(3, 5)); //gets minute
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
 
 function updateFavourites(eventDocID) {
     currentUser.get().then(userDoc => {
