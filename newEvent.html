@@ -73,73 +73,76 @@
         <h1 style="font-size: 35px;">Create an Event!</h1>
     </div><br>
 
-    <div id="eventNameCreation">
-        <label for="eventCreationFrom" class="form-label" style="font-size: 25px;">Event Name</label>
-        <input type="name" class="form-control" id="eventNaming" placeholder="name">
-    </div><br>
+    <form>
+        <div id="eventNameCreation">
+            <label for="eventCreationFrom" class="form-label" style="font-size: 25px;">Event Name</label>
+            <input type="name" class="form-control" id="eventNaming" placeholder="Name" pattern="[A-Za-z]{4,40}" required="required">
+        </div><br>
 
-    <label for="eventDate" class="form-label" style="font-size: 25px;" id="eventDate">Date</label>
-    <div class="d-flex mx-auto" id="eventDate">
-        <input type="date" class="form-control w-50 " name="date-field" id="dateValue" />
-    </div>
-    <br><br>
-
-
-    <div id="eventDescription">
-        <label for="eventDescription" class="form-label" style="font-size: 25px;">Description</label>
-        <textarea class="form-control" id="description" placeholder="Description" rows="3"></textarea>
-    </div><br>
-
-    <div id="eventImage">
-        <label for="eventImages" class="form-label" style="font-size: 25px;">Image for the event</label>
-        <input class="form-control" type="file" id="eventImages" multiple>
-    </div><br>
-
-    <div id="eventLocation">
-        <label for="location" class="form-label" style="font-size: 25px;">Location</label>
-        <div id="geocoder" required="required"></div>
-        <div id="result" required="required"></div>
-    </div> <br><br>
-
-    <div id="eventType">
-        <label for="type" class="form-label" style="font-size: 25px;">Type of event</label>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="sports">
-            <label class="form-check-label" style="font-size: 18px;">
-                Sports
-            </label>
+        <label for="eventDate" class="form-label" style="font-size: 25px;" id="eventDate">Date</label>
+        <div class="d-flex mx-auto" id="eventDate">
+            <input type="date" class="form-control w-50 " name="date-field" id="dateValue" value="2023-12-07" required/>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="food">
-            <label class="form-check-label" style="font-size: 18px;">
-                Food
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="festival">
-            <label class="form-check-label" style="font-size: 18px;">
-                Festival
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="picnic">
-            <label class="form-check-label" style="font-size: 18px;">
-                Picnic
-            </label>
-        </div>
-    </div>
+        <br><br>
 
 
-    <br>
+        <div id="eventDescription">
+            <label for="eventDescription" class="form-label" style="font-size: 25px;">Description</label>
+            <textarea class="form-control" id="description" placeholder="Description" rows="3" pattern="[A-Za-z0-9]{5}" required="required"></textarea>
+        </div><br>
 
-    <footer>
-        <div id="footerButtons">
+        <div id="eventImage">
+            <label for="eventImages" class="form-label" style="font-size: 25px;">Image for the event</label>
+            <input class="form-control" type="file" id="eventImages" multiple >
+        </div><br>
 
-            <button type="button" class="btn btn-outline-dark" id="postButtonText" onclick="postEvent()">Post</button>
+        <div id="eventLocation">
+            <label for="location" class="form-label" style="font-size: 25px;">Location</label>
+            <div id="geocoder" required></div>
+            <div id="result" required ></div>
+            <!-- // value="Burnaby, British Columbia, Canada" -->
+        </div> <br><br>
 
+        <div id="eventType">
+            <label for="type" class="form-label" style="font-size: 25px;">Type of event</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="sports">
+                <label class="form-check-label" style="font-size: 18px;">
+                    Sports
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="food">
+                <label class="form-check-label" style="font-size: 18px;">
+                    Food
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="festival">
+                <label class="form-check-label" style="font-size: 18px;">
+                    Festival
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="picnic">
+                <label class="form-check-label" style="font-size: 18px;">
+                    Picnic
+                </label>
+            </div>
         </div>
 
-    </footer><br><br><br>
+
+        <br>
+
+        <footer>
+            <div id="footerButtons">
+
+                <button type="submit" class="btn btn-outline-dark" id="postButtonText" onclick="postEvent()">Post</button>
+
+            </div>
+
+        </footer><br><br><br>
+    </form>
 
     <div class="navbarRework">
         <div class="navBrowse"><a href="main.html"><i class="bi bi-house-fill"></i></a></div>
