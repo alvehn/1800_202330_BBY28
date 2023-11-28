@@ -21,14 +21,34 @@ function postEvent() {
         // var newEvent = db.collection("events").doc();
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
-        var date = document.getElementById("dateValue").value;
+        var dateB = document.getElementById("dateValue").value;
+        var dateBad = new Date(dateB);
         imageBad = document.getElementById("eventImages").value;
-        var time = document.getElementById("timeValue").value
+        var timeBad = document.getElementById("timeValue").value
+        var time = formatAMPM(timeBad);
+
+        //formats date
+        dateBad = "" + dateBad;
+        var date = dateBad.substring(0, 15);
 
         var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
         var eventCoordinates = localStorage.getItem("place_coord");
         var tags = [];
+
+        //formats location
+        let locate = "" + locationOfEvent + ",";
+        let s = "";
+        let stringArray = [];
+        for (const char of locate) {
+            if (char === ',') {
+                stringArray.push(s);
+                s = "";
+            } else {
+                s += char;
+            }
+        }
+        var location = stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
 
         var sports = document.getElementById("sports");
         var food = document.getElementById("food");
@@ -48,15 +68,15 @@ function postEvent() {
             tags.push(" Picnic");
         }
 
-        console.log(eventName, description, date, locationOfEvent);
+        // console.log(eventName, description, date, locationOfEvent);
 
         db.collection("events").add({
             host: userID,
             name: eventName,
             description: description,
-            date: new Date(date),
+            date: date,
             image: imageBad,
-            location: locationOfEvent,
+            location: location,
             coordinates: eventCoordinates,
             count: c,
             tags: tags,
@@ -70,6 +90,18 @@ function postEvent() {
         console.log("No user is signed in");
     }
 
+}
+
+//formats the 24 time to 12 hour am/pm 
+function formatAMPM(date) {
+    var hours = parseInt(date.substring(0, 2)); //gets hour
+    var minutes = parseInt(date.substring(3, 5)); //gets minute
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
 }
 
 //From TechTip B01a COMP 1800

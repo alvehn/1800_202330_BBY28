@@ -36,38 +36,39 @@ function displayFullEvent() {
 
                     var title = doc.data().name;                // get value of the "name" 
                     var description = doc.data().description; //get value of the "description"
-                    var date = doc.data().date.toDate();             //get value of "date"
+                    var date = doc.data().date;             //get value of "date"
                     var location = doc.data().location;     //gets value of "location"
                     var imageBad = doc.data().image;
                     var time = doc.data().time;
-                    var timeGood = formatAMPM("" + time);
+                    // var time = doc.data().time;
+                    // var timeGood = formatAMPM("" + time);
 
                     var docID = doc.id;
 
-                    //formats date
-                    let dateBad = "" + date;
-                    var dateGood = dateBad.substring(0, 15);
+                    // //formats date
+                    // let dateBad = "" + date;
+                    // var dateGood = dateBad.substring(0, 15);
 
-                    //formats location
-                    let locate = "" + location + ",";
-                    let s = "";
-                    let stringArray = [];
-                    for (const char of locate) {
-                        if (char === ',') {
-                            stringArray.push(s);
-                            s = "";
-                        } else {
-                            s += char;
-                        }
-                    }
-                    console.log(stringArray[0]);
+                    // //formats location
+                    // let locate = "" + location + ",";
+                    // let s = "";
+                    // let stringArray = [];
+                    // for (const char of locate) {
+                    //     if (char === ',') {
+                    //         stringArray.push(s);
+                    //         s = "";
+                    //     } else {
+                    //         s += char;
+                    //     }
+                    // }
+                    // console.log(stringArray[0]);
 
 
                     // populates name, location, title, and description
                     document.getElementById("eventName").innerHTML = title;
-                    document.getElementById("eventLocation").innerHTML = stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
+                    document.getElementById("eventLocation").innerHTML = location;
                     document.getElementById("eventDescription").innerHTML = description;
-                    document.getElementById("eventDateTime").innerHTML = dateGood + " " + timeGood;
+                    document.getElementById("eventDateTime").innerHTML = date + " " + time;
                     document.getElementById("eventHost").innerHTML = eventCreator;
 
                     document.getElementById("eventImages").src = imageBad;
@@ -87,17 +88,17 @@ function displayFullEvent() {
 
 displayFullEvent();
 
-//formats the 24 time to 12 hour am/pm 
-function formatAMPM(date) {
-    var hours = parseInt(date.substring(0, 2)); //gets hour
-    var minutes = parseInt(date.substring(3, 5)); //gets minute
-    var ampm = hours >= 12 ? 'pm' : 'am'; 
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    var strTime = hours + ':' + minutes + ' ' + ampm;
-    return strTime;
-}
+// //formats the 24 time to 12 hour am/pm 
+// function formatAMPM(date) {
+//     var hours = parseInt(date.substring(0, 2)); //gets hour
+//     var minutes = parseInt(date.substring(3, 5)); //gets minute
+//     var ampm = hours >= 12 ? 'pm' : 'am'; 
+//     hours = hours % 12;
+//     hours = hours ? hours : 12; // the hour '0' should be '12'
+//     minutes = minutes < 10 ? '0' + minutes : minutes;
+//     var strTime = hours + ':' + minutes + ' ' + ampm;
+//     return strTime;
+// }
 
 //confirms if user wants to delete event or not
 function deleteEvent(eventid) {

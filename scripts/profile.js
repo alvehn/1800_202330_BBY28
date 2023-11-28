@@ -87,15 +87,16 @@ function displayMyEventCards(doc, docID) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "eventCardTemplate" and store it in the cardTemplate variable.
     var title = doc.data().name;                // get value of the "name" 
     var description = doc.data().description; //get value of the "description"
-    var date = doc.data().date.toDate();             //get value of "date"
+    var date = doc.data().date;             //get value of "date"
     var location = doc.data().location;     //gets value of "location"
     var tags = doc.data().tags;
+    var time = doc.data().time;
     let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
 
     //update title and text and image
     newcard.querySelector('.card-title').innerHTML = title;
-    newcard.querySelector('.card-date').innerHTML = date;
+    newcard.querySelector('.card-date').innerHTML = date + " " + time;
     newcard.querySelector('.card-location').innerHTML = location;
     newcard.querySelector('.card-description').innerHTML = description;
     newcard.querySelector('.card-tags').innerHTML = tags;
