@@ -22,7 +22,17 @@ function postEvent() {
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
         var dateB = document.getElementById("dateValue").value;
-        var dateBad = new Date(dateB);
+        console.log(dateB);
+        var dater = "" + dateB;
+        console.log(dater);
+        var year = parseInt(dater.substring(0, 4));
+        console.log(year);
+        var month = parseInt(dater.substring(5, 7)) - 1;
+        console.log(month);
+        var day = parseInt(dater.substring(8, 10));
+        console.log(day);
+
+        var dateBad = new Date(year, month, day);
         imageBad = document.getElementById("eventImages").value;
         var timeBad = document.getElementById("timeValue").value
         var time = formatAMPM(timeBad);
