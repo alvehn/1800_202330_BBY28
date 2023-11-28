@@ -41,6 +41,7 @@ function eventCards(collection) {
                 var coordinates = doc.data().coordinates
                 var tags = doc.data().tags;
                 var time = doc.data().time;
+                var image = doc.data().image
 
                 // var favourited = doc.data().favourited;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
@@ -53,8 +54,9 @@ function eventCards(collection) {
                     newcard.querySelector('.card-date').innerHTML = date + " " + time;
                     newcard.querySelector('.card-location').innerHTML = location;
                     newcard.querySelector('.card-coordinates').innerHTML = coordinates;
-                    newcard.querySelector('.card-description').innerHTML = description;
+                    // newcard.querySelector('.card-description').innerHTML = description;
                     newcard.querySelector('.card-tags').innerHTML = tags;
+                    newcard.querySelector('.card-image').src = image;
 
                     newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
                     newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
