@@ -22,15 +22,10 @@ function postEvent() {
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
         var dateB = document.getElementById("dateValue").value;
-        console.log(dateB);
         var dater = "" + dateB;
-        console.log(dater);
         var year = parseInt(dater.substring(0, 4));
-        console.log(year);
         var month = parseInt(dater.substring(5, 7)) - 1;
-        console.log(month);
         var day = parseInt(dater.substring(8, 10));
-        console.log(day);
 
         var dateBad = new Date(year, month, day);
         imageBad = document.getElementById("eventImages").value;
@@ -87,8 +82,9 @@ function postEvent() {
             date: date,
             image: imageBad,
             location: location,
+            locationRaw: locationOfEvent, //in case full event address needs to be displayed
             coordinates: eventCoordinates,
-            count: c,
+            count: c, //array of users interested in going to event
             tags: tags,
             time: time
         }).then(doc => {

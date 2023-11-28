@@ -41,30 +41,11 @@ function eventCards(collection) {
                 var coordinates = doc.data().coordinates
                 var tags = doc.data().tags;
                 var time = doc.data().time;
-                // var time = doc.data().time;
-                // var timeGood = formatAMPM("" + time);
+
                 // var favourited = doc.data().favourited;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                 var docID = doc.id;//grab the id for that specific doc
-
-                // //formats date
-                // let dateBad = "" + date;
-                // var dateGood = dateBad.substring(0, 15);
-
-                // //formats location
-                // let locate = "" + location + ",";
-                // let s = "";
-                // let stringArray = [];
-                // for (const char of locate) {
-                //     if (char === ',') {
-                //         stringArray.push(s);
-                //         s = "";
-                //     } else {
-                //         s += char;
-                //     }
-                // }
-                // console.log(stringArray[0]);
 
                 //update title and text and image
                 if (new Date(date) >= new Date()) {
@@ -98,18 +79,6 @@ function eventCards(collection) {
 }
 
 eventCards("events");  //input param is the name of the collection
-
-// //formats the 24 time to 12 hour am/pm 
-// function formatAMPM(date) {
-//     var hours = parseInt(date.substring(0, 2)); //gets hour
-//     var minutes = parseInt(date.substring(3, 5)); //gets minute
-//     var ampm = hours >= 12 ? 'pm' : 'am';
-//     hours = hours % 12;
-//     hours = hours ? hours : 12; // the hour '0' should be '12'
-//     minutes = minutes < 10 ? '0' + minutes : minutes;
-//     var strTime = hours + ':' + minutes + ' ' + ampm;
-//     return strTime;
-// }
 
 function updateFavourites(eventDocID) {
     currentUser.get().then(userDoc => {
