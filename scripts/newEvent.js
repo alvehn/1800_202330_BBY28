@@ -3,13 +3,10 @@ var ImageFile;
 function listenFileSelect() {
     // listen for file selection
     var fileInput = document.getElementById("eventImages"); // pointer #1
-    //   const image = document.getElementById("mypic-goes-here"); // pointer #2
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
         ImageFile = e.target.files[0];   //Global variable
-        var blob = URL.createObjectURL(ImageFile);
-        //   image.src = blob; // Display this image
     })
 }
 listenFileSelect();
@@ -24,15 +21,41 @@ function postEvent() {
         // var newEvent = db.collection("events").doc();
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
-        var date = document.getElementById("dateValue").value;
-        imageBad = document.getElementById("eventImages").value;
-        // imageGood = imageBad;
-        // console.log(userName);
+        var dateB = document.getElementById("dateValue").value;
+        
+        //reads and formats date
+        var dater = "" + dateB;
+        var year = parseInt(dater.substring(0, 4));
+        var month = parseInt(dater.substring(5, 7)) - 1; //fixes glitch where it shows selected date plus a month
+        var day = parseInt(dater.substring(8, 10));
+        var dateBad = new Date(year, month, day);
+        dateBad = "" + dateBad;
+        var date = dateBad.substring(0, 15); //grabs only date details and leaves out time and timezone details
+       
+        imageBad = document.getElementById("eventImages").value; //image of event
+
+        //reads and formats time
+        var timeBad = document.getElementById("timeValue").value //24 hour time
+        var time = formatAMPM(timeBad); //24 hour time converted to 12 hour time
 
         var c = [];
         var locationOfEvent = localStorage.getItem("place_name");
         var eventCoordinates = localStorage.getItem("place_coord");
         var tags = [];
+
+        //formats location
+        let locate = "" + locationOfEvent + ",";
+        let s = "";
+        let stringArray = [];
+        for (const char of locate) {
+            if (char === ',') {
+                stringArray.push(s);
+                s = "";
+            } else {
+                s += char;
+            }
+        }
+        var location = stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
 
         var sports = document.getElementById("sports");
         var food = document.getElementById("food");
@@ -52,18 +75,20 @@ function postEvent() {
             tags.push(" Picnic");
         }
 
-        console.log(eventName, description, date, locationOfEvent);
+        // console.log(eventName, description, date, locationOfEvent);
 
         db.collection("events").add({
             host: userID,
             name: eventName,
             description: description,
-            date: new Date(date),
+            date: date,
             image: imageBad,
-            location: locationOfEvent,
+            location: location,
+            locationRaw: locationOfEvent, //in case full event address needs to be displayed
             coordinates: eventCoordinates,
-            count: c,
-            tags: tags
+            count: c, //array of users interested in going to event
+            tags: tags,
+            time: time
         }).then(doc => {
             console.log("1. Event document added!");
             console.log(doc.id);
@@ -73,6 +98,18 @@ function postEvent() {
         console.log("No user is signed in");
     }
 
+}
+
+//formats the 24 time to 12 hour am/pm 
+function formatAMPM(date) {
+    var hours = parseInt(date.substring(0, 2)); //gets hour
+    var minutes = parseInt(date.substring(3, 5)); //gets minute
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
 }
 
 //From TechTip B01a COMP 1800
@@ -144,6 +181,7 @@ function saveEventIDforUser(eventDocID) {
     })
 }
 
+//pauses the function for a given amount of milliseconds 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

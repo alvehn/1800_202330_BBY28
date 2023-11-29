@@ -77,14 +77,14 @@
                 </form>
             </div>
 
-            <button class="filters-toggler btn btn-dark" type="button" data-bs-toggle="collapse"
+            <button class="filters-toggler btn btn-success" type="button" data-bs-toggle="collapse"
                 data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
                 <i class="bi bi-filter"></i>
             </button>
 
             <div class="dflex w-100 collapse" id="filters">
                 <h4 class="font-weight-bold">Date</h4>
-                <input type="date" class="form-control w-75" name="date-field" id="startDate" />
+                <input type="date" class="form-control w-75" name="date-field" id="startDate" /> <br>
                 <h4 class="font-weight-bold">Distance (km)</h4>
                 <input type="range" class="form-range" min="0" max="25" step="5" id="rangeValue">
                 <div class="d-flex flex-row justify-content-between" id="rangeNums">
@@ -94,7 +94,7 @@
                     <div class="rangeNum">15</div>
                     <div class="rangeNum">20</div>
                     <div class="rangeNum">25+</div>
-                  </div>
+                </div>
 
                 <div class="d-flex justify-content-end">
                     <!-- <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button> -->
@@ -136,16 +136,20 @@
                         <div class="card py-2 mx-2" style="width: 22rem">
                             <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
                             <div class="card-body">
+                                <div>
+                                    <img class="card-image" class="mx-auto d-block" style="max-width: 100%;" src=""
+                                        alt="No image to display">
+                                </div>
                                 <h4 class="card-title">Card title</h4>
                                 <p class="card-date">placeholder</p>
-                                <br />
+                                <!-- <br /> -->
                                 <p class="card-location">location</p>
                                 <p class="card-coordinates"></p>
                                 <p class="card-tags">tags</p>
-                                <p class="card-description">
+                                <!-- <p class="card-description">
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
-                                </p>
+                                </p> -->
                                 <a class="btn btn-outline-dark card-href" href="event.html">View</a>
                                 <!-- <input type="checkbox" class="btn-check" id="card-favourited" name="favourited">
                                 <label class="btn btn-outline-danger" for="card-favourited"></label> -->
@@ -159,7 +163,9 @@
     </div>
 
     <div id="eventCreationButton" class="fixed-bottom">
-        <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
+        <!-- <a href="newEvent.html"><button type="button" class="btn btn-success">Create a new event</button></a> -->
+        <a href="newEvent.html"><button type="button" class="btn btn-success" style="border-radius: 40px;"><i class="bi bi-plus"></i></button></a>
+        
     </div>
 
     <div class="navbarRework">
@@ -169,55 +175,6 @@
     </div>
     <br><br><br><br><br><br>
 
-
-    <!-- demo card -->
-
-
-    <!-- click anywhere on card to show details. Need to figure out how to set default view as closed instead of open -->
-    <!-- <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
-                <div id="hikeCardTemplate">
-                    <div class="card py-2 mx-2" style="width: 22rem">
-                        <img class="card-image card-img-top" src=" ..." alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Event expandable</h5>
-                            <p class="card-length">main/necessary details</p>
-                        </div>
-                    </div>
-                </div>
-            </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="card py-2 mx-2" style="width: 22rem">
-                    <p class="card-text">
-                        Secondary/ extra details about event like location, type of event, and other necessary
-                        information.
-                    </p>
-                    <a class="btn btn-primary card-href" style="display: block;" href="event.html">View</a>
-                </div>
-            </div>
-        </div>
-      </div>
-
-    \
-
-
-
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2023 OCTOBER BCIT COMP1800 202330 BBY28</p>
-        <a href="/"
-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap" />
-            </svg>
-        </a>
-    </footer>
-
--->
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->

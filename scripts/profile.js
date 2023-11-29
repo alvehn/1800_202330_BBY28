@@ -11,7 +11,6 @@ function populateUserInfo() {
             currentUser.get()
                 .then(userDoc => {
                     //get the data fields of the user
-                    // var userName = userDoc.data().name;
                     console.log(user.displayName);  //print the user name in the browser console
                     userName = userDoc.data().name;
                     userImage = userDoc.data().profilePic;
@@ -20,11 +19,6 @@ function populateUserInfo() {
                         document.getElementById("nameInput").value = userName;
                         document.getElementById("profileImageSelected").src = userImage;
                     }
-
-                    // document.getElementById("name-goes-here").innerText = userName;
-
-
-                    //if the data fields are not empty, then write them in to the form.
 
                 })
         } else {
@@ -93,31 +87,38 @@ function displayMyEventCards(doc, docID) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "eventCardTemplate" and store it in the cardTemplate variable.
     var title = doc.data().name;                // get value of the "name" 
     var description = doc.data().description; //get value of the "description"
-    var date = doc.data().date.toDate();             //get value of "date"
+    var date = doc.data().date;             //get value of "date"
     var location = doc.data().location;     //gets value of "location"
     var tags = doc.data().tags;
-    // var favourited = doc.data().favourited;
+    var time = doc.data().time;
+    var image = doc.data().image;
     let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
-
-    // var docID = doc;//grab the id for that specific doc
-    // console.log(docID);
 
 
     //update title and text and image
     newcard.querySelector('.card-title').innerHTML = title;
-    newcard.querySelector('.card-date').innerHTML = date;
+    newcard.querySelector('.card-date').innerHTML = date + " " + time;
     newcard.querySelector('.card-location').innerHTML = location;
-    newcard.querySelector('.card-description').innerHTML = description;
+    newcard.querySelector('.card-image').src = image;
     newcard.querySelector('.card-tags').innerHTML = tags;
 
     newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
     newcard.querySelector('i').id === 'save-' + docID;   //guaranteed to be unique
     newcard.querySelector('i').onclick = () => saveBookmark(docID);
 
-    //attach to gallery, Example: "hikes-go-here"
+    //attach to gallery
     document.getElementById("events-go-here").appendChild(newcard);
 
-    //i++;   //Optional: iterate variable to serve as unique ID
+    console.log(new Date(date));
+    if (new Date(date) < new Date()) {
+        document.getElementById("title").style.opacity = "75%";
+        document.getElementById("date").style.opacity = "75%";
+        document.getElementById("date").style.color = "red";
+        document.getElementById("location").style.opacity = "75%";
+        document.getElementById("image").style.opacity = "75%";
+        document.getElementById("tags").style.opacity = "75%";
+    }
+
 
 
 }
@@ -125,14 +126,12 @@ var ImageFile;
 function listenFileSelect() {
     // listen for file selection
     var fileInput = document.getElementById("profileImage"); // pointer #1
-    //   const image = document.getElementById("mypic-goes-here"); // pointer #2
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
         ImageFile = e.target.files[0];   //Global variable
         var blob = URL.createObjectURL(ImageFile);
         console.log(blob);
-        //   image.src = blob; // Display this image
     })
 }
 listenFileSelect();
