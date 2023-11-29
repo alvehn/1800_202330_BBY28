@@ -11,6 +11,10 @@ body {
     padding-right: 5px;
 }
 
+.card-image {
+    border-radius: 5px;
+}
+
 #searchField {
     width: auto;
 }
@@ -43,7 +47,16 @@ body {
     
     position: fixed;
     bottom: 3.75em;
+    left: 5px;
+    /* border-radius: 45px; */
 }
+
+.bi-plus{
+    margin: auto;
+    width: 50%;
+    font-size: 40px;
+}
+
 
 .navbar {
     background-color: #60d394;
