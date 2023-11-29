@@ -181,6 +181,7 @@ function saveEventIDforUser(eventDocID) {
     })
 }
 
+//pauses the function for a given amount of milliseconds 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

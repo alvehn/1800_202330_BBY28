@@ -91,6 +91,7 @@ function displayMyEventCards(doc, docID) {
     var location = doc.data().location;     //gets value of "location"
     var tags = doc.data().tags;
     var time = doc.data().time;
+    var image = doc.data().image;
     let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
 
@@ -98,7 +99,7 @@ function displayMyEventCards(doc, docID) {
     newcard.querySelector('.card-title').innerHTML = title;
     newcard.querySelector('.card-date').innerHTML = date + " " + time;
     newcard.querySelector('.card-location').innerHTML = location;
-    newcard.querySelector('.card-description').innerHTML = description;
+    newcard.querySelector('.card-image').src = image;
     newcard.querySelector('.card-tags').innerHTML = tags;
 
     newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
@@ -107,6 +108,16 @@ function displayMyEventCards(doc, docID) {
 
     //attach to gallery
     document.getElementById("events-go-here").appendChild(newcard);
+
+    console.log(new Date(date));
+    if (new Date(date) < new Date()) {
+        document.getElementById("title").style.opacity = "75%";
+        document.getElementById("date").style.opacity = "75%";
+        document.getElementById("date").style.color = "red";
+        document.getElementById("location").style.opacity = "75%";
+        document.getElementById("image").style.opacity = "75%";
+        document.getElementById("tags").style.opacity = "75%";
+    }
 
 
 
