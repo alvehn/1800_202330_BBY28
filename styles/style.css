@@ -43,19 +43,6 @@ body {
     display: none;
 }
 
-#eventCreationButton {
-    
-    position: fixed;
-    bottom: 3.75em;
-    left: 5px;
-    /* border-radius: 45px; */
-}
-
-.bi-plus{
-    margin: auto;
-    width: 50%;
-    font-size: 40px;
-}
 
 
 .navbar {
@@ -78,6 +65,23 @@ body {
 .filterButton{
     float: right;
    
+}
+
+#eventCreationButton {
+    /* height: auto; */
+    position: fixed;
+    /* float: left; */
+    margin-bottom: 3.75em;
+    margin-left: 5px;
+    /* border-radius: 45px; */
+}
+
+#eventCreationButton button{
+    display: flex;
+    text-align: center;
+    font-size: 40px;
+    float: left;
+
 }
 
 .navbarRework {

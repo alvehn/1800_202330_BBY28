@@ -1,11 +1,15 @@
 
-//----------------------------------------------------------
-// This function is the only function that's called.
-// This strategy gives us better control of the page.
-//----------------------------------------------------------
+// //----------------------------------------------------------
+// // This function is the only function that's called.
+// // This strategy gives us better control of the page.
+// //----------------------------------------------------------
+
+var currentUser;
+
 function doAll() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
+      currentUser = db.collection("users").doc(user.uid);
       insertNameFromFirestore(user);
       getFavourites(user)
     } else {
