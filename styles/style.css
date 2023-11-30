@@ -6,7 +6,29 @@ body {
     background-color: #f4fff8;
     /* background-color: #8baaad; */
 }
-.bi, #personalInfoFields, #eventLocation, #eventInterested, #numberAttending, #eventName, #eventTimeDate, #eventLocation, #eventType, #eventRSVP, #eventPeople, #eventHost, #eventDescription, #eventImage, #footerButtons, #goBackButton, #eventNameCreation, #eventDate, #userInfo, #userName, #profileButton, #userInfo {
+
+.bi,
+#personalInfoFields,
+#eventLocation,
+#eventInterested,
+#numberAttending,
+#eventName,
+#eventTimeDate,
+#eventLocation,
+#eventType,
+#eventRSVP,
+#eventPeople,
+#eventHost,
+#eventDescription,
+#eventImage,
+#footerButtons,
+#goBackButton,
+#eventNameCreation,
+#eventDate,
+#userInfo,
+#userName,
+#profileButton,
+#userInfo {
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -19,17 +41,23 @@ body {
     width: auto;
 }
 
+.mainTitle {
+    font-size: 30pt;
+    font-weight: 650;
+}
+
 .card-title {
     font-size: 30px;
 }
 
-#creationTitle, #eventName {
+#creationTitle,
+#eventName {
     text-align: center;
 }
 
-.list-group-item{
-    background-color:#6a994e;
-    width:100%;
+.list-group-item {
+    background-color: #6a994e;
+    width: 100%;
     text-align: center;
 }
 
@@ -39,7 +67,8 @@ body {
     align-items: center;
     padding-bottom: 10px;
 }
-.card-coordinates{
+
+.card-coordinates {
     display: none;
 }
 
@@ -53,18 +82,18 @@ body {
     font-size: 20px;
     top: 0px;
     padding: 14px;
-    
+
 }
 
 
 
 .searchButton {
-    float: left;    
+    float: left;
 }
 
-.filterButton{
+.filterButton {
     float: right;
-   
+
 }
 
 #eventCreationButton {
@@ -76,7 +105,7 @@ body {
     /* border-radius: 45px; */
 }
 
-#eventCreationButton button{
+#eventCreationButton button {
     display: flex;
     text-align: center;
     font-size: 40px;
@@ -119,9 +148,9 @@ body {
 }
 
 .navFav {
-    
+
     margin-left: 43%;
-    
+
 }
 
 .navProfile {
@@ -138,10 +167,22 @@ body {
     background-color: #d8f5e3;
 }
 
+.filterButton {
+    background-color: #ddd;
+    outline-color: black;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    border-radius: 30px;
+    display: none;
+}
+
 #result {
     display: none;
 }
 
-#rangeNums div{
+#rangeNums div {
     width: 10vw;
 }

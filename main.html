@@ -82,9 +82,16 @@
                 <i class="bi bi-filter"></i>
             </button>
 
-            <div class="dflex w-100 collapse" id="filters">
+            <div class="w-100 collapse" id="filters">
                 <h4 class="font-weight-bold">Date</h4>
-                <input type="date" class="form-control w-75" name="date-field" id="startDate" /> <br>
+                <div class="d-inline-flex w-100 pb-3">
+                    <span class="p-2">From </span>
+                    <input type="date" class="form-control w-50" name="date-field" id="startDate" />
+                    <span class="p-2">to </span>
+                    <input type="date" class="form-control w-50" name="date-field" id="endDate" />
+
+                </div>
+                <br>
                 <h4 class="font-weight-bold">Distance (km)</h4>
                 <input type="range" class="form-range" min="0" max="25" step="5" id="rangeValue">
                 <div class="d-flex flex-row justify-content-between" id="rangeNums">
@@ -99,7 +106,9 @@
                 <div class="d-flex justify-content-end">
                     <!-- <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button> -->
                     <!-- Currently you can only filter individually -->
-                    <button class="btn btn-success mt-4" type="filterOption" onclick="applyFilters()">Apply</button>
+                    <button class="btn btn-success mt-4" type="submit" data-bs-toggle="collapse"
+                        data-bs-target="#filters" aria-controls="filters" aria-expanded="false"
+                        aria-label="Toggle filters" onclick="applyFilters()">Apply</button>
 
                 </div>
             </div>
@@ -124,9 +133,11 @@
     <!-- cards go here -->
 
     <div class="container">
-        <h1 style="font-size: 30pt;">Event List</h1>
-        <div id="activeDate"></div>
-        <div id="activeRange"></div>
+        <span class="mainTitle">Event List</span>
+        <div class="d-flex w-100 pb-3" id="activeFilters">
+            <input type="button" class="filterButton" id="activeDate" onclick="clearDate()"></input>
+            <input type="button" class="filterButton" id="activeRange" onclick="clearLocation()"></input>
+        </div>
         <!-- Here is the container for cards  -->
         <div class="container">
             <div id="events-go-here" class="row row-cols-auto">
@@ -164,8 +175,9 @@
 
     <div id="eventCreationButton" class="fixed-bottom">
         <!-- <a href="newEvent.html"><button type="button" class="btn btn-success">Create a new event</button></a> -->
-        <a href="newEvent.html"><button type="button" class="btn btn-success" style="border-radius: 40px;"><i class="bi bi-plus"></i></button></a>
-        
+        <a href="newEvent.html"><button type="button" class="btn btn-success" style="border-radius: 40px;"><i
+                    class="bi bi-plus"></i></button></a>
+
     </div>
 
     <div class="navbarRework">
