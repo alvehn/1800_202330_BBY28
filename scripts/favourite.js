@@ -19,31 +19,6 @@ function doAll() {
 }
 doAll();
 
-// var currentUser;
-
-// function doAll() {
-//   firebase.auth().onAuthStateChanged(user => {
-//       if (user) {
-//           currentUser = db.collection("users").doc(user.uid); //global
-//           console.log(currentUser);
-
-//           // figure out what day of the week it is today
-//           // const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-//           // const d = new Date();
-//           // let day = weekday[d.getDay()];
-
-//           // the following functions are always called when someone is logged in
-//           // readQuote(day);
-//           // insertNameFromFirestore();
-//           // displayCardsDynamically("hikes");
-//       } else {
-//           // No user is signed in.
-//           console.log("No user is signed in");
-//           window.location.href = "login.html";
-//       }
-//   });
-// }
-// doAll();
 
 //----------------------------------------------------------
 // Wouldn't it be nice to see the User's Name on this page?
@@ -52,9 +27,7 @@ doAll();
 //----------------------------------------------------------//----------------------------------------------------------
 function insertNameFromFirestore(user) {
   db.collection("users").doc(user.uid).get().then(userDoc => {
-    console.log(userDoc.data().name)
     userName = userDoc.data().name;
-    console.log(userName)
     document.getElementById('name-goes-here').innerHTML = userName;
   })
 
@@ -71,14 +44,12 @@ function getFavourites(user) {
 
       // Get the Array of bookmarks
       var favourites = userDoc.data().favourites;
-      console.log(favourites);
 
       // Get pointer the new card template
       let newCardTemplate = document.getElementById("savedCardTemplate");
       let i = 0;
       // Iterate through the ARRAY of bookmarked hikes (document ID's)
       favourites.forEach(thisEventID => {
-        console.log(thisEventID);
         db.collection("events").doc(thisEventID).get().then(doc => {
           var title = doc.data().name; // get value of the "name" key
           // var description = doc.data().description;
@@ -130,7 +101,6 @@ function getFavourites(user) {
           today.setMinutes(0);
           today.setSeconds(0);
           today.setDate(today.getDate() - 1);
-          console.log("i is " + i);
           //update title and text and image
           if (new Date(date) < today) {
             //maybe make separate function that does this and call it in here
@@ -167,14 +137,14 @@ function updateFavourites(eventDocID) {
         favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
 
       }).then(() => {
-        console.log("favourites removed for " + eventDocID);
+        // console.log("favourites removed for " + eventDocID);
         document.getElementById(iconID).innerText = ' unsaved';
       });
     } else {
       currentUser.update({
         favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
       }).then(() => {
-        console.log(eventDocID + " added to favourites");
+        // console.log(eventDocID + " added to favourites");
         document.getElementById(iconID).innerText = ' added to favourites';
       });
     }

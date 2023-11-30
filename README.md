@@ -21,7 +21,7 @@ Technologies:
 Resources: 
 * https://www.youtube.com/watch?v=ifi6dXOl3g4 
 * COMP 1800 demo's #7-10
-* Tech Tips B01a, B01b, B01c,
+* Tech Tips B01a, B01b, B01c, B06
 * https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
 * https://www.sitepoint.com/delay-sleep-pause-wait/
 * https://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file
