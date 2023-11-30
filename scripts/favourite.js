@@ -75,13 +75,13 @@ function getFavourites(user) {
 
       // Get pointer the new card template
       let newCardTemplate = document.getElementById("savedCardTemplate");
-
+      let i = -1;
       // Iterate through the ARRAY of bookmarked hikes (document ID's)
       favourites.forEach(thisEventID => {
         console.log(thisEventID);
         db.collection("events").doc(thisEventID).get().then(doc => {
           var title = doc.data().name; // get value of the "name" key
-          var description = doc.data().description;
+          // var description = doc.data().description;
           var date = doc.data().date;             //get value of "date"
           var location = doc.data().location;     //gets value of "location"
           var tags = doc.data().tags;
@@ -123,6 +123,33 @@ function getFavourites(user) {
           //fix
           let eventCard = document.getElementById("events-go-here");
           eventCard.appendChild(newcard);
+
+          //fixes bug where it would not display events happening today
+          var today = new Date();
+          today.setHours(0);
+          today.setMinutes(0);
+          today.setSeconds(0);
+          today.setDate(today.getDate() - 1);
+          console.log("i is " + i);
+          //update title and text and image
+          if (new Date(date) < today) {
+            //maybe make separate function that does this and call it in here
+            //refer to Nod
+            // document.getElementsByClassName("card-title").item .style.opacity = "75%"
+            var titleStyle = document.querySelectorAll(".card-title");
+            titleStyle.item(i).style.opacity = "60%";
+            var tagStyle = document.querySelectorAll(".card-tags");
+            tagStyle.item(i).style.opacity = "60%";
+            var locationStyle = document.querySelectorAll(".card-location");
+            locationStyle.item(i).style.opacity = "60%";
+            var imagesStyle = document.querySelectorAll(".card-image");
+            imagesStyle.item(i).style.opacity = "60%";
+            var dateStyle = document.querySelectorAll(".card-date");
+            dateStyle.item(i).style.color = "red";
+
+
+          }
+          i++;
         })
       });
     })

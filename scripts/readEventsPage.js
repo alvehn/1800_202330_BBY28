@@ -112,6 +112,7 @@ function deleteFromStorage(eventid) {
     });
 }
 
+//from https://www.sitepoint.com/delay-sleep-pause-wait/
 //makes function wait when called
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

@@ -47,9 +47,18 @@ function eventCards(collection) {
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                 var docID = doc.id;//grab the id for that specific doc
-
+                
+                //fixes bug where it would not display events happening today
+                var today = new Date();
+                var eventDate = new Date(date);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                today.setDate(today.getDate() - 1);
+                console.log(today);
+                console.log(eventDate);
                 //update title and text and image
-                if (new Date(date) >= new Date()) {
+                if (new Date(date) >= today) {
                     newcard.querySelector('.card-title').innerHTML = title;
                     newcard.querySelector('.card-date').innerHTML = date + " " + time;
                     newcard.querySelector('.card-location').innerHTML = location;

@@ -70,29 +70,32 @@ function populateMyEvents() {
             .then(doc => {
                 myEvents = doc.data().myEvents; //get array of my posts
                 console.log(myEvents);
+                let i = -1;
                 myEvents.forEach(item => {
                     db.collection("events")
                         .doc(item)
                         .get()
                         .then(doc => {
-                            displayMyEventCards(doc, item);
+                            i++;
+                            displayMyEventCards(doc, item, i);
                         })
+                        
                 })
             })
     })
 }
 populateMyEvents();
 
-function displayMyEventCards(doc, docID) {
+function displayMyEventCards(doc, docID, i) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "eventCardTemplate" and store it in the cardTemplate variable.
     var title = doc.data().name;                // get value of the "name" 
-    var description = doc.data().description; //get value of the "description"
+    // var description = doc.data().description; //get value of the "description"
     var date = doc.data().date;             //get value of "date"
     var location = doc.data().location;     //gets value of "location"
     var tags = doc.data().tags;
     var time = doc.data().time;
     var image = doc.data().image;
-    let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+    var newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
 
     //update title and text and image
@@ -108,20 +111,56 @@ function displayMyEventCards(doc, docID) {
 
     //attach to gallery
     document.getElementById("events-go-here").appendChild(newcard);
+    //fixes bug where it would not display events happening today
+    var today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setDate(today.getDate() - 1);
+    console.log("i is " + i);
+    //update title and text and image
+    if (new Date(date) < today) {
+        //maybe make separate function that does this and call it in here
+        //refer to Nod
+        // document.getElementsByClassName("card-title").item .style.opacity = "75%"
+        var titleStyle = document.querySelectorAll(".card-title");
+        titleStyle.item(i).style.opacity = "60%";
+        var tagStyle = document.querySelectorAll(".card-tags");
+        tagStyle.item(i).style.opacity = "60%";
+        var locationStyle = document.querySelectorAll(".card-location");
+        locationStyle.item(i).style.opacity = "60%";
+        var imagesStyle = document.querySelectorAll(".card-image");
+        imagesStyle.item(i).style.opacity = "60%";
+        var dateStyle = document.querySelectorAll(".card-date");
+        dateStyle.item(i).style.color = "red";
+        
 
-    console.log(new Date(date));
-    if (new Date(date) < new Date()) {
-        document.getElementById("title").style.opacity = "75%";
-        document.getElementById("date").style.opacity = "75%";
-        document.getElementById("date").style.color = "red";
-        document.getElementById("location").style.opacity = "75%";
-        document.getElementById("image").style.opacity = "75%";
-        document.getElementById("tags").style.opacity = "75%";
     }
 
 
 
 }
+
+// function modifyPastEvents() {
+//     let dates = document.querySelectorAll(".card-date");
+//     console.log(dates);
+//     var today = new Date();
+//     today.setHours(0);
+//     today.setMinutes(0);
+//     today.setSeconds(0);
+//     today.setDate(today.getDate() - 1);
+//     console.log(today);    
+//     dates.forEach(date => {
+//         console.log(new Date(date) < today);
+//         if (new Date(date) < today) {
+//             //accesses the variable that determines whether a card is visible or not
+//             date.parentNode.parentNode.style.opacity = "75%";
+//         }
+//     })
+// }
+
+// modifyPastEvents();
+
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
