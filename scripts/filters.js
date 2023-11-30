@@ -1,51 +1,67 @@
-
+var filteredDates = [];
+var filteredLocations = [];
 function filterDate() {
     const events = document.querySelectorAll('.eventCard');
+    var activeDate = document.getElementById('activeDate');
 
-    var dateB = document.getElementById('startDate').value;
-    var dater = "" + dateB;
-    var year = parseInt(dater.substring(0, 4));
-    var month = parseInt(dater.substring(5, 7)) - 1;
-    var day = parseInt(dater.substring(8, 10));
+    var dateS = document.getElementById('startDate').value;
+    var dateE = document.getElementById('endDate').value;
+    console.log("date:", dateE);
+    var startDate = new Date(dateS);
+    startDate.setHours(24, 0, 0, 0);
+    var endDate;
+    console.log(dateE, dateS, "startdate", startDate, "end", endDate);
+    if (dateE == null || dateE == "") {
+        activeDate.value = "After " + dateS;
+    } else {
+        endDate = new Date(dateE);
+        endDate.setHours(48, 0, 0, 0);
+        activeDate.value = dateS + " - " + dateE;
+    }
+    activeDate.style.display = "block";
 
-    var dateBad = new Date(year, month, day);
-
-    //formats date
-    dateBad = "" + dateBad;
-    var date = dateBad.substring(0, 15);
-
-    const startDate = new Date(date);
     events.forEach(element => {
         var eventDate = new Date(element.querySelector('.card-date').innerHTML);
-        console.log("eventdate", eventDate, " startDate  ", startDate);
-
-        if (eventDate < startDate) {
-            element.style.display = "none";
+        console.log("eventdate", eventDate, " startDate  ", startDate, " endDate  ", endDate);
+        if (endDate != null || endDate != "") {
+            if (eventDate < startDate || eventDate > endDate) {
+                element.style.display = "none";
+                filteredDates.push(element.querySelector('i').id);
+                console.log("hello");
+            }
+        } else {
+            if (eventDate < startDate) {
+                element.style.display = "none";
+                filteredDates.push(element.querySelector('i').id);
+            }
         }
+
     });
 }
 
 function filterLocation() {
     const events = document.querySelectorAll('.eventCard');
     var filterLocation = document.getElementById('rangeValue').value;
-
+    var activeRange = document.getElementById('activeRange');
     navigator.geolocation.getCurrentPosition(position => {
         const userLocation = [position.coords.latitude, position.coords.longitude];
         console.log(userLocation[0], "---------", userLocation[1], filterLocation);
 
 
         if (filterLocation > 0 && filterLocation < 25) {
+            activeRange.style.display = "inline-block";
+            activeRange.value = "Within " + filterLocation + "km X";
             events.forEach(element => {
                 var eventLocation = element.querySelector('.card-coordinates').innerHTML.split(',');
                 console.log("Eloc: ", eventLocation, "fLoc", filterLocation);
                 var d = getDistanceFromLatLonInKm(userLocation[0], userLocation[1], eventLocation[1], eventLocation[0]);
-                console.log(d);
                 if (d > filterLocation) {
-                    console.log("hello");
+                    filteredLocations.push(element.querySelector('i').id);
                     element.style.display = "none";
                 }
             });
         }
+        console.log(filteredLocations);
     });
 
 }
@@ -68,25 +84,15 @@ function deg2rad(deg) {
 }
 
 
-// function filterLikes() {
-//     const events = document.querySelectorAll('.eventCard');
-//     var filterLikes = document.getElementById('favourites').value;
-//     events.forEach(element => {
-//         var eventIsFavourited = element.querySelector('i").innerHTML;
-//         if(eventIsFourited != filterLikes) {
-//             element.style.display = "none";
-//         }
-//     })
-// }
-
 function applyFilters() {
     const events = document.querySelectorAll('.eventCard');
-    var dateFilter = document.getElementById('startDate').value;
+    var startDate = document.getElementById('startDate').value;
+
     var locationFilter = document.getElementById('rangeValue').value
     events.forEach(element => {
         element.style.display = "block";
     })
-    if (dateFilter != null || dateFilter != "") {
+    if (startDate != null || startDate != "") {
         filterDate();
     }
 
@@ -94,3 +100,28 @@ function applyFilters() {
         filterLocation();
     }
 }
+
+function clearLocation() {
+    const events = document.querySelectorAll('.eventCard');
+    events.forEach(element => {
+        var match = element.querySelector('i').id;
+        if (filteredLocations.includes(match) && !filteredDates.includes(match)) {
+            element.style.display = "block";
+        }
+    });
+    filteredLocations = [];
+    document.getElementById('activeRange').style.display = "none";
+}
+
+function clearDate() {
+    const events = document.querySelectorAll('.eventCard');
+    events.forEach(element => {
+        var match = element.querySelector('i').id;
+        if (!filteredLocations.includes(match) && filteredDates.includes(match)) {
+            element.style.display = "block";
+        }
+    });
+    filteredDates = [];
+    document.getElementById('activeDate').style.display = "none";
+}
+
