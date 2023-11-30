@@ -19,12 +19,14 @@ body {
 #eventRSVP,
 #eventPeople,
 #eventHost,
+#eventTime,
 #eventDescription,
 #eventImage,
 #footerButtons,
 #goBackButton,
 #eventNameCreation,
 #eventDate,
+#deleteButton,
 #userInfo,
 #userName,
 #profileButton,
@@ -43,7 +45,7 @@ body {
 
 .mainTitle {
     font-size: 30pt;
-    font-weight: 650;
+    font-weight: 550;
 }
 
 .card-title {
@@ -97,21 +99,31 @@ body {
 }
 
 #eventCreationButton {
+    background-color: #4eb2d6;
     /* height: auto; */
     position: fixed;
-    /* float: left; */
+    height: 70px;
+    width: 70px;
     margin-bottom: 3.75em;
     margin-left: 5px;
-    /* border-radius: 45px; */
-}
-
-#eventCreationButton button {
-    display: flex;
+    border-radius: 45px;
     text-align: center;
+    display: flex;
+}
+
+.bi-plus {
+    
+    display: flex;
+    margin-left: 10px;
+    margin-top: 16px;
     font-size: 40px;
+    /* border-radius: 5000px; */
     float: left;
+    color: #ffffff;
 
 }
+
+
 
 .navbarRework {
     background-color: #60d394;
@@ -165,6 +177,12 @@ body {
 
 .btn-outline-dark {
     background-color: #d8f5e3;
+    border-color: #d8f5e3;
+}
+
+.btn-success {
+    background-color: #4eb2d6;
+    border-color: #4eb2d6;
 }
 
 .filterButton {
@@ -177,6 +195,7 @@ body {
     margin: 4px 2px;
     border-radius: 30px;
     display: none;
+
 }
 
 #result {
