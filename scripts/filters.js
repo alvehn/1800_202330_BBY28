@@ -6,11 +6,11 @@ function filterDate() {
 
     var dateS = document.getElementById('startDate').value;
     var dateE = document.getElementById('endDate').value;
-    console.log("date:", dateE);
+
     var startDate = new Date(dateS);
     startDate.setHours(24, 0, 0, 0);
     var endDate;
-    console.log(dateE, dateS, "startdate", startDate, "end", endDate);
+
     if (dateE == null || dateE == "") {
         activeDate.value = "After " + dateS;
     } else {
@@ -22,12 +22,10 @@ function filterDate() {
 
     events.forEach(element => {
         var eventDate = new Date(element.querySelector('.card-date').innerHTML);
-        console.log("eventdate", eventDate, " startDate  ", startDate, " endDate  ", endDate);
         if (endDate != null || endDate != "") {
             if (eventDate < startDate || eventDate > endDate) {
                 element.style.display = "none";
                 filteredDates.push(element.querySelector('i').id);
-                console.log("hello");
             }
         } else {
             if (eventDate < startDate) {
@@ -45,15 +43,12 @@ function filterLocation() {
     var activeRange = document.getElementById('activeRange');
     navigator.geolocation.getCurrentPosition(position => {
         const userLocation = [position.coords.latitude, position.coords.longitude];
-        console.log(userLocation[0], "---------", userLocation[1], filterLocation);
-
 
         if (filterLocation > 0 && filterLocation < 25) {
             activeRange.style.display = "inline-block";
             activeRange.value = "Within " + filterLocation + "km X";
             events.forEach(element => {
                 var eventLocation = element.querySelector('.card-coordinates').innerHTML.split(',');
-                console.log("Eloc: ", eventLocation, "fLoc", filterLocation);
                 var d = getDistanceFromLatLonInKm(userLocation[0], userLocation[1], eventLocation[1], eventLocation[0]);
                 if (d > filterLocation) {
                     filteredLocations.push(element.querySelector('i').id);
@@ -61,7 +56,6 @@ function filterLocation() {
                 }
             });
         }
-        console.log(filteredLocations);
     });
 
 }
