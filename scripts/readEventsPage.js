@@ -25,7 +25,6 @@ function displayFullEvent() {
         .get()
         .then(doc => {
             //gets event creators latest name instead of outdated displayName
-            console.log(doc.data().host);
             var eventCreator;
             db.collection("users")
                 .doc(doc.data().host)
@@ -38,12 +37,8 @@ function displayFullEvent() {
                     var description = doc.data().description; //get value of the "description"
                     var date = doc.data().date;             //get value of "date"
                     var location = doc.data().locationRaw;     //gets value of "location"
-                    // var location = doc.data().locationRaw; //get full value of "location" possibly for event page
                     var imageBad = doc.data().image;
                     var time = doc.data().time;
-                    
-                    var docID = doc.id;
-
                     
                     // populates name, location, title, and description
                     document.getElementById("eventName").innerHTML = title;
@@ -76,7 +71,6 @@ function deleteEvent(eventid) {
     db.collection("events").doc(eventid)
         .delete()
         .then(() => {
-            console.log("1. Document deleted from Posts collection");
             deleteFromMyEvents(eventid);
         }).catch((error) => {
             console.error("Error removing document: ", error);
@@ -90,7 +84,6 @@ function deleteFromMyEvents(eventid) {
             myEvents: firebase.firestore.FieldValue.arrayRemove(eventid)
         })
             .then(() => {
-                console.log("2. post deleted from user doc");
                 deleteFromStorage(eventid);
             })
     })
@@ -105,24 +98,18 @@ function deleteFromStorage(eventid) {
     imageRef.delete().then(() => {
         // File deleted successfully
         deleteFromFavourites(eventid);
-        console.log("3. image deleted from storage");
         document.getElementById("deleteEvent").innerHTML = "Event Deleted";
         sleep(1200).then(() => { window.location.href = "profile.html"; });
     }).catch((error) => {
-        console.log("Uh-Oh, " + error);
+        console.log("Error: " + error);
     });
 }
 
 function deleteFromFavourites(eventid) {
     db.collection("users").get()
     .then(users =>{
-        console.log(users);
         users.forEach(user => {
-            console.log(user);
-            console.log(user.id);
-            console.log(user.data());
             fav = user.data().favourites;
-            console.log(fav);
             for (let i = 0; i < fav.length; i++){
                 if (fav[i] === eventid) {
                     fav.splice(i, 1);

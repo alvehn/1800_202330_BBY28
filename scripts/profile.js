@@ -38,7 +38,6 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    //enter code here
     $("#profileBannerButton").hide();
 
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
@@ -89,7 +88,6 @@ populateMyEvents();
 function displayMyEventCards(doc, docID, i) {
     let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "eventCardTemplate" and store it in the cardTemplate variable.
     var title = doc.data().name;                // get value of the "name" 
-    // var description = doc.data().description; //get value of the "description"
     var date = doc.data().date;             //get value of "date"
     var location = doc.data().location;     //gets value of "location"
     var tags = doc.data().tags;
@@ -120,9 +118,6 @@ function displayMyEventCards(doc, docID, i) {
     console.log("i is " + i);
     //update title and text and image
     if (new Date(date) < today) {
-        //maybe make separate function that does this and call it in here
-        //refer to Nod
-        // document.getElementsByClassName("card-title").item .style.opacity = "75%"
         var titleStyle = document.querySelectorAll(".card-title");
         titleStyle.item(i).style.opacity = "60%";
         var tagStyle = document.querySelectorAll(".card-tags");
@@ -141,30 +136,10 @@ function displayMyEventCards(doc, docID, i) {
 
 }
 
-// function modifyPastEvents() {
-//     let dates = document.querySelectorAll(".card-date");
-//     console.log(dates);
-//     var today = new Date();
-//     today.setHours(0);
-//     today.setMinutes(0);
-//     today.setSeconds(0);
-//     today.setDate(today.getDate() - 1);
-//     console.log(today);    
-//     dates.forEach(date => {
-//         console.log(new Date(date) < today);
-//         if (new Date(date) < today) {
-//             //accesses the variable that determines whether a card is visible or not
-//             date.parentNode.parentNode.style.opacity = "75%";
-//         }
-//     })
-// }
-
-// modifyPastEvents();
-
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
-    var fileInput = document.getElementById("profileImage"); // pointer #1
+    var fileInput = document.getElementById("profileImage"); 
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {

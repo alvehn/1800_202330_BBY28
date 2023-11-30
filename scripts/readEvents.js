@@ -1,21 +1,9 @@
-//USE FUNCTION THATS COMMENTED OUT BELOW FOR USER PROFILE PAGE
 var currentUser;
 
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             currentUser = db.collection("users").doc(user.uid); //global
-            console.log(currentUser);
-
-            // figure out what day of the week it is today
-            // const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-            // const d = new Date();
-            // let day = weekday[d.getDay()];
-
-            // the following functions are always called when someone is logged in
-            // readQuote(day);
-            // insertNameFromFirestore();
-            // displayCardsDynamically("hikes");
         } else {
             // No user is signed in.
             console.log("No user is signed in");
@@ -25,17 +13,13 @@ function doAll() {
 }
 doAll();
 
-//------------------------------------------------------------------------------
-// Input parameter is a string representing the collection we are reading from
-//------------------------------------------------------------------------------
-
+// Collection parameter represents collection we are reading from
 function eventCards(collection) {
-    let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable.
+    let cardTemplate = document.getElementById("eventCardTemplate"); // Retrieve the HTML element with the ID "eventCardTemplate" and store it in the cardTemplate variable.
     db.collection(collection).get()   //the collection called "events"
         .then(allEvents => {
             allEvents.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;                // get value of the "name" 
-                var description = doc.data().description; //get value of the "description"
                 var date = doc.data().date;             //get value of "date"
                 var location = doc.data().location;     //gets value of "location"
                 var coordinates = doc.data().coordinates
@@ -43,7 +27,6 @@ function eventCards(collection) {
                 var time = doc.data().time;
                 var image = doc.data().image
 
-                // var favourited = doc.data().favourited;
                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
                 var docID = doc.id;//grab the id for that specific doc
@@ -63,7 +46,6 @@ function eventCards(collection) {
                     newcard.querySelector('.card-date').innerHTML = date + " " + time;
                     newcard.querySelector('.card-location').innerHTML = location;
                     newcard.querySelector('.card-coordinates').innerHTML = coordinates;
-                    // newcard.querySelector('.card-description').innerHTML = description;
                     newcard.querySelector('.card-tags').innerHTML = tags;
                     newcard.querySelector('.card-image').src = image;
 
@@ -75,7 +57,6 @@ function eventCards(collection) {
                         let favourites = userDoc.data().favourites;
                         if (favourites.includes(docID)) {
                             document.getElementById('save-' + docID).innerText = ' added to favourites';
-                            // document.querySelector('.bi-heart').classList.
                         } else {
                             document.getElementById('save-' + docID).innerText = ' ';
                         }
