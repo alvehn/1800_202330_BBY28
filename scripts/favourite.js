@@ -75,7 +75,7 @@ function getFavourites(user) {
 
       // Get pointer the new card template
       let newCardTemplate = document.getElementById("savedCardTemplate");
-      let i = -1;
+      let i = 0;
       // Iterate through the ARRAY of bookmarked hikes (document ID's)
       favourites.forEach(thisEventID => {
         console.log(thisEventID);
