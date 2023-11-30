@@ -55,7 +55,16 @@ function postEvent() {
                 s += char;
             }
         }
-        var location = stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
+        var location = "";
+        for (let i = 0; i < stringArray.length; i++) {
+            if (stringArray[i] === "") {
+                stringArray.splice(i, 1);
+            }
+            else {
+                location += stringArray[i] + ", ";
+            }
+        }
+        //var  stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
 
         var sports = document.getElementById("sports");
         var food = document.getElementById("food");

@@ -37,7 +37,7 @@ function displayFullEvent() {
                     var title = doc.data().name;                // get value of the "name" 
                     var description = doc.data().description; //get value of the "description"
                     var date = doc.data().date;             //get value of "date"
-                    var location = doc.data().location;     //gets value of "location"
+                    var location = doc.data().locationRaw;     //gets value of "location"
                     // var location = doc.data().locationRaw; //get full value of "location" possibly for event page
                     var imageBad = doc.data().image;
                     var time = doc.data().time;
@@ -104,12 +104,38 @@ function deleteFromStorage(eventid) {
     // Delete the file
     imageRef.delete().then(() => {
         // File deleted successfully
+        deleteFromFavourites(eventid);
         console.log("3. image deleted from storage");
         document.getElementById("deleteEvent").innerHTML = "Event Deleted";
         sleep(1200).then(() => { window.location.href = "profile.html"; });
     }).catch((error) => {
         console.log("Uh-Oh, " + error);
     });
+}
+
+function deleteFromFavourites(eventid) {
+    db.collection("users").get()
+    .then(users =>{
+        console.log(users);
+        users.forEach(user => {
+            console.log(user);
+            console.log(user.id);
+            console.log(user.data());
+            fav = user.data().favourites;
+            console.log(fav);
+            for (let i = 0; i < fav.length; i++){
+                if (fav[i] === eventid) {
+                    fav.splice(i, 1);
+                    db.collection("users")
+                    .doc(user.id)
+                    .update({
+                        favourites: fav
+                    })
+                }
+            }
+        })
+    })
+    
 }
 
 //from https://www.sitepoint.com/delay-sleep-pause-wait/
