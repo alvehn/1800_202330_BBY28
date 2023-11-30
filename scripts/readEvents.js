@@ -38,8 +38,6 @@ function eventCards(collection) {
                 today.setMinutes(0);
                 today.setSeconds(0);
                 today.setDate(today.getDate() - 1);
-                console.log(today);
-                console.log(eventDate);
                 //update title and text and image
                 if (new Date(date) >= today) {
                     newcard.querySelector('.card-title').innerHTML = title;
@@ -83,14 +81,12 @@ function updateFavourites(eventDocID) {
                 favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
 
             }).then(() => {
-                console.log("favourites removed for " + eventDocID);
                 document.getElementById(iconID).innerText = ' unsaved';
             });
         } else {
             currentUser.update({
                 favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
             }).then(() => {
-                console.log(eventDocID + " added to favourites");
                 document.getElementById(iconID).innerText = ' added to favourites';
             });
         }
