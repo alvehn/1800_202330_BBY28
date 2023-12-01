@@ -1,8 +1,8 @@
-
+document.getElementById("timeValue").defaultValue = "12:00";
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
-    var fileInput = document.getElementById("eventImages"); // pointer #1
+    var fileInput = document.getElementById("eventImages"); 
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
@@ -16,9 +16,7 @@ function postEvent() {
     document.getElementById("postButtonText").disabled = true;
     var user = firebase.auth().currentUser;
     if (user) {
-        var currentUser = db.collection("users").doc(user.uid);
         var userID = user.uid;
-        // var newEvent = db.collection("events").doc();
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
         var dateB = document.getElementById("dateValue").value;
@@ -64,7 +62,6 @@ function postEvent() {
                 location += stringArray[i] + ", ";
             }
         }
-        //var  stringArray[0] + ", " + stringArray[1] + ", " + stringArray[3];
 
         var sports = document.getElementById("sports");
         var food = document.getElementById("food");
@@ -83,8 +80,6 @@ function postEvent() {
         if (picnic.checked) {
             tags.push(" Picnic");
         }
-
-        // console.log(eventName, description, date, locationOfEvent);
 
         db.collection("events").add({
             host: userID,
@@ -109,6 +104,7 @@ function postEvent() {
 
 }
 
+//from https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
 //formats the 24 time to 12 hour am/pm 
 function formatAMPM(date) {
     var hours = parseInt(date.substring(0, 2)); //gets hour
@@ -190,6 +186,7 @@ function saveEventIDforUser(eventDocID) {
     })
 }
 
+// from https://www.sitepoint.com/delay-sleep-pause-wait/
 //pauses the function for a given amount of milliseconds 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

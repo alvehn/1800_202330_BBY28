@@ -37,7 +37,6 @@ function interestedEvent(userID) {
             console.log(document.getElementById("eventCount").innerHTML);
         });
     var check;
-    // var check = true;
     document.getElementById("eventInterested").addEventListener("click", () => {
         //gets interested array
         console.log(userID);
@@ -51,7 +50,6 @@ function interestedEvent(userID) {
             }).then(() => {
                 var i = 0;
                 //checks if user has already clicked button 
-                //console.log("Array: " + interestedEvents +  " Current: " + ID);
                 for (i = 0; i <= count.length; i++) {
                     if (count[i] === userID) {
                         check = false;

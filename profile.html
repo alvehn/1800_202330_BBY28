@@ -106,7 +106,7 @@
     </nav>
     <!-- <div id="profileImages"> -->
     <img src="" style="max-width: 100%;" class="mx-auto d-block" alt="Choose profile image" id="profileImageSelected">
-    <div id="profileBannerButton">
+    <div id="profileImageButton">
         <input type="file" id="profileImage">
     </div>
     <!-- </div> -->
@@ -124,9 +124,9 @@
 
     <div id="profileButton">
 
-        <button type="button" class="btn btn-outline-dark" onclick="editUserInfo()">Edit</button>
+        <button type="button" class="btn btn-outline-dark" id="editButton" onclick="editUserInfo()">Edit</button>
 
-        <button type="button" class="btn btn-outline-dark" onclick="saveUserInfo()">Save</button>
+        <button type="button" class="btn btn-outline-dark" id="saveButton" onclick="saveUserInfo()">Save</button>
 
     </div><br>
 
@@ -169,11 +169,8 @@
     </div>
     <br><br><br><br>
 
-    <div class="navbarRework">
-        <div class="navBrowse"><a href="main.html"><i class="bi bi-house-fill"></i></a></div>
-        <div class="navFav"><a href="favourites.html"><i class="bi bi-heart-fill"></i></a></div>
-        <div class="navProfile"><a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a></div>
-    </div>
+    <nav id="footerPlaceholder"></nav>
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
@@ -182,6 +179,8 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="./scripts/firebaseAPI_bby28.js"></script>
     <script src="./scripts/profile.js"></script>
+    <script src="scripts/skeleton.js"></script>
+
 
 </body>
 

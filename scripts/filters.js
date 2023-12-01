@@ -86,7 +86,11 @@ function applyFilters() {
     events.forEach(element => {
         element.style.display = "block";
     })
-    if (startDate != null || startDate != "") {
+
+    console.log("outside",startDate.value);
+
+    if (startDate != null && startDate != "") {
+        console.log("inside",startDate);
         filterDate();
     }
 
