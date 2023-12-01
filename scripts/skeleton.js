@@ -4,7 +4,7 @@ function loadSkeleton() {
         //if the pointer to "user" object is not null, then someone is logged in
         if (user) {                   
             // shows navbar only signed in users can see
-            $('#navbarPlaceholder').load('nav_after_login.html');
+            $('#footerPlaceholder').load('footer_after_login.html');
         } 
     });
 }
