@@ -3,7 +3,8 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f4fff8;
+    background-color: #fbeef6;
+    /* background-color: #f4fff8; */
     /* background-color: #8baaad; */
 }
 
@@ -77,7 +78,8 @@ body {
 
 
 .navbar {
-    background-color: #60d394;
+    /* background-color: #60d394; */
+    background-color: #CDD9FF;
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -99,7 +101,8 @@ body {
 }
 
 #eventCreationButton {
-    background-color: #4eb2d6;
+    /* background-color: #4eb2d6; */
+    background-color: #f7455a;
     /* height: auto; */
     position: fixed;
     height: 70px;
@@ -126,7 +129,8 @@ body {
 
 
 .navbarRework {
-    background-color: #60d394;
+    /* background-color: #60d394; */
+    background-color: #CDD9FF;
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -176,13 +180,17 @@ body {
 }
 
 .btn-outline-dark {
-    background-color: #d8f5e3;
-    border-color: #d8f5e3;
+    /* background-color: #d8f5e3;
+    border-color: #d8f5e3; */
+    background-color: #f4c8e4;
+    border-color: #f4c8e4;
 }
 
 .btn-success {
-    background-color: #4eb2d6;
-    border-color: #4eb2d6;
+    /* background-color: #4eb2d6;
+    border-color: #4eb2d6; */
+    background-color: #f7455a;
+    border-color: #f7455a;
 }
 
 .filterButton {
