@@ -1,4 +1,5 @@
-$("#profileBannerButton").hide();
+$("#profileImageButton").hide();
+$("#saveButton").hide();
 var currentUser;               //points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
@@ -34,11 +35,13 @@ populateUserInfo();
 function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
-    $("#profileBannerButton").show();
+    $("#profileImageButton").show();
+    $("#saveButton").show();
 }
 
 function saveUserInfo() {
-    $("#profileBannerButton").hide();
+    $("#profileImageButton").hide();
+    $("#saveButton").hide();
 
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
     uploadPic(currentUser.id);
