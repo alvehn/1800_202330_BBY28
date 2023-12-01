@@ -41,9 +41,9 @@ function editUserInfo() {
 
 function saveUserInfo() {
     $("#profileImageButton").hide();
-    $("#saveButton").hide();
 
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
+
     uploadPic(currentUser.id);
 
     currentUser.update({
@@ -81,7 +81,7 @@ function populateMyEvents() {
                             i++;
                             displayMyEventCards(doc, item, i);
                         })
-                        
+
                 })
             })
     })
@@ -131,7 +131,7 @@ function displayMyEventCards(doc, docID, i) {
         imagesStyle.item(i).style.opacity = "60%";
         var dateStyle = document.querySelectorAll(".card-date");
         dateStyle.item(i).style.color = "red";
-        
+
 
     }
 
@@ -142,7 +142,7 @@ function displayMyEventCards(doc, docID, i) {
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
-    var fileInput = document.getElementById("profileImage"); 
+    var fileInput = document.getElementById("profileImage");
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
@@ -166,34 +166,41 @@ listenFileSelect();
 // and we know the post's document id.
 //------------------------------------------------
 function uploadPic(profilePicID) {
-    console.log("inside uploadPic " + profilePicID);
-    var storageRef = storage.ref("profile/" + profilePicID + ".jpg");
-    console.log(storageRef);
+    if (ImageFile != undefined) {
+        console.log(ImageFile);
+        document.getElementById("saveButton").innerHTML = "Saving...";
+        console.log("inside uploadPic " + profilePicID);
+        var storageRef = storage.ref("profile/" + profilePicID + ".jpg");
+        console.log(storageRef);
 
-    storageRef.put(ImageFile)   //global variable ImageFile
+        storageRef.put(ImageFile)   //global variable ImageFile
 
-        // AFTER .put() is done
-        .then(function () {
-            console.log('2. Uploaded to Cloud Storage.');
-            storageRef.getDownloadURL()
+            // AFTER .put() is done
+            .then(function () {
+                console.log('2. Uploaded to Cloud Storage.');
+                storageRef.getDownloadURL()
 
-                // AFTER .getDownloadURL is done
-                .then(function (url) { // Get URL of the uploaded file
-                    console.log("3. Got the download URL.");
+                    // AFTER .getDownloadURL is done
+                    .then(function (url) { // Get URL of the uploaded file
+                        console.log("3. Got the download URL.");
 
-                    // Now that the image is on Storage, we can go back to the
-                    // post document, and update it with an "image" field
-                    // that contains the url of where the picture is stored.
-                    db.collection("users").doc(profilePicID).update({
-                        profilePic: url // Save the URL into users collection
-                    })
-                        // AFTER .update is done
-                        .then(function () {
-                            console.log('4. Added pic URL to Firestore.');
+                        // Now that the image is on Storage, we can go back to the
+                        // post document, and update it with an "image" field
+                        // that contains the url of where the picture is stored.
+                        db.collection("users").doc(profilePicID).update({
+                            profilePic: url // Save the URL into users collection
                         })
-                })
-        })
-        .catch((error) => {
-            console.log("error uploading to cloud storage");
-        })
+                            // AFTER .update is done
+                            .then(function () {
+                                
+                                console.log('4. Added pic URL to Firestore.');
+                                window.location.href = "profile.html";
+                            })
+                    })
+            })
+            .catch((error) => {
+                console.log("error uploading to cloud storage");
+            })
+    }
+    $("#saveButton").hide();
 }
