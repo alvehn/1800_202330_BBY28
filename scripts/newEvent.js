@@ -1,4 +1,4 @@
-
+document.getElementById("timeValue").defaultValue = "12:00";
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
