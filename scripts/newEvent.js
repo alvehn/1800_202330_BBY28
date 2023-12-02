@@ -1,4 +1,3 @@
-document.getElementById("timeValue").defaultValue = "12:00";
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
@@ -41,7 +40,6 @@ function postEvent() {
 
         var count = [];
         var locationOfEvent = localStorage.getItem("place_name");
-        // console.log(locationOfEvent);
         var eventCoordinates = localStorage.getItem("place_coord");
         var tags = [];
 
@@ -86,7 +84,7 @@ function postEvent() {
             tags.push(" Picnic");
         }
 
-        if (validateForm(eventName, description, imageGood, location)) {
+        if (validateForm(eventName, description, imageGood, location, time)) {
             db.collection("events").add({
                 host: userID,
                 name: eventName,
@@ -116,8 +114,11 @@ var offcanvasElement3 = document.getElementById("offcanvasBox3");
 var offcanvas3 = new bootstrap.Offcanvas(offcanvasElement3);
 var offcanvasElement4 = document.getElementById("offcanvasBox4");
 var offcanvas4 = new bootstrap.Offcanvas(offcanvasElement4);
-function validateForm(eventName, description, imageGood, location) {
+var offcanvasElement5 = document.getElementById("offcanvasBox5");
+var offcanvas5 = new bootstrap.Offcanvas(offcanvasElement5);
+function validateForm(eventName, description, imageGood, location, time) {
     var check;
+    console.log(time);
     if (eventName.trim() === "") {
         console.log(eventName);
         document.getElementById("postButtonText").innerHTML = "Save";
@@ -142,6 +143,12 @@ function validateForm(eventName, description, imageGood, location) {
         document.getElementById("postButtonText").disabled = false;
         check = false;
         offcanvas4.toggle();
+    } else if (time.trim() === "12:NaN am") {
+        console.log(time);
+        document.getElementById("postButtonText").innerHTML = "Save";
+        document.getElementById("postButtonText").disabled = false;
+        check = false;
+        offcanvas5.toggle();
     }
     else {
         check = true;
