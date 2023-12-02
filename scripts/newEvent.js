@@ -2,7 +2,7 @@ document.getElementById("timeValue").defaultValue = "12:00";
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
-    var fileInput = document.getElementById("eventImages"); 
+    var fileInput = document.getElementById("eventImages");
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
@@ -10,17 +10,20 @@ function listenFileSelect() {
     })
 }
 listenFileSelect();
-var imageBad;
+
+var imageGood;
 function postEvent() {
+
     document.getElementById("postButtonText").innerHTML = "Loading...";
     document.getElementById("postButtonText").disabled = true;
     var user = firebase.auth().currentUser;
     if (user) {
+        check = true;
         var userID = user.uid;
         var eventName = document.getElementById("eventNaming").value;
         var description = document.getElementById("description").value;
         var dateB = document.getElementById("dateValue").value;
-        
+
         //reads and formats date
         var dater = "" + dateB;
         var year = parseInt(dater.substring(0, 4));
@@ -29,15 +32,16 @@ function postEvent() {
         var dateBad = new Date(year, month, day);
         dateBad = "" + dateBad;
         var date = dateBad.substring(0, 15); //grabs only date details and leaves out time and timezone details
-       
-        imageBad = document.getElementById("eventImages").value; //image of event
+
+        imageGood = document.getElementById("eventImages").value; //image of event
 
         //reads and formats time
         var timeBad = document.getElementById("timeValue").value //24 hour time
         var time = formatAMPM(timeBad); //24 hour time converted to 12 hour time
 
-        var c = [];
+        var count = [];
         var locationOfEvent = localStorage.getItem("place_name");
+        // console.log(locationOfEvent);
         var eventCoordinates = localStorage.getItem("place_coord");
         var tags = [];
 
@@ -62,6 +66,7 @@ function postEvent() {
                 location += stringArray[i] + ", ";
             }
         }
+        console.log(location);
 
         var sports = document.getElementById("sports");
         var food = document.getElementById("food");
@@ -81,27 +86,68 @@ function postEvent() {
             tags.push(" Picnic");
         }
 
-        db.collection("events").add({
-            host: userID,
-            name: eventName,
-            description: description,
-            date: date,
-            image: imageBad,
-            location: location,
-            locationRaw: locationOfEvent, //in case full event address needs to be displayed
-            coordinates: eventCoordinates,
-            count: c, //array of users interested in going to event
-            tags: tags,
-            time: time
-        }).then(doc => {
-            console.log("1. Event document added!");
-            console.log(doc.id);
-            uploadPic(doc.id);
-        })
-    } else {
-        console.log("No user is signed in");
+        if (validateForm(eventName, description, imageGood, location)) {
+            db.collection("events").add({
+                host: userID,
+                name: eventName,
+                description: description,
+                date: date,
+                image: imageGood,
+                location: locationOfEvent,  //in case modified string value is needed
+                locationRaw: locationOfEvent, //in case full event address needs to be displayed
+                coordinates: eventCoordinates,
+                count: count, //array of users interested in going to event
+                tags: tags,
+                time: time
+            }).then(doc => {
+                console.log("1. Event document added!");
+                console.log(doc.id);
+                uploadPic(doc.id);
+            })
+        }
     }
 
+}
+var offcanvasElement1 = document.getElementById("offcanvasBox1");
+var offcanvas1 = new bootstrap.Offcanvas(offcanvasElement1);
+var offcanvasElement2 = document.getElementById("offcanvasBox2");
+var offcanvas2 = new bootstrap.Offcanvas(offcanvasElement2);
+var offcanvasElement3 = document.getElementById("offcanvasBox3");
+var offcanvas3 = new bootstrap.Offcanvas(offcanvasElement3);
+var offcanvasElement4 = document.getElementById("offcanvasBox4");
+var offcanvas4 = new bootstrap.Offcanvas(offcanvasElement4);
+function validateForm(eventName, description, imageGood, location) {
+    var check;
+    if (eventName.trim() === "") {
+        console.log(eventName);
+        document.getElementById("postButtonText").innerHTML = "Save";
+        document.getElementById("postButtonText").disabled = false;
+        check = false;
+        offcanvas1.toggle();
+    } else if (description.trim() === "") {
+        console.log(description);
+        document.getElementById("postButtonText").innerHTML = "Save";
+        document.getElementById("postButtonText").disabled = false;
+        check = false;
+        offcanvas2.toggle();
+    } else if (imageGood.trim() === "") {
+        console.log(imageGood);
+        document.getElementById("postButtonText").innerHTML = "Save";
+        document.getElementById("postButtonText").disabled = false;
+        check = false;
+        offcanvas3.toggle();
+    } else if (location.trim() === "") {
+        console.log(location);
+        document.getElementById("postButtonText").innerHTML = "Save";
+        document.getElementById("postButtonText").disabled = false;
+        check = false;
+        offcanvas4.toggle();
+    }
+    else {
+        check = true;
+    }
+
+    return check;
 }
 
 //from https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
