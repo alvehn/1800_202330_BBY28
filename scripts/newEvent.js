@@ -121,37 +121,33 @@ function validateForm(eventName, description, imageGood, location, time) {
     console.log(time);
     if (eventName.trim() === "") {
         console.log(eventName);
-        document.getElementById("postButtonText").innerHTML = "Save";
-        document.getElementById("postButtonText").disabled = false;
         check = false;
         offcanvas1.toggle();
-    } else if (description.trim() === "") {
+    } else if (time.trim() === "12:NaN am") {
+        console.log(time);
+        check = false;
+        offcanvas5.toggle();
+    }
+    else if (description.trim() === "") {
         console.log(description);
-        document.getElementById("postButtonText").innerHTML = "Save";
-        document.getElementById("postButtonText").disabled = false;
         check = false;
         offcanvas2.toggle();
     } else if (imageGood.trim() === "") {
         console.log(imageGood);
-        document.getElementById("postButtonText").innerHTML = "Save";
-        document.getElementById("postButtonText").disabled = false;
         check = false;
         offcanvas3.toggle();
     } else if (location.trim() === "") {
         console.log(location);
-        document.getElementById("postButtonText").innerHTML = "Save";
-        document.getElementById("postButtonText").disabled = false;
         check = false;
         offcanvas4.toggle();
-    } else if (time.trim() === "12:NaN am") {
-        console.log(time);
-        document.getElementById("postButtonText").innerHTML = "Save";
-        document.getElementById("postButtonText").disabled = false;
-        check = false;
-        offcanvas5.toggle();
-    }
+    } 
     else {
         check = true;
+    }
+
+    if (!check) {
+        document.getElementById("postButtonText").innerHTML = "Save";
+        document.getElementById("postButtonText").disabled = false;
     }
 
     return check;
