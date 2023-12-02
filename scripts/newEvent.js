@@ -98,6 +98,7 @@ function postEvent() {
                 tags: tags,
                 time: time
             }).then(doc => {
+                localStorage.setItem("place_name", "");
                 console.log("1. Event document added!");
                 console.log(doc.id);
                 uploadPic(doc.id);
