@@ -11,7 +11,7 @@ function doAll() {
     if (user) {
       currentUser = db.collection("users").doc(user.uid);
       insertNameFromFirestore(user);
-      getFavourites(user)
+      // getFavourites(user )
     } else {
       console.log("No user is signed in");
     }

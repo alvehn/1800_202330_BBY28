@@ -16,6 +16,20 @@ function getCurrentUser() {
 }
 getCurrentUser();
 
+var currentUser;
+
+function doAll() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      currentUser = db.collection("users").doc(user.uid);
+      displayFullEvent(user);
+    } else {
+      console.log("No user is signed in");
+    }
+  });
+}
+doAll();
+
 function displayFullEvent() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
@@ -39,6 +53,7 @@ function displayFullEvent() {
                     var location = doc.data().locationRaw;     //gets value of "location"
                     var imageBad = doc.data().image;
                     var time = doc.data().time;
+                    var docID = doc.id;
                     
                     // populates name, location, title, and description
                     document.getElementById("eventName").innerHTML = title;
@@ -46,9 +61,12 @@ function displayFullEvent() {
                     document.getElementById("eventDescription").innerHTML = description;
                     document.getElementById("eventDateTime").innerHTML = date + " " + time;
                     document.getElementById("eventHost").innerHTML = eventCreator;
+                    document.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
+                    document.querySelector('i').onclick = () => updateFavourites(docID);
 
                     document.getElementById("eventImages").src = imageBad;
 
+            
                     //checks if current user has made event; if true, it displays delete button for them, 
                     //else it hides the button to prevent deletion from user that has not made that event 
                     if (currentUserID === doc.data().host) {
@@ -56,9 +74,18 @@ function displayFullEvent() {
                         $("#deleteButton").show();
                     }
 
+                    currentUser.get().then(userDoc => {
+                        let favourites = userDoc.data().favourites;
+                        if (favourites.includes(docID)) {
+                            document.getElementById('save-' + docID).innerText = ' added to favourites';
+                        } else {
+                            document.getElementById('save-' + docID).innerText = ' ';
+                        }
+                    })
+
                 })
         });
-
+    
 
 }
 
@@ -129,4 +156,27 @@ function deleteFromFavourites(eventid) {
 //makes function wait when called
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function updateFavourites(eventDocID) {
+    currentUser.get().then(userDoc => {
+        let favourites = userDoc.data().favourites;
+        let iconID = 'save-' + eventDocID;
+        let isFavourited = favourites.includes(eventDocID);
+
+        if (isFavourited) {
+            currentUser.update({
+                favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
+
+            }).then(() => {
+                document.getElementById(iconID).innerText = ' unsaved';
+            });
+        } else {
+            currentUser.update({
+                favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
+            }).then(() => {
+                document.getElementById(iconID).innerText = ' added to favourites';
+            });
+        }
+    });
 }

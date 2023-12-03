@@ -31,6 +31,7 @@ body {
 #userInfo,
 #userName,
 #profileButton,
+#eventReminder,
 #userInfo {
     padding-left: 5px;
     padding-right: 5px;
@@ -81,7 +82,7 @@ body {
     /* background-color: #60d394; */
     background-color: #CDD9FF;
     width: 100%;
-    height: auto;
+    height: 80px;
     overflow: hidden;
     font-size: 20px;
     top: 0px;
@@ -92,11 +93,16 @@ body {
 
 
 .searchButton {
+    vertical-align: auto;
     float: left;
+    /* top: 50%;
+    bottom: 50%; */
 }
 
 .filterButton {
+    vertical-align: auto;
     float: right;
+    
 
 }
 
@@ -210,4 +216,22 @@ body {
 
 #rangeNums div {
     width: 10vw;
+}
+
+#eventInterested{
+    width: 100px;
+}
+
+.box {
+    display: inline-flex;
+}
+
+#goBackButton {
+    float: left;
+}
+
+#eventLikeButton {
+    float: right;
+    justify-content: center;
+    align-items: center;
 }
