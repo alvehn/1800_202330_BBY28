@@ -11,7 +11,7 @@ function doAll() {
     if (user) {
       currentUser = db.collection("users").doc(user.uid);
       insertNameFromFirestore(user);
-      // getFavourites(user )
+      getFavourites(user)
     } else {
       console.log("No user is signed in");
     }
@@ -32,6 +32,8 @@ function insertNameFromFirestore(user) {
   })
 
 }
+
+
 
 //----------------------------------------------------------
 // This function takes input param User's Firestore document pointer
@@ -56,6 +58,7 @@ function getFavourites(user) {
           var date = doc.data().date;             //get value of "date"
           var location = doc.data().location;     //gets value of "location"
           var tags = doc.data().tags;
+          var coordinates = doc.data().coordinates;
           var time = doc.data().time;
           var image = doc.data().image;
 
@@ -66,10 +69,11 @@ function getFavourites(user) {
           let newcard = newCardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
           //update title and some pertinant information
           newcard.querySelector('.card-title').innerHTML = title;
-          newcard.querySelector('.card-image').src = image;
           newcard.querySelector('.card-date').innerHTML = date + " " + time;
           newcard.querySelector('.card-location').innerHTML = location;
+          newcard.querySelector('.card-coordinates').innerHTML = coordinates;
           newcard.querySelector('.card-tags').innerHTML = tags;
+          newcard.querySelector('.card-image').src = image;
 
           newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
           newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
@@ -92,6 +96,8 @@ function getFavourites(user) {
           //Finally, attach this new card to the gallery
 
           //fix
+
+          
           let eventCard = document.getElementById("events-go-here");
           eventCard.appendChild(newcard);
 
@@ -116,7 +122,6 @@ function getFavourites(user) {
             imagesStyle.item(i).style.opacity = "60%";
             var dateStyle = document.querySelectorAll(".card-date");
             dateStyle.item(i).style.color = "red";
-
 
           }
           i++;

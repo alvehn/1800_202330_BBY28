@@ -261,7 +261,7 @@ body {
 }
 
 .container .bi-heart-fill {
-    color: red;
+    color: #f7455a;
     align-items: center;
     margin-left: 5px;
 }
@@ -273,7 +273,7 @@ nav .bi-heart {
 }
 
 nav .bi-heart-fill {
-    color: red;
+    color: #f7455a;
     align-items: center;
     margin-left: 5px;
 }
