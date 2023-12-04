@@ -225,15 +225,17 @@ body {
 }
 
 .box {
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left right";
 }
 
 #goBackButton {
-    float: left;
+    grid-area: left;
 }
 
 #eventLikeButton {
-    float: right;
+    grid-area: right;
     justify-content: center;
     align-items: center;
 }
