@@ -212,6 +212,19 @@ body {
 
 }
 
+.tagButton{
+    background-color: #ddd;
+    outline-color: black;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    border-radius: 30px;
+    opacity: .5;
+    /* opacity: 50%; */
+}
+
 #result {
     display: none;
 }
