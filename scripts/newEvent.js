@@ -100,7 +100,7 @@ function postEvent() {
             console.log("text ",element.innerText, " value ", element.value);
 
             if (element.value == 1){
-                tags.push(element.innerText);
+                tags.push(" " + element.innerText);
             }
         });
 
