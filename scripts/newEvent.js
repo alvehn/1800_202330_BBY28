@@ -10,6 +10,34 @@ function listenFileSelect() {
 }
 listenFileSelect();
 
+const eventTags = ["Arts & Culture", "Health & Wellness", "Sports & Fitness", "Music", "Education",
+    "All Ages", "19+", "Volunteer Opportunity", "Activism", "Nature & Outdoors",
+    "Science & Technology"];
+
+eventTags.forEach(loadTags);
+
+function loadTags(element) {
+    // Create a button element
+
+    const button = document.createElement('button');
+    button.type = "button";
+    button.innerText = element;
+    button.className = 'tagButton';
+    button.value = 0;
+
+    // Attach the "click" event to your button
+    button.addEventListener('click', function () {
+        if (this.value == 0) {
+            this.style.opacity = '100%';
+            this.value = 1;
+        } else {
+            this.style.opacity = '50%';
+            this.value = 0;
+        }
+    });
+
+    document.getElementById('eventTags').appendChild(button);
+}
 var imageGood;
 function postEvent() {
 
@@ -41,7 +69,7 @@ function postEvent() {
         var count = [];
         var locationOfEvent = localStorage.getItem("place_name");
         var eventCoordinates = localStorage.getItem("place_coord");
-        var tags = [];
+
 
         //formats location
         let locate = "" + locationOfEvent + ",";
@@ -66,23 +94,16 @@ function postEvent() {
         }
         console.log(location);
 
-        var sports = document.getElementById("sports");
-        var food = document.getElementById("food");
-        var festival = document.getElementById("festival");
-        var picnic = document.getElementById("picnic");
+        var tags = [];
+        var selectedTags = document.querySelectorAll('.tagButton');
+        selectedTags.forEach(element => {
+            console.log("text ",element.innerText, " value ", element.value);
 
-        if (sports.checked) {
-            tags.push(" Sports");
-        }
-        if (food.checked) {
-            tags.push(" Food");
-        }
-        if (festival.checked) {
-            tags.push(" Festival");
-        }
-        if (picnic.checked) {
-            tags.push(" Picnic");
-        }
+            if (element.value == 1){
+                tags.push(element.innerText);
+            }
+        });
+
 
         if (validateForm(eventName, description, imageGood, location, time)) {
             db.collection("events").add({
@@ -141,7 +162,7 @@ function validateForm(eventName, description, imageGood, location, time) {
         console.log(location);
         check = false;
         offcanvas4.toggle();
-    } 
+    }
     else {
         check = true;
     }
