@@ -58,7 +58,7 @@
                         <div class="btn-group dropend"> -->
 
                             <div id="goBackButton">
-                                <a href="main.html"><button type="button" class="btn btn-success"><i
+                                <a href="main.html"><button type="button" class="btn btn-light"><i
                                             class="bi bi-arrow-left"> </i>events</button></a>
                             </div>
                         <!-- </div>
@@ -79,11 +79,11 @@
         <h1 id="eventName" style="font-size: 30pt;">event name </h1>
     </div>
     <div>
-        <h5><i class="bi bi-geo"></i><span id="eventLocation"> location</span></h5>
+        <!-- <input type="datetime-local" id="eventDateTime"> -->
+        <h5 style="font-size: 20pt;"><i class="bi bi-calendar" ></i> <span id="eventDateTime">event time and date</span></h5>
     </div>
     <div>
-        <!-- <input type="datetime-local" id="eventDateTime"> -->
-        <h5><i class="bi bi-calendar"></i> <span id="eventDateTime">event time and date</span></h5>
+        <h5 style="font-size: 20pt;"><i class="bi bi-geo"></i><span id="eventLocation"> location</span></h5>
     </div>
 
     <div>
@@ -100,10 +100,6 @@
         <!-- <button onclick="saveCheckboxState()">Save Checkbox State</button> -->
     </div>
 
-
-    <div>
-        <h5><i class="bi bi-people-fill"></i> Event host: <span id="eventHost">placeholder</span></h5>
-    </div>
     <div>
         <h5 id="numberAttending">Attending: <span id="eventCount">number</span></h5>
     </div>
@@ -127,6 +123,10 @@
     <!-- <div>
         <button type="button" class="btn btn-danger" id="deleteEvent">Delete</button>
     </div> -->
+
+    <div>
+        <h5><i class="bi bi-people-fill"></i> Event host: <span id="eventHost">placeholder</span></h5>
+    </div>
 
     <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
         aria-controls="offcanvasTop" id="deleteButton">Delete</button>

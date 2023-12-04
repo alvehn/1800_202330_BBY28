@@ -32,7 +32,8 @@ body {
 #userName,
 #profileButton,
 #eventReminder,
-#userInfo {
+#userInfo,
+.btn-danger {
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -190,11 +191,12 @@ body {
     border-color: #f4c8e4;
 }
 
-.btn-success {
+.btn-light {
     /* background-color: #4eb2d6;
     border-color: #4eb2d6; */
     background-color: #f7455a;
     border-color: #f7455a;
+    color: white;
 }
 
 .filterButton {
