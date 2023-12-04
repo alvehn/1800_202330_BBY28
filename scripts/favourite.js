@@ -84,9 +84,9 @@ function getFavourites(user) {
           currentUser.get().then(userDoc => {
             let favourites = userDoc.data().favourites;
             if (favourites.includes(docID)) {
-              document.getElementById('save-' + docID).innerText = ' added to favourites';
+              document.getElementById('save-' + docID).className = 'bi-heart-fill';
             } else {
-              document.getElementById('save-' + docID).innerText = ' ';
+              document.getElementById('save-' + docID).className = 'bi-heart';
             }
           })
           //Finally, attach this new card to the gallery
@@ -138,14 +138,14 @@ function updateFavourites(eventDocID) {
 
       }).then(() => {
         // console.log("favourites removed for " + eventDocID);
-        document.getElementById(iconID).innerText = ' unsaved';
+        document.getElementById(iconID).className = 'bi-heart';
       });
     } else {
       currentUser.update({
         favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
       }).then(() => {
         // console.log(eventDocID + " added to favourites");
-        document.getElementById(iconID).innerText = ' added to favourites';
+        document.getElementById(iconID).className = 'bi-heart-fill';
       });
     }
   });

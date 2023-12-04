@@ -112,7 +112,7 @@ body {
     position: fixed;
     height: 70px;
     width: 70px;
-    margin-bottom: 3.75em;
+    margin-bottom: 4.25em;
     margin-left: 5px;
     border-radius: 45px;
     text-align: center;
@@ -157,6 +157,7 @@ body {
 }
 
 .navBrowse {
+    font-size: 25px;
     display: flex;
     /* display: flex;
     justify-content: left;
@@ -166,13 +167,15 @@ body {
     float: left;
 }
 
-.navFav {
 
+.navFav {
+    font-size: 25px;
     margin-left: 43%;
 
 }
 
 .navProfile {
+    font-size: 25px;
     display: flex;
     /* display: flex;
     justify-content: right;
@@ -249,4 +252,28 @@ body {
     grid-area: right;
     justify-content: center;
     align-items: center;
+}
+
+.container .bi-heart {
+    /* color: red; */
+    align-items: center;
+    margin-left: 5px;
+}
+
+.container .bi-heart-fill {
+    color: red;
+    align-items: center;
+    margin-left: 5px;
+}
+
+nav .bi-heart {
+    /* color: red; */
+    align-items: center;
+    margin-left: 5px;
+}
+
+nav .bi-heart-fill {
+    color: red;
+    align-items: center;
+    margin-left: 5px;
 }

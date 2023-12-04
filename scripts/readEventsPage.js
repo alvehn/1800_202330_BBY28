@@ -77,9 +77,9 @@ function displayFullEvent() {
                     currentUser.get().then(userDoc => {
                         let favourites = userDoc.data().favourites;
                         if (favourites.includes(docID)) {
-                            document.getElementById('save-' + docID).innerText = ' added to favourites';
+                            document.getElementById('save-' + docID).className = 'bi-heart-fill';
                         } else {
-                            document.getElementById('save-' + docID).innerText = ' ';
+                            document.getElementById('save-' + docID).className = 'bi-heart';
                         }
                     })
 
@@ -169,13 +169,13 @@ function updateFavourites(eventDocID) {
                 favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
 
             }).then(() => {
-                document.getElementById(iconID).innerText = ' unsaved';
+                document.getElementById(iconID).className = 'bi-heart';
             });
         } else {
             currentUser.update({
                 favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
             }).then(() => {
-                document.getElementById(iconID).innerText = ' added to favourites';
+                document.getElementById(iconID).className = 'bi-heart-fill';
             });
         }
     });
