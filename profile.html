@@ -56,69 +56,22 @@
 
             <a class="btn btn-light card-href" href="index.html">Logout</a>
 
-            <!-- <div class="filterButton">
-                <button class="filters-toggler btn btn-dark mx-3 mt-3" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#filters" aria-controls="filters" aria-expanded="false" aria-label="Toggle filters">
-                    <h4>Filters</h4>
-                </button>
-            </div>
-    
-            <div class="collapse p-3" id="filters">
-                <h4 class="font-weight-bold">
-                    Date
-                    <input type="date" class="form-control w-50 " name="date-field" id="startDate" />
-                </h4>
-                <h4 class="font-weight-bold ">
-                    location
-                </h4>
-                <input class="form-control w-50 " list="locationOptions" id="filterLocation"
-                    placeholder="choose a location">
-                <datalist id="locationOptions">
-                    <option value="East Vancouver">
-                    <option value="North Vancouver">
-                    <option value="West Vancouver">
-                    <option value="Richmond">
-                    <option value="Burnaby">
-                </datalist>
-                <button class="btn btn-dark" type="filterOption">tags</button>
-    
-                <div class="d-flex justify-content-end">
-                    <button class="btn btn-success" type="filterOption" onclick="filterLocation()">Apply</button>
-    
-                </div>
-            </div> -->
-
         </div>
 
         </div>
         </div>
-        <!-- cards go here -->
 
-        <!-- <div id="eventCreationButton mt-5 pt-5" class="fixed-bottom">
-        <a href="newEvent.html"><button type="button" class="btn btn-dark">Create a new event</button></a>
-        </div> -->
-
-        <!-- <div class="navbarRework">
-            <div class="navBrowse"><a href="main.html" ><i class="bi bi-house-fill"></i></a></div>
-            <div class="navFav"><a href="favourites.html"><i class="bi bi-heart-fill"></i></a></div>
-            <div class="navProfile"><a href="profile.html" class="navProfile"><i class="bi bi-person-fill"></i></a></div>
-        </div> -->
     </nav>
-    <!-- <div id="profileImages"> -->
     <img src="" style="max-width: 100%;" class="mx-auto d-block" alt="Choose profile image" id="profileImageSelected">
     <div id="profileImageButton">
         <input type="file" id="profileImage">
     </div>
-    <!-- </div> -->
-
-    <!-- <div id="userName">
-        <h1><span id="name-goes-here"></span></h1>
-    </div> -->
 
     <fieldset class="mb-3" id="personalInfoFields" disabled>
         <div class="form-group">
             <label>Name</label>
-            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name" style="font-size: 25px;">
+            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name"
+                style="font-size: 25px;">
         </div>
     </fieldset>
 
@@ -130,11 +83,6 @@
 
     </div><br>
 
-    <!-- <div id="userInfo">
-        <h3>Tags</h3>
-        
-    </div> -->
-
     <!-- events that current user has made -->
     <div class="container">
         <h3 style="font-size: 25px;">Events Hosted</h3>
@@ -145,11 +93,10 @@
                 <template id="eventCardTemplate">
                     <div class="eventCard">
                         <div class="card py-2 mx-2" style="width: 22rem">
-                            <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
                             <div class="card-body">
                                 <div>
-                                    <img class="card-image" id="image" class="mx-auto d-block" style="max-width: 100%;" src=""
-                                        alt="No image to display">
+                                    <img class="card-image" id="image" class="mx-auto d-block" style="max-width: 100%;"
+                                        src="" alt="No image to display">
                                 </div>
                                 <h5 class="card-title" id="title">Card title</h5>
                                 <p class="card-date" id="date">placeholder</p>
@@ -176,7 +123,6 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
     <script src="./scripts/firebaseAPI_bby28.js"></script>
     <script src="./scripts/profile.js"></script>
     <script src="scripts/skeleton.js"></script>
