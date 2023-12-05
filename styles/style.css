@@ -171,7 +171,7 @@ body {
 
 .navFav {
     font-size: 25px;
-    margin-left: 43%;
+    margin-left: 42%;
 
 }
 
@@ -197,7 +197,7 @@ body {
     /* background-color: #4eb2d6;
     border-color: #4eb2d6; */
     background-color: #f7455a;
-    border-color: #f7455a;
+    border-color: #ddd;
     color: white;
 }
 
@@ -240,41 +240,60 @@ body {
 }
 
 .box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "left right";
+    display: flex;
 }
 
 #goBackButton {
-    grid-area: left;
+ 
+    float: left;
 }
 
 #eventLikeButton {
-    grid-area: right;
+
+    float: right;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    border-radius: 7px;
 }
 
 .container .bi-heart {
     /* color: red; */
     align-items: center;
-    margin-left: 5px;
+    margin: auto;
 }
 
 .container .bi-heart-fill {
     color: #f7455a;
     align-items: center;
-    margin-left: 5px;
+    margin: auto;
+}
+
+#savedCardTemplate .bi-heart {
+    /* color: red; */
+    align-items: center;
+    margin: auto;
+}
+
+#savedCardTemplate  .bi-heart-fill {
+    color: #f7455a;
+    align-items: center;
+    margin: auto;
 }
 
 nav .bi-heart {
     /* color: red; */
     align-items: center;
-    margin-left: 5px;
+    margin: auto;
 }
 
 nav .bi-heart-fill {
     color: #f7455a;
     align-items: center;
-    margin-left: 5px;
+    margin: auto;
+}
+
+button {
+    background-color: #fbeef6;
+    border-color: white;
 }
