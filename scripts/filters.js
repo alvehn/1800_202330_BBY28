@@ -37,6 +37,36 @@ function filterDate() {
     });
 }
 
+var start = document.querySelectorAll('[name="date-field"]');
+start.forEach(element => {
+    element.addEventListener("change", function(event) {
+        console.log("outside", this.id);
+        if(this.id == "startDate"){
+            console.log("inside", this.id); 
+            document.getElementById("startDate").blur();
+            document.getElementById("endDate").disabled = false;
+            minDate("endDate");
+        }else{
+            console.log("inside", this.id);
+            document.getElementById("endDate").blur();
+        }
+    });
+});
+
+
+function minDate(datefieldID) {
+    var minimumDate;
+    if (datefieldID == "startDate") {
+        minimumDate = new Date().toLocaleDateString('en-ca');
+    } else if (datefieldID == "endDate") {
+        minimumDate = document.getElementById("startDate").value;
+    }
+    console.log(minimumDate);
+    document.getElementById(datefieldID).setAttribute("min", minimumDate);
+}
+minDate("startDate");
+
+
 function filterLocation() {
     const events = document.querySelectorAll('.eventCard');
     var filterLocation = document.getElementById('rangeValue').value;
@@ -87,10 +117,10 @@ function applyFilters() {
         element.style.display = "block";
     })
 
-    console.log("outside",startDate.value);
+    console.log("outside", startDate.value);
 
     if (startDate != null && startDate != "") {
-        console.log("inside",startDate);
+        console.log("inside", startDate);
         filterDate();
     }
 
