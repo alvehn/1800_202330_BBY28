@@ -86,7 +86,7 @@ function interestedEvent(userID) {
 
                     counter = count.length;
                     document.getElementById("eventCount").innerHTML = counter;
-                    document.getElementById("eventInterestedText").innerHTML = "Atttend";
+                    document.getElementById("eventInterestedText").innerHTML = "Attend";
                 }
             })
     })
