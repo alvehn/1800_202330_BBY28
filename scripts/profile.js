@@ -106,9 +106,9 @@ function displayMyEventCards(doc, docID, i) {
     newcard.querySelector('.card-image').src = image;
     newcard.querySelector('.card-tags').innerHTML = tags;
 
-    newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
-    newcard.querySelector('i').id === 'save-' + docID;   //guaranteed to be unique
-    newcard.querySelector('i').onclick = () => saveBookmark(docID);
+    // newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
+    // newcard.querySelector('i').id === 'save-' + docID;   //guaranteed to be unique
+    // newcard.querySelector('i').onclick = () => saveBookmark(docID);
 
     //attach to gallery
     document.getElementById("events-go-here").appendChild(newcard);
