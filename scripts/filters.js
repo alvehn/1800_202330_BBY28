@@ -43,13 +43,13 @@ function filterDate() {
     var endDate;
 
     if (dateE == null || dateE == "") {
-        activeDate.value = "After " + dateS;
+        activeDate.value = "After " + dateS + " X";
     } else {
         endDate = new Date(dateE);
         endDate.setHours(48, 0, 0, 0);
-        activeDate.value = dateS + " - " + dateE;
+        activeDate.value = dateS + " - " + dateE + " X";
     }
-    activeDate.style.display = "block";
+    activeDate.style.display = "inline-block";
 
     events.forEach(element => {
         var eventDate = new Date(element.querySelector('.card-date').innerHTML);
@@ -71,14 +71,11 @@ function filterDate() {
 var start = document.querySelectorAll('[name="date-field"]');
 start.forEach(element => {
     element.addEventListener("change", function (event) {
-        console.log("outside", this.id);
         if (this.id == "startDate") {
-            console.log("inside", this.id);
             document.getElementById("startDate").blur();
             document.getElementById("endDate").disabled = false;
             minDate("endDate");
         } else {
-            console.log("inside", this.id);
             document.getElementById("endDate").blur();
         }
     });
@@ -92,7 +89,7 @@ function minDate(datefieldID) {
     } else if (datefieldID == "endDate") {
         minimumDate = document.getElementById("startDate").value;
     }
-    console.log(minimumDate);
+
     document.getElementById(datefieldID).setAttribute("min", minimumDate);
 }
 minDate("startDate");
@@ -100,27 +97,35 @@ minDate("startDate");
 function filterTags() {
 
     const events = document.querySelectorAll('.eventCard');
-    var activeTags = [];
+    var selectedTags = [];
+    var activeTags = document.getElementById('activeTags');
+    var tagstr = "";
+
     document.querySelectorAll('.filterTag').forEach(element => {
         if (element.value == 1) {
-            activeTags.push(element.innerText);
-            element.value = 1;
+            selectedTags.push(element.innerText);
+            element.value = 0;
+            element.style.opacity = .5;
         }
 
     });
 
-    var tagstr ="";
+
     events.forEach(element => {
-        tagstr = element.querySelector('.card-tags').innerHTML;
-        for (i = 0; i < activeTags.length; i++) {
-            console.log(tagstr);
-            if(tagstr.includes(activeTags[i])){
+        tagstr = element.querySelector('.card-tags').innerHTML.replace(/&amp;/g, '&');
+        for (i = 0; i < selectedTags.length; i++) {
+            if (tagstr.includes(selectedTags[i])) {
                 element.style.display = "none";
                 filteredTags.push(element.querySelector('i').id);
             }
         }
-
     });
+    if(selectedTags.length == 1){
+        activeTags.value = selectedTags[0];
+    }else if (selectedTags.length > 1){
+        activeTags.value = "Clear (" + selectedTags.length +") Tags X";
+    }
+        activeTags.style.display = "inline-block";
 }
 
 function filterLocation() {
@@ -167,16 +172,13 @@ function deg2rad(deg) {
 function applyFilters() {
     const events = document.querySelectorAll('.eventCard');
     var startDate = document.getElementById('startDate').value;
+    var locationFilter = document.getElementById('rangeValue').value;
 
-    var locationFilter = document.getElementById('rangeValue').value
     events.forEach(element => {
         element.style.display = "block";
     })
 
-    console.log("outside", startDate.value);
-
     if (startDate != null && startDate != "") {
-        console.log("inside", startDate);
         filterDate();
     }
 
@@ -187,8 +189,8 @@ function applyFilters() {
     filterTags();
 }
 
-function clearTags(){
-    
+function clearTags() {
+
     const events = document.querySelectorAll('.eventCard');
     events.forEach(element => {
         var match = element.querySelector('i').id;
@@ -197,7 +199,7 @@ function clearTags(){
         }
     });
     filteredTags = [];
-    document.getElementById('activeDate').style.display = "none";
+    document.getElementById('activeTags').style.display = "none";
 }
 
 function clearLocation() {
