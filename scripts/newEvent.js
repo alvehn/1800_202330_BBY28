@@ -1,4 +1,8 @@
 var ImageFile;
+const eventTags = ["Arts & Culture", "Health & Wellness", "Sports & Fitness", "Music", "Education",
+    "All Ages", "19+", "Volunteer Opportunity", "Activism", "Nature & Outdoors",
+    "Science & Technology"];
+    
 function listenFileSelect() {
     // listen for file selection
     var fileInput = document.getElementById("eventImages");
@@ -10,9 +14,7 @@ function listenFileSelect() {
 }
 listenFileSelect();
 
-const eventTags = ["Arts & Culture", "Health & Wellness", "Sports & Fitness", "Music", "Education",
-    "All Ages", "19+", "Volunteer Opportunity", "Activism", "Nature & Outdoors",
-    "Science & Technology"];
+
 
 eventTags.forEach(loadTags);
 
@@ -20,12 +22,11 @@ function loadTags(element) {
     // Create a button element
 
     const button = document.createElement('button');
-    button.type = "button";
+    button.type = 'button';
     button.innerText = element;
     button.className = 'tagButton';
     button.value = 0;
 
-    // Attach the "click" event to your button
     button.addEventListener('click', function () {
         if (this.value == 0) {
             this.style.opacity = '100%';
@@ -38,6 +39,7 @@ function loadTags(element) {
 
     document.getElementById('eventTags').appendChild(button);
 }
+
 var imageGood;
 function postEvent() {
 
@@ -97,9 +99,9 @@ function postEvent() {
         var tags = [];
         var selectedTags = document.querySelectorAll('.tagButton');
         selectedTags.forEach(element => {
-            console.log("text ",element.innerText, " value ", element.value);
+            console.log("text ", element.innerText, " value ", element.value);
 
-            if (element.value == 1){
+            if (element.value == 1) {
                 tags.push(" " + element.innerText);
             }
         });
@@ -128,6 +130,7 @@ function postEvent() {
     }
 
 }
+
 var offcanvasElement1 = document.getElementById("offcanvasBox1");
 var offcanvas1 = new bootstrap.Offcanvas(offcanvasElement1);
 var offcanvasElement2 = document.getElementById("offcanvasBox2");
@@ -138,6 +141,7 @@ var offcanvasElement4 = document.getElementById("offcanvasBox4");
 var offcanvas4 = new bootstrap.Offcanvas(offcanvasElement4);
 var offcanvasElement5 = document.getElementById("offcanvasBox5");
 var offcanvas5 = new bootstrap.Offcanvas(offcanvasElement5);
+
 function validateForm(eventName, description, imageGood, location, time) {
     var check;
     console.log(time);

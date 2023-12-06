@@ -1,5 +1,4 @@
 var currentUser;
-
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {

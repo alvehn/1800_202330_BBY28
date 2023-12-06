@@ -1,5 +1,36 @@
 var filteredDates = [];
 var filteredLocations = [];
+var filteredTags = [];
+const eventTags = ["Arts & Culture", "Health & Wellness", "Sports & Fitness", "Music", "Education",
+    "All Ages", "19+", "Volunteer Opportunity", "Activism", "Nature & Outdoors",
+    "Science & Technology"];
+
+
+
+// Attach the "click" event to your button
+
+eventTags.forEach(element => {
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.innerText = element;
+    button.className = 'filterTag';
+    button.value = 0;
+
+    button.addEventListener('click', function () {
+        if (this.value == 0) {
+            this.style.opacity = '100%';
+            this.value = 1;
+        } else {
+            this.style.opacity = '50%';
+            this.value = 0;
+        }
+    });
+
+    document.getElementById('filterTags').appendChild(button);
+
+});
+
 function filterDate() {
     const events = document.querySelectorAll('.eventCard');
     var activeDate = document.getElementById('activeDate');
@@ -39,14 +70,14 @@ function filterDate() {
 
 var start = document.querySelectorAll('[name="date-field"]');
 start.forEach(element => {
-    element.addEventListener("change", function(event) {
+    element.addEventListener("change", function (event) {
         console.log("outside", this.id);
-        if(this.id == "startDate"){
-            console.log("inside", this.id); 
+        if (this.id == "startDate") {
+            console.log("inside", this.id);
             document.getElementById("startDate").blur();
             document.getElementById("endDate").disabled = false;
             minDate("endDate");
-        }else{
+        } else {
             console.log("inside", this.id);
             document.getElementById("endDate").blur();
         }
@@ -66,6 +97,31 @@ function minDate(datefieldID) {
 }
 minDate("startDate");
 
+function filterTags() {
+
+    const events = document.querySelectorAll('.eventCard');
+    var activeTags = [];
+    document.querySelectorAll('.filterTag').forEach(element => {
+        if (element.value == 1) {
+            activeTags.push(element.innerText);
+            element.value = 1;
+        }
+
+    });
+
+    var tagstr ="";
+    events.forEach(element => {
+        tagstr = element.querySelector('.card-tags').innerHTML;
+        for (i = 0; i < activeTags.length; i++) {
+            console.log(tagstr);
+            if(tagstr.includes(activeTags[i])){
+                element.style.display = "none";
+                filteredTags.push(element.querySelector('i').id);
+            }
+        }
+
+    });
+}
 
 function filterLocation() {
     const events = document.querySelectorAll('.eventCard');
@@ -127,13 +183,28 @@ function applyFilters() {
     if (locationFilter > 0 || locationFilter < 25) {
         filterLocation();
     }
+
+    filterTags();
+}
+
+function clearTags(){
+    
+    const events = document.querySelectorAll('.eventCard');
+    events.forEach(element => {
+        var match = element.querySelector('i').id;
+        if (!filteredDates.includes(match) && !filteredLocations.includes(match) && filteredTags.includes(match)) {
+            element.style.display = "block";
+        }
+    });
+    filteredTags = [];
+    document.getElementById('activeDate').style.display = "none";
 }
 
 function clearLocation() {
     const events = document.querySelectorAll('.eventCard');
     events.forEach(element => {
         var match = element.querySelector('i').id;
-        if (filteredLocations.includes(match) && !filteredDates.includes(match)) {
+        if (filteredLocations.includes(match) && !filteredDates.includes(match) && !filteredTags.includes(match)) {
             element.style.display = "block";
         }
     });
@@ -145,7 +216,7 @@ function clearDate() {
     const events = document.querySelectorAll('.eventCard');
     events.forEach(element => {
         var match = element.querySelector('i').id;
-        if (!filteredLocations.includes(match) && filteredDates.includes(match)) {
+        if (filteredDates.includes(match) && !filteredLocations.includes(match) && !filteredTags.includes(match)) {
             element.style.display = "block";
         }
     });

@@ -134,6 +134,7 @@ body {
 
 }
 
+
 .navbarRework {
     /* background-color: #60d394; */
     background-color: #CDD9FF;
@@ -216,11 +217,11 @@ body {
 
 }
 
-.tagButton{
-    background-color: #ddd;
-    outline-color: black;
+.tagButton, .filterTag{
+    background-color: #f4c8e4;
+    outline-color: #f4c8e4;
     color: black;
-    padding: 10px 20px;
+    padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     margin: 4px 2px;
