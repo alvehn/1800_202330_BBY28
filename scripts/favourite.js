@@ -79,12 +79,6 @@ function getFavourites(user) {
           newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
           newcard.querySelector('i').onclick = () => updateFavourites(docID);
 
-          // //NEW LINE: update to display length, duration, last updated
-          // newcard.querySelector('.card-length').innerHTML =
-          //   "Length: " + doc.data().length + " km <br>" +
-          //   "Duration: " + doc.data().hike_time + "min <br>" +
-          //   "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
-
           currentUser.get().then(userDoc => {
             let favourites = userDoc.data().favourites;
             if (favourites.includes(docID)) {

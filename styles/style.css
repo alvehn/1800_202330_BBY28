@@ -68,7 +68,7 @@ body {
     text-align: center;
 }
 
-.eventCard {
+.eventCard, #savedCardTemplate {
     display: flex;
     justify-content: center;
     align-items: center;
