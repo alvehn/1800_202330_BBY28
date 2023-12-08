@@ -4,8 +4,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fbeef6;
-    /* background-color: #f4fff8; */
-    /* background-color: #8baaad; */
 }
 
 .bi,
@@ -82,11 +80,9 @@ body {
 
 
 .navbar {
-    /* background-color: #60d394; */
     background-color: #CDD9FF;
     width: 100%;
     height: auto;
-    /* overflow: hidden; */
     font-size: 20px;
     top: 0px;
     padding: 14px;
@@ -98,20 +94,12 @@ body {
 .searchButton {
     vertical-align: auto;
     float: left;
-    /* top: 50%;
-    bottom: 50%; */
 }
 
-.filterButton {
-    vertical-align: auto;
-    float: right;
-}
 
 
 #eventCreationButton {
-    /* background-color: #4eb2d6; */
     background-color: #f7455a;
-    /* height: auto; */
     position: fixed;
     height: 70px;
     width: 70px;
@@ -128,7 +116,6 @@ body {
     margin-left: 10px;
     margin-top: 16px;
     font-size: 40px;
-    /* border-radius: 5000px; */
     float: left;
     color: #ffffff;
 
@@ -136,7 +123,6 @@ body {
 
 
 .navbarRework {
-    /* background-color: #60d394; */
     background-color: #CDD9FF;
     width: 100%;
     height: auto;
@@ -163,10 +149,6 @@ body {
 .navBrowse {
     font-size: 25px;
     display: flex;
-    /* display: flex;
-    justify-content: left;
-    align-items: left;
-    float: left; */
     margin-left: 5%;
     float: left;
 }
@@ -181,30 +163,23 @@ body {
 .navProfile {
     font-size: 25px;
     display: flex;
-    /* display: flex;
-    justify-content: right;
-    align-items: right; */
-    /* float: right; */
     margin-right: 5%;
     float: right;
 }
 
 .btn-outline-dark {
-    /* background-color: #d8f5e3;
-    border-color: #d8f5e3; */
     background-color: #f4c8e4;
     border-color: #f4c8e4;
 }
 
 .btn-light {
-    /* background-color: #4eb2d6;
-    border-color: #4eb2d6; */
     background-color: #f7455a;
     border-color: #ddd;
     color: white;
 }
 
 .filterButton {
+    vertical-align: auto;
     background-color: #ddd;
     outline-color: black;
     color: black;
@@ -227,7 +202,6 @@ body {
     margin: 4px 2px;
     border-radius: 30px;
     opacity: .5;
-    /* opacity: 50%; */
 }
 .filterTag{
     background-color: #f4c8e4;
@@ -310,4 +284,9 @@ nav .bi-heart-fill {
 button {
     background-color: #fbeef6;
     border-color: white;
+}
+
+#activeFilters {
+    max-width: 100%;
+    /* height:auto; */
 }
