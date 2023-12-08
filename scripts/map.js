@@ -15,7 +15,6 @@ function placeGeocoder() {
     geocoder.on('result', (e) => {
         var jsondata = JSON.stringify(e.result, null, 2);
         var data = JSON.parse(jsondata);
-        console.log (data);
         var place_name = data["place_name"];
         var place_coord = data["geometry"]["coordinates"];
         results.innerText = place_name + " " + place_coord;  

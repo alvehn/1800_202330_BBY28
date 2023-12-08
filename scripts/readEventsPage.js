@@ -153,7 +153,7 @@ function deleteFromFavourites(eventid) {
 }
 
 //from https://www.sitepoint.com/delay-sleep-pause-wait/
-//makes function wait when called
+//makes the function wait a while when called
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

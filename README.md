@@ -20,7 +20,7 @@ Technologies:
 
 Resources: 
 * https://www.youtube.com/watch?v=ifi6dXOl3g4 
-* COMP 1800 demo's #7-10
+* COMP 1800 demo's #7-13
 * Tech Tips B01a, B01b, B01c, B06
 * https://stackoverflow.com/questions/12790297/hiding-button-using-jquery 
 * https://www.sitepoint.com/delay-sleep-pause-wait/
@@ -58,7 +58,13 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore              # Git ignore file
+├── 404.html                # loads this when page is not found or cannot be loaded
+├── firebase.json           # holds json code for hosting our app
+├── firestore.indexes.json  # holds more json code for app hosting
+├── firestore.rules         # holds rules for firebase hosting
+├── storage.rules           # holds rules for firebase storage when hosting
 ├── index.html              # landing page that promotes our website; can be viewed when not loggedd in
+├── footer_after_login.html # holds html code for footer that only displays for logged in users
 ├── event.html              # dipslays full event details of a given event
 ├── favourites.html         # shows events that a user has favourited
 ├── login.html              # login page 
@@ -69,17 +75,19 @@ Content of the project folder:
 
 It has the following subfolders and files:
 ├── images                   # Folder for images
-    /blah.jpg                # Acknowledge source
+    /favicon.ico             # By 
 ├── scripts                  # Folder for scripts
     /authentication.js       # authenticates user with account or new user 
     /favourite.js            # controls what happens when event is favourited
+    /filter.js               # contains all filter functionality on the main page 
+    /interested.js           # contains all the code for storing user id when attend button is clicked
+    /map.js                  # uses mapbox api to make location filtering function properly
     /newEvent.js             # controls logic and database writing of a new event creation
     /profile.js              # reads and displays profile info onto profile.html
     /readEvents.js           # displays event cards on main.html
     /readEventsPage.js       # displays full event details on event.html
     /search.js               # controls how search works when searching for events in main.html
-    /skeleton.js             # loads appropriate page whether user is logged in or not
-    /testNewEvent.js         # idk
+    /skeleton.js             # loads appropriate nav bar whether user is logged in or not
 ├── styles                   # Folder for styles
     /style.css               # minor style adjustments to certain classes
 

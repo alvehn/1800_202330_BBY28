@@ -32,7 +32,6 @@ function eventCards(collection) {
                 
                 //fixes bug where it would not display events happening today
                 var today = new Date();
-                var eventDate = new Date(date);
                 today.setHours(0);
                 today.setMinutes(0);
                 today.setSeconds(0);

@@ -12,7 +12,6 @@ function populateUserInfo() {
             currentUser.get()
                 .then(userDoc => {
                     //get the data fields of the user
-                    console.log(user.displayName);  //print the user name in the browser console
                     userName = userDoc.data().name;
                     userImage = userDoc.data().profilePic;
 
@@ -49,9 +48,6 @@ function saveUserInfo() {
     currentUser.update({
         name: userName,
     })
-        .then(() => {
-            console.log("Document successfully updated!");
-        })
 
     document.getElementById('personalInfoFields').disabled = true;
 }
@@ -66,12 +62,10 @@ function saveUserInfo() {
 //------------------------------------------------
 function populateMyEvents() {
     firebase.auth().onAuthStateChanged(user => {
-        console.log("user is: " + user.uid);
         db.collection("users").doc(user.uid)
             .get()
             .then(doc => {
                 myEvents = doc.data().myEvents; //get array of my posts
-                console.log(myEvents);
                 let i = -1;
                 myEvents.forEach(item => {
                     db.collection("events")
@@ -107,8 +101,6 @@ function displayMyEventCards(doc, docID, i) {
     newcard.querySelector('.card-tags').innerHTML = tags;
 
     newcard.querySelector('a').href = "event.html?docID=" + docID;//button/read more
-    // newcard.querySelector('i').id === 'save-' + docID;   //guaranteed to be unique
-    // newcard.querySelector('i').onclick = () => saveBookmark(docID);
 
     //attach to gallery
     document.getElementById("events-go-here").appendChild(newcard);
@@ -118,7 +110,6 @@ function displayMyEventCards(doc, docID, i) {
     today.setMinutes(0);
     today.setSeconds(0);
     today.setDate(today.getDate() - 1);
-    console.log("i is " + i);
     //update title and text and image
     if (new Date(date) < today) {
         var titleStyle = document.querySelectorAll(".card-title");
@@ -148,7 +139,6 @@ function listenFileSelect() {
     fileInput.addEventListener('change', function (e) {
         ImageFile = e.target.files[0];   //Global variable
         var blob = URL.createObjectURL(ImageFile);
-        console.log(blob);
     })
 }
 listenFileSelect();
@@ -167,22 +157,17 @@ listenFileSelect();
 //------------------------------------------------
 function uploadPic(profilePicID) {
     if (ImageFile != undefined) {
-        console.log(ImageFile);
         document.getElementById("saveButton").innerHTML = "Saving...";
-        console.log("inside uploadPic " + profilePicID);
         var storageRef = storage.ref("profile/" + profilePicID + ".jpg");
-        console.log(storageRef);
 
         storageRef.put(ImageFile)   //global variable ImageFile
 
             // AFTER .put() is done
             .then(function () {
-                console.log('2. Uploaded to Cloud Storage.');
                 storageRef.getDownloadURL()
 
                     // AFTER .getDownloadURL is done
                     .then(function (url) { // Get URL of the uploaded file
-                        console.log("3. Got the download URL.");
 
                         // Now that the image is on Storage, we can go back to the
                         // post document, and update it with an "image" field
@@ -193,7 +178,6 @@ function uploadPic(profilePicID) {
                             // AFTER .update is done
                             .then(function () {
                                 
-                                console.log('4. Added pic URL to Firestore.');
                                 window.location.href = "profile.html";
                             })
                     })

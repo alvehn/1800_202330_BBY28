@@ -14,17 +14,17 @@ function interestedEvent(userID) {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
 
-    //stores count for number of people interested 
+    
     var count = [];
-    var counter = 0;
+    var counter = 0;    //stores count for number of people interested 
     db.collection("events")
         .doc(ID)
         .get()
         .then(doc => {
             count = doc.data().count;
             counter = count.length;
-            console.log(counter);
             document.getElementById("eventCount").innerHTML = counter;
+            //checks whether attend button is already clicked or not
             for (let j = 0; j <= count.length; j++) {
                 if (count[j] === userID) {
                     document.getElementById("eventInterestedText").innerHTML = "Attending";
@@ -34,12 +34,10 @@ function interestedEvent(userID) {
                     break;
                 }
             }
-            console.log(document.getElementById("eventCount").innerHTML);
         });
     var check;
     document.getElementById("eventInterested").addEventListener("click", () => {
         //gets interested array
-        console.log(userID);
         db.collection("events")
             .doc(ID)
             .get()

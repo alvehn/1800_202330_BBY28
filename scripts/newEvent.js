@@ -94,12 +94,10 @@ function postEvent() {
                 location += stringArray[i] + ", ";
             }
         }
-        console.log(location);
 
         var tags = [];
         var selectedTags = document.querySelectorAll('.tagButton');
         selectedTags.forEach(element => {
-            console.log("text ", element.innerText, " value ", element.value);
 
             if (element.value == 1) {
                 tags.push(" " + element.innerText);
@@ -122,8 +120,6 @@ function postEvent() {
                 time: time
             }).then(doc => {
                 localStorage.setItem("place_name", "");
-                console.log("1. Event document added!");
-                console.log(doc.id);
                 uploadPic(doc.id);
             })
         }
@@ -144,26 +140,20 @@ var offcanvas5 = new bootstrap.Offcanvas(offcanvasElement5);
 
 function validateForm(eventName, description, imageGood, location, time) {
     var check;
-    console.log(time);
     if (eventName.trim() === "") {
-        console.log(eventName);
         check = false;
         offcanvas1.toggle();
     } else if (time.trim() === "12:NaN am") {
-        console.log(time);
         check = false;
         offcanvas5.toggle();
     }
     else if (description.trim() === "") {
-        console.log(description);
         check = false;
         offcanvas2.toggle();
     } else if (imageGood.trim() === "") {
-        console.log(imageGood);
         check = false;
         offcanvas3.toggle();
     } else if (location.trim() === "") {
-        console.log(location);
         check = false;
         offcanvas4.toggle();
     }
@@ -203,20 +193,16 @@ function formatAMPM(date) {
 // and we know the post's document id.
 //------------------------------------------------
 function uploadPic(eventDocID) {
-    console.log("inside uploadPic " + eventDocID);
     var storageRef = storage.ref("images/" + eventDocID + ".jpg");
-    console.log(storageRef);
 
     storageRef.put(ImageFile)   //global variable ImageFile
 
         // AFTER .put() is done
         .then(function () {
-            console.log('2. Uploaded to Cloud Storage.');
             storageRef.getDownloadURL()
 
                 // AFTER .getDownloadURL is done
                 .then(function (url) { // Get URL of the uploaded file
-                    console.log("3. Got the download URL.");
 
                     // Now that the image is on Storage, we can go back to the
                     // post document, and update it with an "image" field
@@ -226,7 +212,6 @@ function uploadPic(eventDocID) {
                     })
                         // AFTER .update is done
                         .then(function () {
-                            console.log('4. Added pic URL to Firestore.');
                             // One last thing to do:
                             // save this postID into an array for the OWNER
                             // so we can show "my posts" in the future
@@ -245,13 +230,10 @@ function uploadPic(eventDocID) {
 //--------------------------------------------
 function saveEventIDforUser(eventDocID) {
     firebase.auth().onAuthStateChanged(user => {
-        console.log("user id is: " + user.uid);
-        console.log("postdoc id is: " + eventDocID);
         db.collection("users").doc(user.uid).update({
             myEvents: firebase.firestore.FieldValue.arrayUnion(eventDocID)
         })
             .then(() => {
-                console.log("5. Saved to user's document!");
                 document.getElementById("postButtonText").innerHTML = "Event posted";
                 sleep(1200).then(() => { window.location.href = "main.html";; });
             })

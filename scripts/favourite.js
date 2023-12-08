@@ -136,14 +136,12 @@ function updateFavourites(eventDocID) {
         favourites: firebase.firestore.FieldValue.arrayRemove(eventDocID)
 
       }).then(() => {
-        // console.log("favourites removed for " + eventDocID);
         document.getElementById(iconID).className = 'bi-heart';
       });
     } else {
       currentUser.update({
         favourites: firebase.firestore.FieldValue.arrayUnion(eventDocID)
       }).then(() => {
-        // console.log(eventDocID + " added to favourites");
         document.getElementById(iconID).className = 'bi-heart-fill';
       });
     }
