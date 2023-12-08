@@ -113,7 +113,7 @@ function filterTags() {
     events.forEach(element => {
         tagstr = element.querySelector('.card-tags').innerHTML.replace(/&amp;/g, '&');
         for (i = 0; i < selectedTags.length; i++) {
-            if (tagstr.includes(selectedTags[i])) {
+            if (!tagstr.includes(selectedTags[i])) {
                 element.style.display = "none";
                 filteredTags.push(element.querySelector('i').id);
             }
