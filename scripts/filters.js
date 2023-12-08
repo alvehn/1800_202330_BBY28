@@ -5,10 +5,6 @@ const eventTags = ["Arts & Culture", "Health & Wellness", "Sports & Fitness", "M
     "All Ages", "19+", "Volunteer Opportunity", "Activism", "Nature & Outdoors",
     "Science & Technology"];
 
-
-
-// Attach the "click" event to your button
-
 eventTags.forEach(element => {
 
     const button = document.createElement('button');
@@ -31,6 +27,8 @@ eventTags.forEach(element => {
 
 });
 
+
+// Function to filter events based on date range
 function filterDate() {
     const events = document.querySelectorAll('.eventCard');
     var activeDate = document.getElementById('activeDate');
@@ -81,7 +79,7 @@ start.forEach(element => {
     });
 });
 
-
+// Function to set minimum date for date fields
 function minDate(datefieldID) {
     var minimumDate;
     if (datefieldID == "startDate") {
@@ -94,6 +92,7 @@ function minDate(datefieldID) {
 }
 minDate("startDate");
 
+// Function to filter events based on selected tags
 function filterTags() {
 
     const events = document.querySelectorAll('.eventCard');
@@ -120,14 +119,17 @@ function filterTags() {
             }
         }
     });
-    if(selectedTags.length == 1){
-        activeTags.value = selectedTags[0];
-    }else if (selectedTags.length > 1){
-        activeTags.value = "Clear (" + selectedTags.length +") Tags X";
-    }
+    if (selectedTags.length == 1) {
+        activeTags.value = selectedTags[0] + " X";
         activeTags.style.display = "inline-block";
+    } else if (selectedTags.length > 1) {
+        activeTags.value = "Clear (" + selectedTags.length + ") Tags X";
+        activeTags.style.display = "inline-block";
+    }
+
 }
 
+// Function to filter events based on user's location range
 function filterLocation() {
     const events = document.querySelectorAll('.eventCard');
     var filterLocation = document.getElementById('rangeValue').value;
@@ -151,6 +153,7 @@ function filterLocation() {
 
 }
 
+// Function to calculate distance between two coordinates in kilometers
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1); // deg2rad below
@@ -164,11 +167,12 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     return d;
 }
 
+// Function to convert degrees to radians
 function deg2rad(deg) {
     return deg * (Math.PI / 180)
 }
 
-
+// Function to apply all active filters on events
 function applyFilters() {
     const events = document.querySelectorAll('.eventCard');
     var startDate = document.getElementById('startDate').value;
@@ -189,6 +193,7 @@ function applyFilters() {
     filterTags();
 }
 
+// Function to clear applied tags filters
 function clearTags() {
 
     const events = document.querySelectorAll('.eventCard');
@@ -202,6 +207,7 @@ function clearTags() {
     document.getElementById('activeTags').style.display = "none";
 }
 
+// Function to clear applied location filter
 function clearLocation() {
     const events = document.querySelectorAll('.eventCard');
     events.forEach(element => {
@@ -214,6 +220,7 @@ function clearLocation() {
     document.getElementById('activeRange').style.display = "none";
 }
 
+// Function to clear applied date filter
 function clearDate() {
     const events = document.querySelectorAll('.eventCard');
     events.forEach(element => {
