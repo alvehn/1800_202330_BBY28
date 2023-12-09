@@ -1,4 +1,5 @@
 # Project Title
+Whats Happening
 
 ## 1. Project Description
 Our team bby28 is developing What’s Happening to help you find events tailored to your interests as easily as possible by creating a central hub for local events and community gatherings. Some of our core features are viewing events, saving events to favourites, viewing and editing your profile, and creating an event. 
@@ -30,9 +31,9 @@ Resources:
 * https://www.w3schools.com/
 
 Images: 
-* https://www.youtube.com/watch?v=6b5Sd_S4aUo
-* https://www.shutterstock.com/search/indian-food?image_type=photo 
-* https://dianacooper.com/knowlege-base/unicorns/
+* https://encyclopedia-minion.fandom.com/wiki/Bob
+* https://iconscout.com/icons/filter 
+* https://www.freepik.com/icon/magnifier_71403 
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
@@ -75,7 +76,10 @@ Content of the project folder:
 
 It has the following subfolders and files:
 ├── images                   # Folder for images
-    /favicon.ico             # By 
+    /favicon.ico             # By Alvin
+    /bob.png                 # From https://encyclopedia-minion.fandom.com/wiki/Bob
+    /filter.png              # From https://iconscout.com/icons/filter 
+    /magnifier.png           # From https://www.freepik.com/icon/magnifier_71403 
 ├── scripts                  # Folder for scripts
     /authentication.js       # authenticates user with account or new user 
     /favourite.js            # controls what happens when event is favourited
