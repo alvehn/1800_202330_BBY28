@@ -1,18 +1,14 @@
-# Project Title
-Whats Happening
+# Whats Happening
 
 ## 1. Project Description
 Our team bby28 is developing What’s Happening to help you find events tailored to your interests as easily as possible by creating a central hub for local events and community gatherings. Some of our core features are viewing events, saving events to favourites, viewing and editing your profile, and creating an event. 
 
 ## 2. Names of Contributors
-
 * Alvin, I like eating ramen
 * Sohail, I like coding
 * Navjot, I like programming
 	
 ## 3. Technologies and Resources Used
-List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
-
 Technologies: 
 * HTML, CSS, JavaScript
 * Bootstrap 5.0 (Frontend library)
@@ -36,22 +32,15 @@ Images:
 * https://www.freepik.com/icon/magnifier_71403 
 
 ## 4. Complete setup/installion/usage
-State what a user needs to do when they come to your project.  How do others start using your code or application?
-Here are the steps ...
-* Git pull or git clone
-* edit edit edit
-* stage commit push (add commit push)
-
-## 5. Known Bugs and Limitations
-Here are the limitations of this app:
-* 
-* 
-* 
+How to use What's Happening:
+* Go to the website
+* Login or create a new account
+* View and post events!
 
 ## 6. Features for Future
 What we'd like to build in the future:
 * Google maps api built in to find exact location of events
-* viewing other peoples profiles and chatting with others in app
+* Viewing other peoples profiles and chatting with others in app
 	
 ## 7. Contents of Folder
 Content of the project folder:
