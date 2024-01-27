@@ -31,8 +31,7 @@ Images:
 * https://iconscout.com/icons/filter 
 * https://www.freepik.com/icon/magnifier_71403 
 
-## 4. Complete setup/installion/usage
-How to use What's Happening:
+## 4. How to use What's Happening
 * Go to the website
 * Login or create a new account
 * View and post events!
